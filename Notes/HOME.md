@@ -8,9 +8,7 @@
 - **Next Milestone**: `Player Movement + Basic Combat`
 
 ### ⚡ Quick Actions
-- [[TODO|📋 Today's Tasks]]
 - [[Current_Sprint|🏃 Sprint Board]]
-- [[Create_Issue|➕ New GitHub Issue]]
 - [[Miles_Dashboard|👨‍💻 Miles' Board]] | [[Jade_Dashboard|👩‍🎨 Jade's Board]]
 
 ---
