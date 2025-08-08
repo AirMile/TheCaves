@@ -1,100 +1,73 @@
-# 🏠 ROGUELITE PROJECT - HOME
+# 🏠 HOME - TheCaves Roguelite Project
 
-## 📢 FILESYSTEM MCP NOTICE
-```yaml
-Current Directory: C:\Users\mzeil\Documents\Notes 2025\Roguelite
-Note: Dit wordt later de game repository directory
-Usage: "Use filesystem mcp to update notes in this directory"
-Voicy: Speech-to-text tool (maakt soms fouten)
-```
+## 🚀 Quick Navigation
 
-## 📱 Mobile Quick Access
+### 📊 Project Status
+- **Current Phase**: `Concept → Prototype`
+- **Sprint Focus**: `Neon Lights Visual System`
+- **Next Milestone**: `Player Movement + Basic Combat`
 
-### Voor MILES:
-👉 **[01_MILES/DAILY_CHECKLIST.md](01_MILES/DAILY_CHECKLIST.md)** - Bookmark dit!
-
-### Voor JADE:  
-👉 **[02_JADE/DAILY_CHECKLIST.md](02_JADE/DAILY_CHECKLIST.md)** - Bookmark dit!
-
-### Discord Setup:
-👉 **[03_SHARED/DISCORD_MOBILE_SETUP.md](03_SHARED/DISCORD_MOBILE_SETUP.md)** - Channels & templates
+### ⚡ Quick Actions
+- [[TODO|📋 Today's Tasks]]
+- [[Current_Sprint|🏃 Sprint Board]]
+- [[Create_Issue|➕ New GitHub Issue]]
+- [[Miles_Dashboard|👨‍💻 Miles' Board]] | [[Jade_Dashboard|👩‍🎨 Jade's Board]]
 
 ---
 
-## 📁 Nieuwe Structuur (Veel Overzichtelijker!)
+## 🗂️ Project Structure
 
-```
-🎮 ROGUELITE/
-│
-├── 📌 00_START/              ← BEGIN HIER
-│   └── START_HIER.md        ← Alles wat je moet weten
-│
-├── 👨‍💻 01_MILES/              ← ALLEEN VOOR MILES
-│   ├── DAILY_CHECKLIST.md   ← Mobile bookmark!
-│   └── Miles_Week1_Tasks.md ← Jouw taken
-│
-├── 👩‍🎨 02_JADE/               ← ALLEEN VOOR JADE
-│   ├── DAILY_CHECKLIST.md   ← Mobile bookmark!
-│   └── Jade_Week1_Tasks.md  ← Haar taken
-│
-├── 🤝 03_SHARED/             ← VOOR BEIDEN
-│   ├── DISCORD_MOBILE_SETUP.md
-│   └── Rollen_Verdeling.md
-│
-├── 📚 Development_Guides/    ← HOE-TO GUIDES
-├── 🗣️ Templates/             ← SPEECH TEMPLATES
-├── 📝 Daily_Updates/         ← CLAUDE MAAKT DEZE
-└── 📋 [Overige docs...]      ← Reference
-```
+### 📐 Design & Planning
+- [[01_Design/Game_Design_Document|Game Design Document]] - Core game vision
+- [[Art_Bible|Art Bible]] - Visual style guide
+- [[Neon_Prototype_Spec|Neon Prototype]] - Current focus
+- [[Milestone_Planning|Roadmap]] - Development timeline
 
----
+### 💻 Development
+- [[Architecture_Overview|System Architecture]] - Technical structure
+- [[02_Development/Current_Sprint|Current Sprint]] - Active tasks
+- [[Git_Workflow|Git Workflow]] - Branch strategy
+- [[Development_Guides/Performance_Guidelines|Performance Guide]] - Optimization
 
-## 🚀 Start Morgen Met:
+### 👥 Team
+- [[03_Team/Miles/Miles_Dashboard|Miles' Workspace]]
+- [[03_Team/Jade/Jade_Dashboard|Jade's Workspace]]
+- [[03_Team/Shared/Decision_Log|Decision Log]] - Important choices
+- [[Meeting_Notes|Meeting History]]
 
-### STAP 1: Setup Discord
-1. Open `03_SHARED/DISCORD_MOBILE_SETUP.md`
-2. Maak channels volgens lijst
-3. Pin belangrijke messages
-
-### STAP 2: Bookmark op Telefoon
-- Miles: `01_MILES/DAILY_CHECKLIST.md`
-- Jade: `02_JADE/DAILY_CHECKLIST.md`
-
-### STAP 3: Eerste Update
-Kopieer template uit DAILY_CHECKLIST naar Discord
+### 📚 References
+- [[Sprite_Performance_Guide|Sprite Guidelines]]
+- [[Tech_Referentie|Tech Reference]]
+- [[05_References/Inspiration|Inspiration Board]]
 
 ---
 
-## 💬 Update Workflow
+## 📅 This Week
 
-```mermaid
-graph LR
-    A[Open Daily Checklist] --> B[Check taken]
-    B --> C[Werk]
-    C --> D[Kopieer template]
-    D --> E[Post in Discord]
-    E --> F[Team ziet update!]
-```
+### To Do
+- [ ] #12 Setup neon shader prototype
+- [ ] #13 Implement basic player movement
+- [ ] #14 Create first enemy sprite
 
----
+### In Progress
+- [ ] #11 Refactor project structure (Miles)
 
-## 🎯 Week 1 Overview
-
-### Miles Focus:
-- Git setup ✓
-- Godot project ✓
-- Player movement ✓
-
-### Jade Focus:
-- Art tools ✓
-- Sprite tests ✓
-- Style guide ✓
-
-### Shared:
-- Discord communicatie ✓
-- Daily updates ✓
-- Week review Friday ✓
+### Recently Completed
+- [x] #10 Initialize Git repository
+- [x] #09 Setup Obsidian vault
 
 ---
 
-*Dit is je nieuwe home - veel cleaner! 🎉*
+## 🔗 External Links
+- [GitHub Repository](https://github.com/AirMile/TheCaves)
+- [Project Board](https://github.com/AirMile/TheCaves/projects/1)
+- [Godot Docs](https://docs.godotengine.org/en/stable/)
+
+## 📝 Quick Notes
+<!-- Gebruik deze sectie voor snelle notities tijdens meetings -->
+
+
+---
+
+*Last Updated: 2024-12-19*
+*Use [[Templates/Daily_Standup|Daily Standup Template]] for updates*
