@@ -72,11 +72,22 @@ var velocity: Vector2 = Vector2.ZERO
 
 ## Workflow Principles
 
-### Git Workflow
-- **Branches**: feature/[name] → main
-- **Commits**: Conventional format (feat/fix/docs/perf)
-- **Reviews**: PR before merging
-- **Public repo**: Required for Claude Code access
+## Version Control Strategy
+
+### What's Tracked in Git:
+- **Documentation** (Notes/): All project docs, guides, templates
+- **Source Code**: All .gd scripts, .tscn scenes, .tres resources  
+- **Assets**: Sprites, audio, shaders, fonts
+- **Configuration**: project.godot, export settings
+
+### What's Ignored:
+- **.godot/**: Cache directory (auto-generated)
+- **.obsidian/**: Obsidian configuration (personal settings)
+- **.trash/**: Obsidian trash folder
+- **builds/**: Export builds
+- **IDE files**: .vscode/, .idea/
+- **OS files**: .DS_Store, Thumbs.db
+- **Temp files**: *.tmp, *.backup
 
 ### Documentation
 - **Obsidian vault**: All project documentation

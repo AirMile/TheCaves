@@ -1,0 +1,178 @@
+# ============================================
+# TheCaves - Git Configuration
+# ============================================
+# Track both documentation AND Godot project files
+# ============================================
+
+# ===================
+# Godot Generated Files (IGNORE)
+# ===================
+# Godot 4.x import cache - NIET tracken
+.godot/
+
+# Godot 3.x legacy cache (voor compatibility)
+.import/
+
+# Mono/C# specific generated files
+.mono/
+data_*/
+mono_crash.*.json
+
+# ===================
+# Build & Export Files (IGNORE)
+# ===================
+builds/
+build/
+exports/
+export/
+dist/
+bin/
+*.tmp
+
+# Platform specific builds
+*.exe
+*.pck
+*.zip
+*.apk
+*.ipa
+*.app
+*.dmg
+*.deb
+*.rpm
+*.x86_64
+*.x86
+*.dll
+*.so
+*.dylib
+
+# Web export specifics
+*.html
+*.js
+*.wasm
+*.worker.js
+*.audio.worklet.js
+
+# ===================
+# IDE & Editor Files (IGNORE)
+# ===================
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains Rider
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ===================
+# Obsidian & Notes Management (IGNORE)
+# ===================
+# Obsidian configuration and cache
+.obsidian/
+
+# Obsidian trash folder
+.trash/
+
+# ===================
+# OS Generated Files (IGNORE)
+# ===================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+# ===================
+# Logs & Debug (IGNORE)
+# ===================
+*.log
+logs/
+crash_reports/
+*.stackdump
+core
+
+# ===================
+# Backup Files (IGNORE)
+# ===================
+*.backup
+*.bak
+*.old
+*~
+*.orig
+
+# ===================
+# TRACKED FILES - Godot Project
+# ===================
+# Deze files WORDEN WEL getracked:
+# ✅ project.godot
+# ✅ export_presets.cfg (LET OP: check voor API keys!)
+# ✅ *.tscn (scenes)
+# ✅ *.tres (resources)
+# ✅ *.gd (scripts)
+# ✅ *.gdshader (shaders)
+# ✅ *.png, *.jpg, etc (sprites)
+# ✅ *.ogg, *.wav, *.mp3 (audio)
+# ✅ icon.png / icon.svg
+# ✅ default_env.tres
+
+# ===================
+# OPTIONAL: Files to consider ignoring
+# ===================
+# Als deze te groot worden of problemen geven:
+# *.import  # Import settings (kunnen regenerated worden)
+# screenshots/  # Development screenshots
+# recordings/  # Video recordings
+
+# ===================
+# Notes for team
+# ===================
+# BELANGRIJK: Check export_presets.cfg voor API keys!
+# Als je API keys hebt (Steam, Google Play, etc):
+# 1. Maak export_presets_template.cfg zonder keys
+# 2. Ignore export_presets.cfg
+# 3. Gebruik environment variables voor keys
