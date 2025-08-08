@@ -3,13 +3,11 @@
 ## 🎯 Vandaag's Focus
 
 ### Must Do:
-- [x] 🆕 **Zapier + Trello MCP Setup** (zie guide)
 - [ ] Git repository setup
 - [ ] Godot project aanmaken
 - [ ] Player movement basics
 
 ### Quick Links:
-- 📶 [Zapier MCP Guide](../03_SHARED/ZAPIER_TRELLO_MCP_SETUP.md)
 - 📋 [Taken lijst](Miles_Week1_Tasks.md)
 - 🔧 [Git Guide](../Development_Guides/Git_Workflow_Guide.md)
 - 🤖 [Claude Setup](../Development_Guides/Claude_Code_Setup.md)

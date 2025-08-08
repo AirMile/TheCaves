@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HOME.md",
+                "file": "00_START/FINAL_CHECKLIST.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HOME"
+              "title": "FINAL_CHECKLIST"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 285.5
+    "width": 285.5,
+    "collapsed": true
   },
   "right": {
     "id": "084d39983e277121",
@@ -171,9 +172,25 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
-    "HOME.md",
-    "trello_task_progress.md",
+    "01_MILES/CLAUDE_INSTRUCTIONS.md",
+    "00_START/FILESYSTEM_MCP_SETUP.md",
     "Trello_Workflow.md",
+    "Milestone_Planning.md",
+    "Git_Workflow.md",
+    "Game_Design_Document.md",
+    "Call_Agenda.md",
+    "DOCUMENT_INDEX.md",
+    "Sprite_Performance_Guide.md",
+    "Tech_Referentie.md",
+    "TODO.md",
+    "trello_task_progress.md",
+    "HOME.md",
+    "01_MILES/Miles_Week1_Tasks.md",
+    "01_MILES/DAILY_CHECKLIST.md",
+    "03_SHARED/ZAPIER_TRELLO_MCP_SETUP.md",
+    "00_START/SETUP_COMPLEET.md",
+    "00_START/CLAUDE_DESKTOP_INSTRUCTIONS.md",
+    "00_START/BOOKMARKS_UITLEG.md",
     "Roguelite/Trello_Workflow.md",
     "Roguelite/project_setup_complete.md",
     "Roguelite/trello_task_progress.md",
@@ -181,23 +198,7 @@
     "Roguelite/03_SHARED/DISCORD_MOBILE_SETUP.md",
     "Roguelite/03_SHARED/CLASS_DIAGRAM_GUIDE.md",
     "Roguelite/02_JADE/QUICK_REFERENCE.md",
-    "Roguelite/02_JADE/Jade_Week1_Tasks.md",
-    "Roguelite/02_JADE/DAILY_CHECKLIST.md",
-    "Roguelite/01_MILES/WHATSAPP_SELF_REMINDER.md",
-    "Roguelite/01_MILES/WHATSAPP_FINAL.md",
-    "Roguelite/01_MILES/QUICK_REFERENCE.md",
-    "Roguelite/01_MILES/MORNING_START.md",
-    "Roguelite/01_MILES/MORGEN_PRIORITY_ZAPIER.md",
-    "Roguelite/01_MILES/Miles_Week1_Tasks.md",
-    "Roguelite/01_MILES/JADE_COMMUNICATION.md",
-    "Roguelite/01_MILES/DAILY_CHECKLIST.md",
-    "Roguelite/Development_Guides/Git_Workflow_Guide.md",
-    "Roguelite/03_SHARED/ZAPIER_TRELLO_MCP_SETUP.md",
     "🖼️ Images/chrome_bUlJEx2U2g.png",
-    "🏠 Home.md",
-    "Roguelite/00_START/FINAL_WRAPUP.md",
-    "Roguelite/HOME.md",
-    "Roguelite/00_START/CLAUDE_INSTRUCTIONS.md",
     "Roguelite/03_SHARED",
     "Roguelite/02_JADE",
     "Roguelite/01_MILES",
