@@ -7,18 +7,21 @@ Welcome to the TheCaves project documentation! This Obsidian vault contains all 
 ```
 Notes/
 ├── 🏠 HOME.md                    # Central dashboard (auto-opens in Obsidian)
+├── 📖 README.md                  # Documentation overview
+│
+├── 00_START/                     # Quick start & project info
+│   ├── START_HIER.md            # Quick start guide
+│   ├── Project_Samenvatting.md  # Project overview
+│   └── Milestone_Planning.md    # Development roadmap
 │
 ├── 01_Design/                    # Game design documentation
 │   ├── _Design_Index.md         # Design overview
 │   ├── Game_Design_Document.md  # Core game design
-│   ├── Art_Bible.md             # Visual style guide
-│   └── Mechanics/               # Detailed mechanics docs
+│   └── Art_Bible.md             # Visual style guide
 │
 ├── 02_Development/               # Technical documentation
 │   ├── _Dev_Index.md            # Development overview
-│   ├── Current_Sprint.md        # Active sprint board
-│   ├── Issues/                  # GitHub issues tracking
-│   └── Guides/                  # Development guides
+│   └── Current_Sprint.md        # Active sprint board
 │
 ├── 03_Team/                     # Team workspaces
 │   ├── Miles/                   # Miles' personal workspace
@@ -26,12 +29,13 @@ Notes/
 │   ├── Jade/                    # Jade's personal workspace
 │   │   └── Jade_Dashboard.md    # Personal task board
 │   └── Shared/                  # Shared team resources
+│       └── Decision_Log.md      # Important decisions
 │
 ├── 04_Meetings/                 # Meeting notes & agendas
 ├── 05_References/               # External references & inspiration
-├── Templates/                   # Document templates
-├── Archive/                     # Old/completed documents
-└── .meta/                       # Configuration files
+├── 06_Development_Guides/       # Technical guides & how-tos
+├── 07_Templates/                # Document templates
+└── .obsidian/                   # Obsidian configuration
 ```
 
 ## 🚀 Quick Start

@@ -20,8 +20,8 @@
 ### Art Resources
 - [[Art_Bible|Art Bible & Style Guide]]
 - [[Neon_Prototype_Spec|Neon Visual Specs]]
-- [[Art_Pipeline|Asset Pipeline]]
-- [[Sprite_Performance_Guide|Sprite Guidelines]]
+- [[06_Development_Guides/Art_Pipeline|Asset Pipeline]]
+- [[06_Development_Guides/Sprite_Performance_Guide|Sprite Guidelines]]
 
 ### Learning Resources
 - [Godot for Artists](https://docs.godotengine.org/en/stable/getting_started/introduction/godot_for_artists.html)

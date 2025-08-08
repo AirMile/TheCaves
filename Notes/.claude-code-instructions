@@ -1,311 +1,311 @@
-# 🤖 CLAUDE CODE INSTRUCTIONS
-
-## Filesystem MCP Configuration
-```yaml
-Project Directory: C:\Users\mzeil\Documents\Notes 2025\Roguelite
-Note: Will be changed to game repository directory later
-Usage: All file operations via filesystem MCP
-```
-
-## Speech-to-Text Notice
-⚠️ Miles uses Voicy for speech-to-text input. This tool is sometimes inaccurate. Auto-correct obvious errors in Dutch/English.
+# 🤖 CLAUDE CODE INSTRUCTIONS - TheCaves Project
 
 ## Project Context
-You are Claude Code, an autonomous coding assistant for a Godot 4.3 roguelite game project. You generate COMPLETE, FUNCTIONAL code files and handle all implementation tasks independently.
+You are Claude Code, an autonomous coding assistant for TheCaves - a Godot 4.3 roguelite game. Generate COMPLETE, FUNCTIONAL code and handle implementation tasks independently.
 
-## Your Role
-- **Primary**: Write complete code implementations
-- **Secondary**: Handle Git commits and PR reviews
-- **Focus**: Get things done, not explain
-
-## Project Setup
+## Project Constants
 ```yaml
+Game: Top-down roguelite (Brotato/Vampire Survivors style)
+Repository: https://github.com/AirMile/TheCaves
+Local: C:\gameProjects\TheCaves
 Engine: Godot 4.3
-Language: GDScript (NOT C#)
-Architecture: Component-based, OOP principles
-Performance: 100+ enemies target
-Repository: PUBLIC GitHub (required for your access)
-IDE: VS Code or Cursor (TBD)
+Language: GDScript
+Performance Target: 60 FPS with 100+ enemies
+Architecture: Component-based, multiplayer-ready
 ```
 
-## Code Generation Rules
+## Core Responsibilities
+- Write production-ready code
+- Optimize for performance at scale
+- Implement complete features
+- Follow established patterns
+- Ship working solutions
 
-### ALWAYS Generate Complete Files
+## Code Standards
+
+### GDScript Requirements
 ```gdscript
-# GOOD - Complete implementation
-extends Node2D
-class_name EnemySpawner
+# ALWAYS use static typing
+var health: int = 100
+var velocity: Vector2 = Vector2.ZERO
+var enemy_ref: Enemy = null
 
-@export var enemy_scene: PackedScene
-var spawn_pool: Array[Enemy] = []
+# Explicit return types
+func take_damage(amount: int) -> void:
+    health -= amount
 
-func _ready() -> void:
-    initialize_pool()
+func get_nearest_enemy() -> Enemy:
+    return nearest_enemy
 
-func initialize_pool() -> void:
-    # Full implementation here
-    pass
+# Component architecture
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var movement_component: MovementComponent = $MovementComponent
+
+# Constants over magic numbers
+const MAX_HEALTH: int = 100
+const MOVE_SPEED: float = 300.0
 ```
 
-### Follow These Conventions
-
-#### File Naming
+### Naming Conventions
 ```
 Scripts: snake_case.gd
 Scenes: PascalCase.tscn
 Resources: snake_case.tres
-Sprites: entity_state_action_size.png
+Components: ComponentNameComponent.gd
+Autoloads: ManagerName.gd
 ```
 
-#### Branch Naming
+### Directory Organization
 ```
-feature/player-movement
-feature/enemy-spawning
-art/sprite-animations
-fix/collision-detection
-perf/object-pooling
-```
-
-#### Commit Messages
-```bash
-# Format: type(scope): description
-
-feat(player): implement dash ability with cooldown
-fix(enemies): resolve spawning outside arena bounds
-perf(rendering): optimize sprite batching for 100+ enemies
-refactor(input): extract controller handling to component
-art(sprites): add neon glow shader to enemies
-docs(readme): update setup instructions
-```
-
-#### GDScript Style
-```gdscript
-# Static typing ALWAYS
-var health: int = 100
-var velocity: Vector2 = Vector2.ZERO
-
-# Private with underscore
-func _process(delta: float) -> void:
-    pass
-
-# Signals snake_case
-signal health_changed(new_health: int)
-
-# Constants UPPER_CASE
-const MAX_ENEMIES: int = 150
-
-# Small functions (<20 lines)
-# Composition over inheritance
-# Component-based architecture
-```
-
-## Class Diagram Structure
-```
-GameObject (base)
-├── Player
-│   ├── HealthComponent
-│   ├── MovementComponent
-│   ├── InputComponent
-│   └── AbilityComponent
-├── Enemy
-│   ├── HealthComponent
-│   ├── AIComponent
-│   ├── MovementComponent
-│   └── AttackComponent
-└── Projectile
-    ├── DamageComponent
-    └── MovementComponent
+C:\gameProjects\TheCaves\
+├── scenes/
+│   ├── player/
+│   ├── enemies/
+│   ├── ui/
+│   ├── levels/
+│   └── components/
+├── scripts/
+│   ├── player/
+│   ├── enemies/
+│   ├── systems/
+│   ├── components/
+│   ├── autoload/
+│   └── utilities/
+├── assets/
+│   ├── sprites/
+│   ├── audio/
+│   ├── shaders/
+│   └── fonts/
+└── resources/
+    ├── upgrades/
+    ├── items/
+    └── enemy_configs/
 ```
 
 ## Performance Patterns
 
-### Object Pooling (REQUIRED)
+### Object Pooling (MANDATORY)
 ```gdscript
-# Always implement for:
-- Enemies
-- Projectiles  
-- Particles
-- Audio players
+# Required for ALL spawnable objects:
+# - Enemies (200+ pool size)
+# - Projectiles (500+ pool size)  
+# - Particles (100+ pool size)
+# - Damage numbers
+# - Audio players
+# - Any frequently created/destroyed objects
 
-# Template:
-class_name ObjectPool
 extends Node
+class_name ObjectPool
 
 var pool: Array = []
-const POOL_SIZE: int = 200
+const DEFAULT_POOL_SIZE: int = 100
 
-func get_object():
-    # Implementation
+func _ready() -> void:
+    _initialize_pool()
+
+func _initialize_pool() -> void:
+    # Pre-instantiate objects
     pass
 
-func return_object(obj):
-    # Implementation
+func get_object() -> Node:
+    # Return inactive or reuse oldest
+    pass
+
+func return_object(obj: Node) -> void:
+    # Deactivate and return to pool
     pass
 ```
 
-### LOD System
+### LOD (Level of Detail) System
 ```gdscript
+# Required for all enemies and complex objects
 enum LOD { FULL, HIGH, MEDIUM, LOW, MINIMAL }
 
-func update_lod(distance: float) -> void:
-    if distance < 300:
-        current_lod = LOD.FULL
-    # etc...
-```
-
-## MCP (Model Context Protocol) Integration
-
-### Filesystem MCP
-```yaml
-Project Directory: C:\Users\mzeil\Documents\Notes 2025\Roguelite
-Note: Will change to game repository later
-Usage: All file operations via filesystem MCP
-```
-
-### Zapier + Trello MCP (NEW!)
-```json
-{
-  "mcpServers": {
-    "zapier": {
-      "command": "node",
-      "args": ["-e", "require('@anthropic-ai/mcp-server-zapier').default()"],
-      "transport": {
-        "type": "sse",
-        "url": "https://api.zapier.com/v1/mcp/sse"
-      },
-      "env": {
-        "ZAPIER_API_KEY": "[TO_BE_CONFIGURED]"
-      }
-    }
-  }
+# Distance thresholds
+const LOD_DISTANCES = {
+    LOD.FULL: 300,
+    LOD.HIGH: 600,
+    LOD.MEDIUM: 900,
+    LOD.LOW: 1200,
+    LOD.MINIMAL: INF
 }
+
+# Feature toggles per LOD
+# FULL: Everything enabled
+# HIGH: No shadows/complex particles
+# MEDIUM: Simplified AI, basic animations
+# LOW: Movement only, no animations
+# MINIMAL: Position interpolation only
 ```
 
-### MCP Commands for Trello
-```
-# View boards
-"Laat mijn Trello boards zien"
-
-# Create tasks
-"Maak een nieuwe card in [Board] met titel [Task]"
-
-# Move cards
-"Verplaats [Card] naar In Progress lijst"
-
-# Sprint planning
-"Maak sprint planning voor game project met 10 taken"
-```
-
-## Git Workflow
-
-### Daily Commits
-```bash
-# Feature branch
-git checkout -b feature/enemy-waves
-git add .
-git commit -m "feat(enemies): implement wave spawning with difficulty scaling"
-git push origin feature/enemy-waves
-```
-
-### PR Template
-```markdown
-## What
-[Implementation description]
-
-## Why
-[Problem it solves]
-
-## Testing
-- [ ] 100+ enemies stable
-- [ ] 60 FPS maintained
-- [ ] Controller tested
-- [ ] Keyboard tested
-
-## Performance
-- Draw calls: X
-- Memory usage: X MB
-- FPS impact: X
-```
-
-## Tools Integration
-
-### Trello Cards
-When completing features, update:
-- Move card to Done
-- Add performance metrics
-- Note any discovered issues
-
-### Miro
-- Export class diagrams
-- Save as PNG in docs/
-- Commit with message: "docs(design): update class diagram"
-
-### Discord
-Post completion updates:
-```
-✅ Feature Complete: [name]
-Performance: 60 FPS with X enemies
-Commits: [hash1, hash2]
-PR: #[number]
-```
-
-## Multiplayer Preparation
-
-Always structure code for future multiplayer:
+### Physics Layers
 ```gdscript
-# Separate input from logic
-func handle_input() -> void:
-    var input = get_local_input()  # Future: or network
-    apply_input(input)
+# Layer configuration (NO enemy-enemy collision!)
+# Layer 1: Walls/Environment
+# Layer 2: Player
+# Layer 3: Enemies (mask: 1|2 only!)
+# Layer 4: Player projectiles
+# Layer 5: Enemy projectiles  
+# Layer 6: Pickups/Items
+# Layer 7: Triggers/Areas
 
-# Use signals for state changes
-signal state_changed(new_state)
-
-# Avoid direct node references
-# Use groups or signals instead
+# Enemy setup example
+func _ready():
+    collision_layer = 3
+    collision_mask = 1 | 2  # Walls and Player only!
 ```
 
-## Error Handling
+## Architecture Patterns
 
+### Component System Template
 ```gdscript
-# Always include
+# Component base
+extends Node
+class_name BaseComponent
+
+@export var enabled: bool = true
+var owner_node: Node
+
 func _ready() -> void:
-    assert(enemy_scene != null, "Enemy scene not set!")
+    owner_node = get_parent()
+
+# Specific component example
+extends BaseComponent
+class_name HealthComponent
+
+signal died
+signal health_changed(new_health: int)
+signal damage_taken(amount: int)
+
+@export var max_health: int = 100
+var current_health: int
+
+func take_damage(amount: int) -> void:
+    if not enabled:
+        return
+    current_health = max(0, current_health - amount)
+    damage_taken.emit(amount)
+    health_changed.emit(current_health)
+    if current_health <= 0:
+        died.emit()
+```
+
+### State Machine Template
+```gdscript
+# State machine
+extends Node
+class_name StateMachine
+
+@export var initial_state: State
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+    for child in get_children():
+        if child is State:
+            states[child.name] = child
+            child.state_machine = self
     
-# Graceful degradation
-if not resource_exists(path):
-    push_warning("Resource missing: " + path)
-    return default_resource
+    if initial_state:
+        current_state = initial_state
+        current_state.enter()
+
+func transition_to(state_name: String) -> void:
+    if not states.has(state_name):
+        return
+    
+    if current_state:
+        current_state.exit()
+    
+    current_state = states[state_name]
+    current_state.enter()
 ```
 
-## Auto-Generation Commands
+### Event Bus Pattern
+```gdscript
+# Autoload singleton
+extends Node
 
-### New System
-```
-Generate complete [system name] with:
-- Object pooling if applicable
-- Component architecture
-- Performance optimized for 100+ instances
-- Multiplayer-ready structure
+# Game events
+signal enemy_spawned(enemy: Enemy)
+signal enemy_died(enemy: Enemy)
+signal wave_started(wave_number: int)
+signal wave_completed(wave_number: int)
+
+# Player events
+signal player_damaged(amount: int)
+signal player_died()
+signal ability_used(ability_name: String)
+
+# System events
+signal upgrade_collected(upgrade: Resource)
+signal performance_warning(fps: int)
 ```
 
-### Bug Fix
-```
-Fix [issue] by:
-- Identifying root cause
-- Implementing solution
-- Adding prevention measures
-- Updating documentation
+## Implementation Checklist
+
+### For ANY New Feature
+- [ ] Object pooling implemented (if spawnable)
+- [ ] LOD system integrated (if enemy/complex)
+- [ ] Component architecture used
+- [ ] Performance tested (100+ enemies)
+- [ ] Memory leaks checked
+- [ ] Input works (keyboard + controller)
+- [ ] Multiplayer structure considered
+- [ ] Documentation updated
+
+### Performance Validation
+```gdscript
+# Add to any system for validation
+func _ready():
+    if OS.is_debug_build():
+        print("System: %s" % name)
+        print("- FPS: %d" % Engine.get_frames_per_second())
+        print("- Enemies: %d" % get_tree().get_nodes_in_group("enemies").size())
+        print("- Memory: %.2f MB" % (OS.get_static_memory_usage() / 1048576.0))
 ```
 
-## Testing Requirements
+## Anti-Patterns to AVOID
 
-Before marking complete:
-1. ✅ Runs at 60 FPS with 100+ enemies
-2. ✅ No memory leaks
-3. ✅ Controller + keyboard work
-4. ✅ No errors in console
-5. ✅ Components properly decoupled
+```gdscript
+# ❌ NEVER: Create in loops without pooling
+for i in 100:
+    var bullet = bullet_scene.instantiate()
+
+# ❌ NEVER: Get nodes every frame
+func _process(delta):
+    var player = get_node("/root/Game/Player")
+
+# ❌ NEVER: String concatenation in process
+func _process(delta):
+    label.text = "Score: " + str(score)
+
+# ❌ NEVER: Ignore typing
+var health = 100  # Missing type
+
+# ❌ NEVER: Direct node dependencies
+var player = $"../../../Player"  # Fragile path
+```
+
+## Correct Patterns
+
+```gdscript
+# ✅ ALWAYS: Use pools
+var bullet = ProjectilePool.get_projectile()
+
+# ✅ ALWAYS: Cache references
+@onready var player: Player = get_tree().get_first_node_in_group("player")
+
+# ✅ ALWAYS: Efficient strings
+const SCORE_FORMAT: String = "Score: %d"
+label.text = SCORE_FORMAT % score
+
+# ✅ ALWAYS: Static typing
+var health: int = 100
+
+# ✅ ALWAYS: Use signals/groups
+signal player_found(player: Player)
+```
 
 ## Response Format
 
@@ -313,34 +313,88 @@ Before marking complete:
 ## Implemented: [Feature Name]
 
 ### Files Created/Modified:
-- path/to/file.gd
-- path/to/scene.tscn
+- `path/to/file.gd` - [Purpose]
+- `path/to/scene.tscn` - [Purpose]
 
-### Key Changes:
-- [Change 1]
-- [Change 2]
+### Architecture:
+- Components used: [List]
+- Pooling: [Yes/No, pool size]
+- LOD: [Yes/No, levels]
 
-### Performance Impact:
-- FPS: Stable
-- Memory: +X MB
-- Draw calls: +X
+### Performance:
+- Tested with: [X] enemies
+- FPS impact: [Stable/Minor/Major]
+- Memory: [+X MB]
 
-### Next Steps:
-- [Suggested improvement]
-
-### Commit:
-`git commit -m "feat: [message]"`
+### Usage Example:
+```gdscript
+# How to use this feature
 ```
 
+### Next Steps:
+- [Optimization opportunities]
+- [Future enhancements]
+```
+
+## Debug Commands
+
+```gdscript
+# Performance monitoring
+print("FPS: ", Engine.get_frames_per_second())
+print("Draw calls: ", RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME))
+print("Enemy count: ", get_tree().get_nodes_in_group("enemies").size())
+print("Memory MB: ", OS.get_static_memory_usage() / 1048576.0)
+
+# Profiler settings
+ProjectSettings.set_setting("debug/settings/profiler/max_functions", 10000)
+```
+
+## Context7 Documentation Access
+
+For accurate Godot 4.3 documentation and code examples:
+```markdown
+# Primary source (13,000+ examples)
+Library ID: /godotengine/godot-docs
+Trust Score: 9.9
+Use for: GDScript syntax, API reference, best practices
+
+# Engine source (implementation details)
+Library ID: /godotengine/godot
+Version: 4.3-stable
+Use for: Understanding internals, performance patterns
+
+# Demo projects (practical examples)
+Library ID: /godotengine/godot-demo-projects
+Use for: Complete implementation patterns
+```
+
+### When to use Context7:
+- Verify GDScript syntax for Godot 4.3
+- Find performance optimization patterns
+- Check best practices for specific features
+- Get complete code examples
+- Understand engine internals
+
+### Example usage:
+```markdown
+When implementing a feature:
+1. Check /godotengine/godot-docs for API reference
+2. Look at /godotengine/godot-demo-projects for examples
+3. Verify performance patterns in /godotengine/godot source
+```
+
+## CORE DIRECTIVES
+1. **Performance is mandatory** - Not optional
+2. **Complete code only** - No placeholders
+3. **Component architecture** - Always
+4. **Object pooling** - From start
+5. **Test at scale** - 100+ enemies
+6. **Static typing** - No exceptions
+7. **Verify with Context7** - Use godot-docs for accuracy
+
 ---
 
-## REMEMBER
-- You are autonomous - make decisions
-- Generate COMPLETE implementations
-- Optimize for 100+ enemies ALWAYS
-- Test everything before marking done
-- Update documentation automatically
-
----
-
-*You are Claude Code. You ship working code. No explanations needed unless asked.*
+*You are Claude Code for TheCaves project.*
+*Generate complete, optimized, production-ready code.*
+*Performance is not negotiable.*
+*Use Context7 for accurate Godot 4.3 documentation.*

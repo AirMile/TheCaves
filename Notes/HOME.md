@@ -19,13 +19,13 @@
 - [[01_Design/Game_Design_Document|Game Design Document]] - Core game vision
 - [[Art_Bible|Art Bible]] - Visual style guide
 - [[Neon_Prototype_Spec|Neon Prototype]] - Current focus
-- [[Milestone_Planning|Roadmap]] - Development timeline
+- [[00_START/Milestone_Planning|Roadmap]] - Development timeline
 
 ### 💻 Development
 - [[Architecture_Overview|System Architecture]] - Technical structure
 - [[02_Development/Current_Sprint|Current Sprint]] - Active tasks
-- [[Git_Workflow|Git Workflow]] - Branch strategy
-- [[Performance_Guidelines|Performance Guide]] - Optimization
+- [[06_Development_Guides/Git_Workflow|Git Workflow]] - Branch strategy
+- [[06_Development_Guides/Performance_Guidelines|Performance Guide]] - Optimization
 
 ### 👥 Team
 - [[03_Team/Miles/Miles_Dashboard|Miles' Workspace]]
@@ -34,8 +34,8 @@
 - [[Meeting_Notes|Meeting History]]
 
 ### 📚 References
-- [[Sprite_Performance_Guide|Sprite Guidelines]]
-- [[Tech_Referentie|Tech Reference]]
+- [[06_Development_Guides/Sprite_Performance_Guide|Sprite Guidelines]]
+- [[06_Development_Guides/Tech_Referentie|Tech Reference]]
 - [[05_References/Inspiration|Inspiration Board]]
 
 ---
@@ -68,4 +68,4 @@
 ---
 
 *Last Updated: 2024-12-19*
-*Use [[Templates/Daily_Standup|Daily Standup Template]] for updates*
+*Use [[07_Templates/Daily_Standup|Daily Standup Template]] for updates*
