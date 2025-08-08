@@ -27,6 +27,16 @@
   - [ ] Repository configureren voor Claude Code
   - [ ] GitHub API connection setup
   - [ ] Test automatische commits en code reviews
+  - [ ] **CloudCode met Pull Requests**: 
+    - [ ] Automatische PR review door CloudCode
+    - [ ] Code suggestions in PR comments
+    - [ ] Pre-commit hooks met CloudCode analysis
+    - [ ] Automated PR creation voor features
+  - [ ] **CloudCode met GitHub Issues**:
+    - [ ] Issues automatisch aanmaken via CloudCode
+    - [ ] Link code changes aan specific issues
+    - [ ] Auto-update issue status based op commits
+    - [ ] Generate issue templates met CloudCode
   - [ ] Documentatie bijwerken
 - [ ] **Claude Code Integration**: Setup AI development assistant (zie Development_Guides/Claude_Code_GitHub_Integration.md)
 - [ ] **Asset testen**: Glowing and Blur Shaders downloaden en uitproberen
@@ -73,6 +83,11 @@
   - [ ] Research MCP for Godot docs
   - [ ] Setup best practices automation
   - [ ] Configure with Claude Code
+- [ ] **CloudCode Advanced Research**:
+  - [ ] CloudCode GitHub CLI integration
+  - [ ] Best practices voor AI-driven development
+  - [ ] Team collaboration met CloudCode
+  - [ ] Performance impact van automated reviews
 
 ## Legal/Business (Later)
 - [ ] **Copyright research**: Museum contacteren over inspiratie gebruik
