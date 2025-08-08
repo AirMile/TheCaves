@@ -20,7 +20,7 @@
 ### Art Resources
 - [[Art_Bible|Art Bible & Style Guide]]
 - [[Neon_Prototype_Spec|Neon Visual Specs]]
-- [[Development_Guides/Art_Pipeline|Asset Pipeline]]
+- [[Art_Pipeline|Asset Pipeline]]
 - [[Sprite_Performance_Guide|Sprite Guidelines]]
 
 ### Learning Resources

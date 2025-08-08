@@ -34,8 +34,5 @@
     "debugMode": false,
     "useInternalPlugins": false
   },
-  "HOME.md": "🏠",
-  "02_JADE": "👩‍🦼",
-  "01_MILES": "🦸",
-  "03_SHARED": "👨‍👧"
+  "HOME.md": "🏠"
 }

@@ -17,8 +17,8 @@
 
 ### Development
 - [[Git_Workflow|Git Commands & Workflow]]
-- [[Development_Guides/Godot_Best_Practices|Godot Best Practices]]
-- [[Development_Guides/Performance_Guidelines|Performance Optimization]]
+- [[Godot_Best_Practices|Godot Best Practices]]
+- [[Performance_Guidelines|Performance Optimization]]
 - [[Architecture_Overview|System Architecture]]
 
 ### Current Focus

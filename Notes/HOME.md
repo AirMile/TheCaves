@@ -25,7 +25,7 @@
 - [[Architecture_Overview|System Architecture]] - Technical structure
 - [[02_Development/Current_Sprint|Current Sprint]] - Active tasks
 - [[Git_Workflow|Git Workflow]] - Branch strategy
-- [[Development_Guides/Performance_Guidelines|Performance Guide]] - Optimization
+- [[Performance_Guidelines|Performance Guide]] - Optimization
 
 ### 👥 Team
 - [[03_Team/Miles/Miles_Dashboard|Miles' Workspace]]

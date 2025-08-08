@@ -11,11 +11,11 @@
 ### **Milestone 1.1: Development Setup**
 **Deadline**: Woensdag 9 Augustus  
 **Success Criteria**:
-- [ ] Godot 4.2+ installed on beide systemen
-- [ ] Git repository created en configured  
-- [ ] VS Code met Godot extensions setup
-- [ ] First commit pushed (empty project)
-- [ ] Communication channels established
+- [x] Godot 4.2+ installed on beide systemen
+- [x] Git repository created en configured  
+- [x] VS Code met Godot extensions setup
+- [x] First commit pushed (empty project)
+- [x] Communication channels established
 
 **Owner**: Beide  
 **Risk Level**: Low  

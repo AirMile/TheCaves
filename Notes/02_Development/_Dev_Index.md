@@ -20,10 +20,10 @@
 - [[Issues/Completed/Issue_10|#10 Git repository setup]]
 
 ## 📚 Development Guides
-- [[Guides/Godot_Best_Practices|Godot Best Practices]]
-- [[Guides/Performance_Guidelines|Performance Guidelines]]
-- [[Guides/Claude_Code_Setup|Claude Code Integration]]
-- [[Guides/Art_Pipeline|Art Asset Pipeline]]
+- [[Godot_Best_Practices|Godot Best Practices]]
+- [[Performance_Guidelines|Performance Guidelines]]
+- [[Claude_Code_Setup|Claude Code Integration]]
+- [[Art_Pipeline|Art Asset Pipeline]]
 
 ## 🔧 Tools & Setup
 - **IDE**: VS Code + Godot extensions
