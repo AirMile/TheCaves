@@ -22,6 +22,12 @@
 ## Immediate Actions (Morgen - 8 Augustus)
 - [ ] **Godot downloaden**: Versie 4.2+ van godotengine.org + VS Code setup
 - [ ] **Repository maken**: Git repo met proper .gitignore
+- [ ] **🔗 CloudCode en GitHub Connectie**: Setup Claude Code met GitHub integration voor automatische workflow
+  - [ ] Claude Code CLI installeren
+  - [ ] Repository configureren voor Claude Code
+  - [ ] GitHub API connection setup
+  - [ ] Test automatische commits en code reviews
+  - [ ] Documentatie bijwerken
 - [ ] **Claude Code Integration**: Setup AI development assistant (zie Development_Guides/Claude_Code_GitHub_Integration.md)
 - [ ] **Asset testen**: Glowing and Blur Shaders downloaden en uitproberen
 - [ ] **Eerste test**: Simpele sprite met glow effect maken (64x64 baseline)
