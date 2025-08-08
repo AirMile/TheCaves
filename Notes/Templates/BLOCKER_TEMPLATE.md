@@ -1,0 +1,33 @@
+# 🚨 BLOCKER TEMPLATE
+
+**Instructie voor Claude**: URGENT - Add blocker to documentation and suggest solutions.
+
+## Tijd geblokkeerd sinds: ...
+## Naam: ...
+
+## Wat probeer ik te doen:
+...
+
+## Wat blokkeert me:
+...
+
+## Wat heb ik al geprobeerd:
+...
+
+## Error messages (als applicable):
+...
+
+## Waarom denk ik dat het niet werkt:
+...
+
+## Wat ik nodig heb om verder te kunnen:
+...
+
+## Impact op planning:
+...
+
+## Mogelijke workaround:
+...
+
+---
+*Claude zal zoeken naar oplossingen in de guides en suggesties geven*
