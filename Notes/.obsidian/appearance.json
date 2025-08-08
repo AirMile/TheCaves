@@ -1,0 +1,9 @@
+{
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "custom-rainbow-colors"
+  ],
+  "showRibbon": true,
+  "accentColor": "",
+  "cssTheme": "Obsidian Nord"
+}

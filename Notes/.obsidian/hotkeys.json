@@ -1,0 +1,43 @@
+{
+  "app:open-help": [],
+  "obsidian-emoji-toolbar:emoji-picker:open-picker": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
+  ],
+  "calendar:open-weekly-note": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "X"
+    }
+  ],
+  "templater-obsidian:AI/AI Templates/starter template.md": [
+    {
+      "modifiers": [
+        "Shift"
+      ],
+      "key": "1"
+    }
+  ],
+  "session-notes:open-session-note": [
+    {
+      "modifiers": [
+        "Shift"
+      ],
+      "key": " "
+    }
+  ],
+  "app:delete-file": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Delete"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "aestheticStyle": "default",
+  "menuCommands": [
+    {
+      "id": "editor:swap-line-up",
+      "name": "Move line up",
+      "icon": "lucide-corner-right-up",
+      "repeatable": true
+    },
+    {
+      "id": "editor:swap-line-down",
+      "name": "Move line down",
+      "icon": "lucide-corner-right-down",
+      "repeatable": true
+    },
+    {
+      "id": "editor:insert-codeblock",
+      "name": "Insert code block",
+      "icon": "lucide-code"
+    },
+    {
+      "id": "editor:insert-table",
+      "name": "Insert table",
+      "icon": "lucide-table"
+    },
+    {
+      "id": "workspace:copy-path",
+      "name": "Copy file path",
+      "icon": "lucide-copy"
+    },
+    {
+      "id": "file-explorer:new-file",
+      "name": "Create new note",
+      "icon": "lucide-file-plus",
+      "hotkeys": [
+        {
+          "modifiers": [
+            "Mod"
+          ],
+          "key": "N"
+        }
+      ]
+    },
+    {
+      "id": "markdown:toggle-preview",
+      "name": "Toggle reading view",
+      "icon": "lucide-book-open",
+      "hotkeys": [
+        {
+          "modifiers": [
+            "Mod"
+          ],
+          "key": "E"
+        }
+      ]
+    }
+  ],
+  "appendMethod": "workspace",
+  "shouldShowMenuOnSelect": false,
+  "cMenuVisibility": true,
+  "cMenuBottomValue": 4.25,
+  "cMenuNumRows": 7
+}

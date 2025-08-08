@@ -1,0 +1,85 @@
+{
+  "items": [
+    {
+      "type": "url",
+      "ctime": 1750984662371,
+      "url": "https://github.com/",
+      "title": "GitHub"
+    },
+    {
+      "type": "group",
+      "ctime": 1751234626009,
+      "items": [
+        {
+          "type": "url",
+          "ctime": 1751234615433,
+          "url": "https://trello.com/b/FMcwL4UM/my-trello-board",
+          "title": "To Do"
+        },
+        {
+          "type": "url",
+          "ctime": 1752408991816,
+          "url": "https://trello.com/b/FdPD1nJB/prompt-website",
+          "title": "Prompt Website"
+        }
+      ],
+      "title": "Trello"
+    },
+    {
+      "type": "group",
+      "ctime": 1750984865931,
+      "items": [
+        {
+          "type": "url",
+          "ctime": 1751022983204,
+          "url": "https://www.google.com/",
+          "title": "Google"
+        },
+        {
+          "type": "url",
+          "ctime": 1750716067666,
+          "url": "https://calendar.google.com/calendar/u/0/r",
+          "title": "Google Calendar"
+        },
+        {
+          "type": "url",
+          "ctime": 1750984776753,
+          "url": "https://docs.google.com/document/u/0/?pli=1",
+          "title": "Google Docs"
+        }
+      ],
+      "title": "Google"
+    },
+    {
+      "type": "group",
+      "ctime": 1750984837324,
+      "items": [
+        {
+          "type": "url",
+          "ctime": 1751199992668,
+          "url": "https://notebooklm.google.com/?original_referer=https:%2F%2Fnotebooklm.google%23&pli=1",
+          "title": "NotebookLM"
+        },
+        {
+          "type": "url",
+          "ctime": 1750716242408,
+          "url": "https://claude.ai/new",
+          "title": "Claude"
+        },
+        {
+          "type": "url",
+          "ctime": 1750716297780,
+          "url": "https://www.perplexity.ai/?login-source=tryPro&login-new=false",
+          "title": "Perplexity"
+        },
+        {
+          "type": "url",
+          "ctime": 1750984701876,
+          "url": "https://github.com/copilot",
+          "title": "GitHub Copilot"
+        }
+      ],
+      "title": "AI"
+    }
+  ]
+}
