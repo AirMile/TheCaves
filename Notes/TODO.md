@@ -22,6 +22,45 @@
 ## Immediate Actions (Morgen - 8 Augustus)
 - [ ] **Godot downloaden**: Versie 4.2+ van godotengine.org + VS Code setup
 - [ ] **Repository maken**: Git repo met proper .gitignore
+- [ ] **🔗 CloudCode en GitHub Connectie**: Setup Claude Code met GitHub integration voor automatische workflow
+  - [ ] Claude Code CLI installeren
+  - [ ] Repository configureren voor Claude Code
+  - [ ] GitHub API connection setup
+  - [ ] Test automatische commits en code reviews
+  - [ ] **CloudCode met Pull Requests**: 
+    - [ ] Automatische PR review door CloudCode
+    - [ ] Code suggestions in PR comments
+    - [ ] Pre-commit hooks met CloudCode analysis
+    - [ ] Automated PR creation voor features
+  - [ ] **CloudCode met GitHub Issues**:
+    - [ ] Issues automatisch aanmaken via CloudCode
+    - [ ] Link code changes aan specific issues
+    - [ ] Auto-update issue status based op commits
+    - [ ] Generate issue templates met CloudCode
+  - [ ] **CloudCode + Projects Integration**:
+    - [ ] Automatisch project cards aanmaken via CloudCode
+    - [ ] CloudCode updates project status
+    - [ ] Link commits aan project items
+    - [ ] Generate project reports met CloudCode
+  - [ ] Documentatie bijwerken
+- [ ] **📊 GitHub Projects Mastery**: Deep dive in GitHub Projects ecosystem
+  - [ ] **GitHub Projects Basics**:
+    - [ ] Project boards aanmaken en configureren
+    - [ ] Views instellen (Board, Table, Timeline)
+    - [ ] Automation rules configureren
+    - [ ] Issue linking met projects
+  - [ ] **Custom Fields Setup**:
+    - [ ] Priority levels (High/Medium/Low)
+    - [ ] Story Points voor estimation
+    - [ ] Status tracking fields
+    - [ ] Sprint/Iteration fields
+    - [ ] Assignee en reviewer fields
+  - [ ] **Advanced Workflows**:
+    - [ ] Auto-assign issues naar project
+    - [ ] Status changes based op PR events
+    - [ ] Custom filters en saved views
+    - [ ] Project templates maken
+    - [ ] Milestone integration
 - [ ] **Claude Code Integration**: Setup AI development assistant (zie Development_Guides/Claude_Code_GitHub_Integration.md)
 - [ ] **Asset testen**: Glowing and Blur Shaders downloaden en uitproberen
 - [ ] **Eerste test**: Simpele sprite met glow effect maken (64x64 baseline)
@@ -67,6 +106,27 @@
   - [ ] Research MCP for Godot docs
   - [ ] Setup best practices automation
   - [ ] Configure with Claude Code
+- [ ] **CloudCode Advanced Research**:
+  - [ ] CloudCode GitHub CLI integration
+  - [ ] Best practices voor AI-driven development
+  - [ ] Team collaboration met CloudCode
+  - [ ] Performance impact van automated reviews
+- [ ] **GitHub Projects Advanced Research**:
+  - [ ] GitHub Projects API voor automation
+  - [ ] Best practices voor development teams
+  - [ ] Integration met external tools (Trello/Notion)
+  - [ ] Performance tracking via GitHub Projects
+  - [ ] Custom field types en use cases
+  - [ ] Advanced automation workflows
+  - [ ] Project templates voor game development
+
+## Development Workflow Optimization
+- [ ] **Complete Automation Pipeline**:
+  - [ ] Issue creation → CloudCode development → Auto PR → Review → Projects update
+  - [ ] Custom GitHub Actions voor game development
+  - [ ] Automated testing met Godot projects
+  - [ ] Release automation en versioning
+  - [ ] Documentation generation automation
 
 ## Legal/Business (Later)
 - [ ] **Copyright research**: Museum contacteren over inspiratie gebruik
