@@ -1,106 +1,106 @@
 # 🎙️ CLAUDE UPDATE WORKFLOW
 
-## Hoe werkt dit?
+## How does this work?
 
-1. **Kopieer een template** uit deze folder
-2. **Vul in met speech-to-text** (zet cursor op de ... en praat)
-3. **Stuur naar Claude** met deze instructie:
-   > "Update de Roguelite vault met deze informatie: [plak template]"
-4. **Claude doet**: 
-   - Maakt daily update file
-   - Update TODO.md
-   - Past relevante guides aan
-   - Houdt progress bij
+1. **Copy a template** from this folder
+2. **Fill in with speech-to-text** (put cursor on the ... and talk)
+3. **Send to Claude** with this instruction:
+   > "Update the Roguelite vault with this information: [paste template]"
+4. **Claude does**: 
+   - Creates daily update file
+   - Updates TODO.md
+   - Adjusts relevant guides
+   - Tracks progress
 
-## 📋 Beschikbare Templates
+## 📋 Available Templates
 
-### Voor dagelijkse updates:
-- `DAILY_UPDATE_TEMPLATE.md` - Einde van werkdag
-- `PROGRESS_CHECK_TEMPLATE.md` - Tussendoor progress delen
-- `BLOCKER_TEMPLATE.md` - Als je vast zit
-- `DISCOVERY_TEMPLATE.md` - Nieuwe dingen geleerd
+### For daily updates:
+- `DAILY_UPDATE_TEMPLATE.md` - End of workday
+- `PROGRESS_CHECK_TEMPLATE.md` - Share progress in between
+- `BLOCKER_TEMPLATE.md` - When you're stuck
+- `DISCOVERY_TEMPLATE.md` - New things learned
 
-### Voor specifieke situaties:
-- `BUG_REPORT_TEMPLATE.md` - Bug gevonden
-- `FEATURE_COMPLETE_TEMPLATE.md` - Feature af
-- `MEETING_NOTES_TEMPLATE.md` - Na call met Jade
-- `WEEK_REVIEW_TEMPLATE.md` - Week afsluiting
+### For specific situations:
+- `BUG_REPORT_TEMPLATE.md` - Bug found
+- `FEATURE_COMPLETE_TEMPLATE.md` - Feature completed
+- `MEETING_NOTES_TEMPLATE.md` - After call with Jade
+- `WEEK_REVIEW_TEMPLATE.md` - Week closure
 
 ## 🗣️ Speech-to-Text Tips
 
-### Zeg deze woorden voor formatting:
-- "punt" = .
-- "komma" = ,
-- "nieuwe regel" = enter
-- "dubbele punt" = :
-- "streepje" = -
+### Say these words for formatting:
+- "period" = .
+- "comma" = ,
+- "new line" = enter
+- "colon" = :
+- "dash" = -
 
-### Structuur woorden:
-- "ten eerste" / "ten tweede" 
-- "probleem is" / "oplossing was"
-- "wat werkte" / "wat niet werkte"
-- "blocker" / "opgelost"
+### Structure words:
+- "first" / "second" 
+- "problem is" / "solution was"
+- "what worked" / "what didn't work"
+- "blocker" / "solved"
 
-## 🤖 Instructies voor Claude
+## 🤖 Instructions for Claude
 
-### Standaard update instructie:
+### Standard update instruction:
 ```
-Update de Roguelite vault met deze informatie:
-[PLAK TEMPLATE]
+Update the Roguelite vault with this information:
+[PASTE TEMPLATE]
 
-Doe het volgende:
-1. Maak daily update file
+Do the following:
+1. Create daily update file
 2. Update TODO.md status
-3. Update relevante guides als nodig
-4. Check of documentatie moet worden aangepast
+3. Update relevant guides if needed
+4. Check if documentation needs adjusting
 ```
 
-### Voor specifieke updates:
+### For specific updates:
 ```
-[BUG] Update vault, voeg toe aan known issues:
-[PLAK BUG TEMPLATE]
-```
-
-```
-[FEATURE] Update vault, markeer als complete:
-[PLAK FEATURE TEMPLATE]
+[BUG] Update vault, add to known issues:
+[PASTE BUG TEMPLATE]
 ```
 
-## ⏰ Flexibele Werk Momenten
-
-**Geen vaste tijden!** Gebruik templates wanneer je werkt:
-- Begin werk: Gebruik `PROGRESS_CHECK_TEMPLATE`
-- Tijdens werk: Gebruik `BLOCKER_TEMPLATE` als nodig
-- Einde werk: Gebruik `DAILY_UPDATE_TEMPLATE`
-- Niet gewerkt: Skip die dag
-
-## 📝 Voorbeeld Workflow
-
-### Jij (spreekt in):
 ```
-"Vandaag heb ik gewerkt aan player movement. 
-Het WASD movement werkt nu goed, maar de controller 
-input geeft nog problemen. Ik denk dat het aan de 
-input mapping ligt. Morgen ga ik dat fixen en dan 
-beginnen aan de dash mechanic. Oh ja, Git repository 
-is aangemaakt en eerste commit is gepusht."
+[FEATURE] Update vault, mark as complete:
+[PASTE FEATURE TEMPLATE]
 ```
 
-### Claude verwerkt naar:
-- ✅ Daily update file aangemaakt
+## ⏰ Flexible Work Moments
+
+**No fixed times!** Use templates when you work:
+- Start work: Use `PROGRESS_CHECK_TEMPLATE`
+- During work: Use `BLOCKER_TEMPLATE` if needed
+- End work: Use `DAILY_UPDATE_TEMPLATE`
+- Didn't work: Skip that day
+
+## 📝 Example Workflow
+
+### You (speak in):
+```
+"Today I worked on player movement. 
+The WASD movement works well now, but the controller 
+input still has problems. I think it's the 
+input mapping. Tomorrow I'll fix that and then 
+start on the dash mechanic. Oh yeah, Git repository 
+is created and first commit is pushed."
+```
+
+### Claude processes to:
+- ✅ Daily update file created
 - ✅ TODO.md: "Player movement" → completed
 - ✅ TODO.md: "Controller input" → in progress
-- ✅ Known issue toegevoegd aan troubleshooting
-- ✅ Git milestone gemarkeerd als done
+- ✅ Known issue added to troubleshooting
+- ✅ Git milestone marked as done
 
 ## 🚀 Quick Start
 
 1. Open `DAILY_UPDATE_TEMPLATE.md`
-2. Kopieer de template
-3. Vul in met speech-to-text
-4. Stuur naar Claude
-5. Claude update alles!
+2. Copy the template
+3. Fill in with speech-to-text
+4. Send to Claude
+5. Claude updates everything!
 
 ---
 
-*Remember: Jij praat, Claude typt. Keep it simple!*
+*Remember: You talk, Claude types. Keep it simple!*

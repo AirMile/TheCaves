@@ -1,4 +1,4 @@
-# Git Workflow voor Game Development
+# Git Workflow for Game Development
 
 ## 🌿 Branch Structure
 
@@ -20,25 +20,25 @@ fix/glow-performance
 ```
 
 ### **Naming Convention**
-- `feature/`: Nieuwe functionality
-- `art/`: Asset creation en visual work
+- `feature/`: New functionality
+- `art/`: Asset creation and visual work
 - `fix/`: Bug fixes
-- `refactor/`: Code improvements zonder nieuwe features
+- `refactor/`: Code improvements without new features
 - `docs/`: Documentation updates
 
 ## 🔄 Workflow Process
 
 ### **Daily Workflow**
 ```bash
-# Start of day - sync met team
+# Start of day - sync with team
 git checkout dev
 git pull origin dev
 
-# Create nieuwe feature branch  
+# Create new feature branch  
 git checkout -b feature/dash-ability
 
 # Work on feature...
-# Multiple commits tijdens development
+# Multiple commits during development
 git add .
 git commit -m "feat: add dash input detection"
 git commit -m "feat: implement dash cooldown system"  
@@ -78,7 +78,7 @@ git push origin --delete feature/dash-ability
 ```
 
 ### **Types**
-- `feat`: Nieuwe feature  
+- `feat`: New feature  
 - `fix`: Bug fix
 - `art`: Art assets (sprites, animations)
 - `audio`: Music, SFX
@@ -120,17 +120,17 @@ git push origin v0.1.0
 ## 🔒 Merge Conflicts Resolution
 
 ### **Common Conflicts**
-1. **Scene files**: Godot .tscn bestanden
+1. **Scene files**: Godot .tscn files
 2. **Project settings**: project.godot  
-3. **Asset imports**: .import bestanden
+3. **Asset imports**: .import files
 
 ### **Resolution Strategy**
 ```bash
 # When merge conflict occurs
 git status  # See conflicted files
 
-# Voor .tscn files: meestal recreate scene
-# Voor code files: manual merge
+# For .tscn files: usually recreate scene
+# For code files: manual merge
 git add [resolved-files]
 git commit -m "resolve: merge conflict in player scene"
 ```
@@ -183,24 +183,24 @@ exports/
 ```bash  
 git checkout dev
 git pull origin dev
-# Check wat teammate heeft gepushed
+# Check what teammate has pushed
 git log --oneline -10
 ```
 
 ### **Communication Protocol**
-- **Push daily** - zelfs incomplete work
+- **Push daily** - even incomplete work
 - **Slack/Discord updates** when pushing major changes
-- **Don't work on same files** simultaneously als mogelijk
+- **Don't work on same files** simultaneously if possible
 - **Ask before big refactors**
 
 ### **Shared File Management**
 **High-conflict files**:
 - `project.godot` - coordinate project settings changes
 - `Main.tscn` - avoid simultaneous scene modifications  
-- Shared scripts - use dependency injection waar mogelijk
+- Shared scripts - use dependency injection where possible
 
 **Low-conflict files**:
-- Individual sprite assets - eigen naming/folders  
+- Individual sprite assets - own naming/folders  
 - Separate scene files - character.tscn vs enemy.tscn
 - Individual scripts - PlayerController.gd vs EnemyAI.gd
 
@@ -228,14 +228,14 @@ git checkout -b recover-lost-work
 # Fresh clone as last resort  
 git clone [repository-url] fresh-clone
 # Manually copy current work
-# Create branch en push changes
+# Create branch and push changes
 ```
 
 ---
 
-**Setup Instructions voor Team**:
+**Setup Instructions for Team**:
 1. Clone repository: `git clone [url]`
 2. Configure user: `git config user.name/email`  
-3. Install Git GUI (optional): GitKraken, SourceTree, of VS Code integration
-4. Test workflow met dummy commits
+3. Install Git GUI (optional): GitKraken, SourceTree, or VS Code integration
+4. Test workflow with dummy commits
 5. Establish communication protocol

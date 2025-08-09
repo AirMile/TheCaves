@@ -1,27 +1,27 @@
 # 💡 DISCOVERY TEMPLATE
 
-**Instructie voor Claude**: Voeg deze nieuwe kennis toe aan relevante guides.
+**Instruction for Claude**: Add this new knowledge to relevant guides.
 
-## Wat heb ik ontdekt/geleerd:
+## What I discovered/learned:
 ...
 
-## Waar was ik mee bezig toen ik dit ontdekte:
+## What I was working on when I discovered this:
 ...
 
-## Waarom is dit nuttig voor het project:
+## Why this is useful for the project:
 ...
 
-## Hoe kunnen we dit gebruiken:
+## How we can use this:
 ...
 
-## Voorbeelden of code snippets:
+## Examples or code snippets:
 ...
 
-## Moet dit in een guide (welke):
+## Should this go in a guide (which one):
 ...
 
-## Is dit iets wat Jade ook moet weten:
+## Is this something Jade should also know:
 ...
 
 ---
-*Claude zal dit toevoegen aan de juiste documentatie*
+*Claude will add this to the appropriate documentation*

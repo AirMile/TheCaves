@@ -1,126 +1,126 @@
 # 🎙️ Speech-to-Claude Workflow
 
-## Hoe gebruik je dit systeem?
+## How to use this system?
 
-### Stap 1: Begin met werken (wanneer dan ook)
+### Step 1: Start working (whenever)
 ```
-1. Open de Templates/ folder
-2. Pak PROGRESS_CHECK_TEMPLATE.md
-3. Vul snel in waar je aan gaat werken
-4. Stuur naar Claude
-```
-
-### Stap 2: Tijdens het werk
-```
-Als je iets ontdekt → DISCOVERY_TEMPLATE.md
-Als je vast zit → BLOCKER_TEMPLATE.md  
-Als je bug vindt → BUG_REPORT_TEMPLATE.md
-Feature af → FEATURE_COMPLETE_TEMPLATE.md
+1. Open the Templates/ folder
+2. Get PROGRESS_CHECK_TEMPLATE.md
+3. Quickly fill in what you'll work on
+4. Send to Claude
 ```
 
-### Stap 3: Klaar met werken (wanneer dan ook)
+### Step 2: During work
 ```
-1. Pak DAILY_UPDATE_TEMPLATE.md
-2. Praat alles in wat je hebt gedaan
-3. Stuur naar Claude met: "Update vault met deze daily update"
-4. Claude doet de rest!
-```
-
-## 🗣️ Speech-to-Text Instructies
-
-### Voor Voicy (of andere tool):
-1. **Start nieuwe sectie**: Zeg "nieuwe regel nieuwe regel"
-2. **Lijst maken**: Zeg "streepje" voor elk punt
-3. **Tijd**: Zeg bijvoorbeeld "drie uur" of "15 minuten"
-4. **Code termen**: Spell uit of zeg langzaam
-
-### Voorbeeld speech input:
-```
-"Vandaag gewerkt aan player movement nieuwe regel nieuwe regel
-Wat werkte goed nieuwe regel
-streepje WASD movement is smooth nieuwe regel  
-streepje collision detection werkt nieuwe regel nieuwe regel
-Problemen nieuwe regel
-streepje controller input geeft errors nieuwe regel
-streepje dash mechanic nog niet geimplementeerd"
+If you discover something → DISCOVERY_TEMPLATE.md
+If you're stuck → BLOCKER_TEMPLATE.md  
+If you find a bug → BUG_REPORT_TEMPLATE.md
+Feature done → FEATURE_COMPLETE_TEMPLATE.md
 ```
 
-## 🤖 Wat doet Claude met jouw input?
+### Step 3: Done working (whenever)
+```
+1. Get DAILY_UPDATE_TEMPLATE.md
+2. Speak in everything you've done
+3. Send to Claude with: "Update vault with this daily update"
+4. Claude does the rest!
+```
 
-### Automatisch:
-- ✅ Maakt `Daily_Updates/2025-08-XX.md` file
-- ✅ Update `TODO.md` met completed/blocked items
-- ✅ Voegt issues toe aan troubleshooting
-- ✅ Update relevante guides met nieuwe kennis
-- ✅ Houdt progress metrics bij
-- ✅ Maakt mooie formatting van je speech input
+## 🗣️ Speech-to-Text Instructions
 
-### Je hoeft NIET:
-- ❌ Zelf files aan te maken
-- ❌ Zelf TODO lijst bij te houden
-- ❌ Perfect te formatteren
-- ❌ Git commits te documenteren (doe je later)
-- ❌ Te onthouden wat waar staat
+### For Voicy (or other tool):
+1. **Start new section**: Say "new line new line"
+2. **Make list**: Say "dash" for each point
+3. **Time**: Say for example "three hours" or "15 minutes"
+4. **Code terms**: Spell out or say slowly
 
-## 📋 Template Keuze Helper
+### Example speech input:
+```
+"Today worked on player movement new line new line
+What worked well new line
+dash WASD movement is smooth new line  
+dash collision detection works new line new line
+Problems new line
+dash controller input gives errors new line
+dash dash mechanic not yet implemented"
+```
+
+## 🤖 What does Claude do with your input?
+
+### Automatically:
+- ✅ Creates `Daily_Updates/2025-08-XX.md` file
+- ✅ Updates `TODO.md` with completed/blocked items
+- ✅ Adds issues to troubleshooting
+- ✅ Updates relevant guides with new knowledge
+- ✅ Tracks progress metrics
+- ✅ Makes nice formatting from your speech input
+
+### You DON'T need to:
+- ❌ Create files yourself
+- ❌ Maintain TODO list yourself
+- ❌ Format perfectly
+- ❌ Document Git commits (do that later)
+- ❌ Remember what goes where
+
+## 📋 Template Choice Helper
 
 ```mermaid
 graph TD
-    A[Wat wil je doen?] --> B{Type update}
-    B -->|Start werk| C[PROGRESS_CHECK]
-    B -->|Einde werk| D[DAILY_UPDATE]
-    B -->|Probleem| E[BLOCKER]
-    B -->|Bug gevonden| F[BUG_REPORT]
-    B -->|Iets geleerd| G[DISCOVERY]
-    B -->|Feature klaar| H[FEATURE_COMPLETE]
-    B -->|Meeting gehad| I[MEETING_NOTES]
-    B -->|Week voorbij| J[WEEK_REVIEW]
+    A[What do you want to do?] --> B{Type update}
+    B -->|Start work| C[PROGRESS_CHECK]
+    B -->|End work| D[DAILY_UPDATE]
+    B -->|Problem| E[BLOCKER]
+    B -->|Bug found| F[BUG_REPORT]
+    B -->|Learned something| G[DISCOVERY]
+    B -->|Feature ready| H[FEATURE_COMPLETE]
+    B -->|Had meeting| I[MEETING_NOTES]
+    B -->|Week over| J[WEEK_REVIEW]
 ```
 
-## 💬 Standaard Claude Instructies
+## 💬 Standard Claude Instructions
 
-### Copy-paste deze:
+### Copy-paste these:
 
-**Voor daily update:**
+**For daily update:**
 ```
-Update de Roguelite vault met deze daily update:
-[TEMPLATE HIER]
-```
-
-**Voor blocker:**
-```
-URGENT - Help met deze blocker en update vault:
-[TEMPLATE HIER]
+Update the Roguelite vault with this daily update:
+[TEMPLATE HERE]
 ```
 
-**Voor discovery:**
+**For blocker:**
 ```
-Voeg deze nieuwe kennis toe aan de juiste guides:
-[TEMPLATE HIER]
+URGENT - Help with this blocker and update vault:
+[TEMPLATE HERE]
 ```
 
-## 🔄 Flexibel Schema
+**For discovery:**
+```
+Add this new knowledge to the appropriate guides:
+[TEMPLATE HERE]
+```
 
-### Geen vaste tijden!
-- **Werk je 's middags?** → Prima
-- **Werk je 's avonds?** → Prima
-- **Skip je een dag?** → Prima
-- **Werk je weekend?** → Prima
+## 🔄 Flexible Schedule
 
-### Minimale commitment:
-- Probeer 1x per werk-sessie een update te sturen
-- Week review alleen als je echt een week hebt gewerkt
-- Meeting notes alleen bij belangrijke calls
+### No fixed times!
+- **Work in the afternoon?** → Fine
+- **Work in the evening?** → Fine
+- **Skip a day?** → Fine
+- **Work on weekend?** → Fine
 
-## 📁 Waar vind ik alles?
+### Minimum commitment:
+- Try to send 1 update per work session
+- Week review only if you actually worked a week
+- Meeting notes only for important calls
+
+## 📁 Where to find everything?
 
 ```
 Templates/
-├── CLAUDE_WORKFLOW.md          ← Dit bestand
-├── DAILY_UPDATE_TEMPLATE.md    ← Meest gebruikt
+├── CLAUDE_WORKFLOW.md          ← This file
+├── DAILY_UPDATE_TEMPLATE.md    ← Most used
 ├── PROGRESS_CHECK_TEMPLATE.md  ← Quick updates
-├── BLOCKER_TEMPLATE.md        ← Bij problemen
-├── DISCOVERY_TEMPLATE.md      ← Nieuwe kennis
+├── BLOCKER_TEMPLATE.md        ← For problems
+├── DISCOVERY_TEMPLATE.md      ← New knowledge
 ├── FEATURE_COMPLETE_TEMPLATE.md
 ├── BUG_REPORT_TEMPLATE.md
 ├── MEETING_NOTES_TEMPLATE.md
@@ -129,20 +129,20 @@ Templates/
 
 ## ⚡ Super Quick Start
 
-1. **Nu meteen**: Bookmark de Templates/ folder
-2. **Begin werk**: "Hey Claude, ik ga beginnen met [taak]"
-3. **Einde werk**: Gebruik DAILY_UPDATE_TEMPLATE
-4. **Claude**: Houdt alles bij!
+1. **Right now**: Bookmark the Templates/ folder
+2. **Start work**: "Hey Claude, I'm going to start with [task]"
+3. **End work**: Use DAILY_UPDATE_TEMPLATE
+4. **Claude**: Keeps track of everything!
 
 ## 🎯 Success Metrics
 
-Dit systeem werkt als:
-- Je hoeft niet na te denken over documentatie
-- Updates kosten < 5 minuten
-- Je kunt alles terugvinden
-- Jade kan zien wat je hebt gedaan
-- De vault blijft up-to-date
+This system works when:
+- You don't have to think about documentation
+- Updates take < 5 minutes
+- You can find everything
+- Jade can see what you've done
+- The vault stays up-to-date
 
 ---
 
-*Remember: Perfect is the enemy of done. Praat gewoon, Claude maakt het mooi!*
+*Remember: Perfect is the enemy of done. Just talk, Claude makes it nice!*

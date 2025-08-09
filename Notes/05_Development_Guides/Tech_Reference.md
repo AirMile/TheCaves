@@ -1,10 +1,10 @@
-# Technische Referentie - Godot Neon Effects
+# Technical Reference - Godot Neon Effects
 
 ## Quick Setup Checklist
-- [ ] Godot 4.2+ installeren
-- [ ] Project maken met HDR 2D enabled
-- [ ] WorldEnvironment node toevoegen
-- [ ] Glow settings configureren
+- [ ] Install Godot 4.2+
+- [ ] Create project with HDR 2D enabled
+- [ ] Add WorldEnvironment node
+- [ ] Configure glow settings
 
 ## Essential WorldEnvironment Settings
 ```

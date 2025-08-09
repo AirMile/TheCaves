@@ -1,21 +1,21 @@
 # 🐛 BUG REPORT TEMPLATE
 
-**Instructie voor Claude**: Documenteer bug en voeg toe aan known issues.
+**Instruction for Claude**: Document bug and add to known issues.
 
-## Bug titel: ...
-## Gevonden door: ...
-## Tijd: ...
+## Bug title: ...
+## Found by: ...
+## Time: ...
 
-## Wat gebeurt er:
+## What happens:
 ...
 
-## Wat zou er moeten gebeuren:
+## What should happen:
 ...
 
-## Stappen om te reproduceren:
+## Steps to reproduce:
 ...
 
-## Hoe vaak gebeurt het:
+## How often does it happen:
 ...
 
 ## Error messages:
@@ -24,14 +24,14 @@
 ## Impact (critical/major/minor):
 ...
 
-## Mogelijke oorzaak:
+## Possible cause:
 ...
 
-## Workaround (als bekend):
+## Workaround (if known):
 ...
 
-## Fix prioriteit:
+## Fix priority:
 ...
 
 ---
-*Claude zal dit toevoegen aan troubleshooting docs*
+*Claude will add this to troubleshooting docs*

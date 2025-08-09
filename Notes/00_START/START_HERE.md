@@ -1,58 +1,58 @@
-# 🚀 START HIER - TheCaves Project
+# 🚀 START HERE - TheCaves Project
 
-## 👋 Welkom bij het TheCaves Project!
+## 👋 Welcome to the TheCaves Project!
 
 ### 🎮 Project Info
 - **Game**: Top-down roguelite (Brotato/Vampire Survivors style)
 - **Team**: Miles (code lead) + Jade (art lead)
 - **Engine**: Godot 4.3
-- **Target**: 60 FPS met 100+ enemies
+- **Target**: 60 FPS with 100+ enemies
 
-## 📁 Waar vind je wat?
+## 📁 Where to find what?
 
-### Voor nieuwe taken:
-1. Check je persoonlijke dashboard:
+### For new tasks:
+1. Check your personal dashboard:
    - [[03_Team/Miles/Miles_Dashboard|Miles Dashboard]]
    - [[03_Team/Jade/Jade_Dashboard|Jade Dashboard]]
 
-### Voor development:
+### For development:
 - [[Git_Workflow|Git Workflow Guide]]
 - [[Godot_Roguelite_Performance|Performance Guide]]
 - [[Quick_Performance_Reference|Quick Reference]]
 
-### Voor design:
+### For design:
 - [[01_Design/Game_Design_Document|Game Design Document]]
 - [[01_Design/Art_Bible|Art Bible]]
 
 ## 🔥 Quick Start Checklist
 
-### Voor Miles:
+### For Miles:
 - [ ] Open GitHub Desktop
 - [ ] Pull latest changes
 - [ ] Check [[02_Development/Current_Sprint|Current Sprint]]
 - [ ] Open Godot project
 
-### Voor Jade:
+### For Jade:
 - [ ] Check [[01_Design/Art_Bible|Art Bible]]
 - [ ] Open Aseprite/Krita
 - [ ] Check [[03_Team/Jade/Jade_Dashboard|Your Tasks]]
 
 ## 🔄 Working with Claude
 
-### Super Simpel:
-1. **Werk gewoon** aan je project
-2. **Vraag Claude**: "Check wat er veranderd is"
-3. **Claude ziet alles** via git
+### Super Simple:
+1. **Just work** on your project
+2. **Ask Claude**: "Check what has changed"
+3. **Claude sees everything** via git
 
-Geen extra files, geen sync docs, gewoon werken!
+No extra files, no sync docs, just work!
 
 ---
 
-## 🆘 Hulp Nodig?
+## 🆘 Need Help?
 - **Performance issues**: [[Quick_Performance_Reference|Quick Performance Guide]]
-- **Git problemen**: [[Git_Workflow|Git Workflow]]
+- **Git problems**: [[Git_Workflow|Git Workflow]]
 - **Art pipeline**: [[Art_Pipeline|Art Pipeline]]
 
 ---
 
-*[[HOME|← Naar Home]] | [[Project_Samenvatting|Project Overview →]]*
+*[[HOME|← To Home]] | [[Project_Summary|Project Overview →]]*

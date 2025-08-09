@@ -1,62 +1,62 @@
 # 🚀 SUPER SIMPLE CLAUDE WORKFLOW
 
-## Wat jij doet:
-1. **Werk gewoon aan je project**
-2. **Zeg tegen Claude**: Een van deze:
-   - "Check wat er veranderd is"
-   - "Wat heb ik aangepast?"
-   - "Check mijn changes"
+## What you do:
+1. **Just work on your project**
+2. **Tell Claude**: One of these:
+   - "Check what has changed"
+   - "What have I modified?"
+   - "Check my changes"
    - "Git status"
 
-## Wat ik automatisch doe:
+## What I automatically do:
 ```python
-1. git status           # Welke files zijn changed
-2. git diff            # Wat exact is veranderd
+1. git status           # Which files have changed
+2. git diff            # What exactly has changed
 3. git log             # Recent commits
-4. Check de files      # Bekijk specifieke changes
-5. Geef feedback       # Help met problemen
+4. Check the files     # Review specific changes
+5. Give feedback       # Help with problems
 ```
 
-## DAT IS HET! 🎉
+## THAT'S IT! 🎉
 
-Geen CLAUDE_SYNC.md nodig!
-Geen extra documentatie!
-Gewoon werken en vragen!
+No CLAUDE_SYNC.md needed!
+No extra documentation!
+Just work and ask!
 
 ---
 
 ## 🎯 Magic Phrases
 
-### Begin sessie:
-> "Check wat er veranderd is"
+### Start session:
+> "Check what has changed"
 
-### Na veel werk:
-> "Veel gedaan, check git diff"
+### After lots of work:
+> "Did a lot, check git diff"
 
-### Bij problemen:
-> "Check [filename], er is een bug"
+### With problems:
+> "Check [filename], there's a bug"
 
-### Voor overzicht:
-> "Wat heb ik vandaag gedaan?"
+### For overview:
+> "What did I do today?"
 
 ---
 
 ## 💡 Pro Tip
 
-### Als je WEL context wilt geven:
+### If you WANT to give context:
 ```
-"Check wat er veranderd is. 
-Ik was bezig met enemy spawning maar 
-het werkt niet goed."
+"Check what has changed. 
+I was working on enemy spawning but 
+it doesn't work properly."
 ```
 
-### Als je GEEN context wilt geven:
+### If you DON'T want to give context:
 ```
 "Git status"
 ```
 
-Beide werken perfect!
+Both work perfectly!
 
 ---
 
-*That's it! Werk gewoon en vraag me te checken!*
+*That's it! Just work and ask me to check!*

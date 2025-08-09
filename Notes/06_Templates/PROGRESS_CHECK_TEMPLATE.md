@@ -1,27 +1,27 @@
 # 🚧 PROGRESS CHECK TEMPLATE
 
-**Instructie voor Claude**: Quick progress update voor de vault.
+**Instruction for Claude**: Quick progress update for the vault.
 
-## Tijd: ...
-## Naam: ...
+## Time: ...
+## Name: ...
 
-## Waar ben ik nu mee bezig:
+## What I'm working on now:
 ...
 
-## Hoever ben ik (percentage of beschrijving):
+## How far along am I (percentage or description):
 ...
 
-## Gaat het volgens planning:
+## Is it going according to plan:
 ...
 
-## Verwachte tijd tot completion:
+## Expected time to completion:
 ...
 
-## Quick wins tot nu toe:
+## Quick wins so far:
 ...
 
-## Onverwachte dingen:
+## Unexpected things:
 ...
 
 ---
-*Gebruik dit tussendoor voor snelle updates*
+*Use this in between for quick updates*

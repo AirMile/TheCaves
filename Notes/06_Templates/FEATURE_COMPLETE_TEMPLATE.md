@@ -1,34 +1,34 @@
 # ✅ FEATURE COMPLETE TEMPLATE
 
-**Instructie voor Claude**: Markeer feature als complete en update documentatie.
+**Instruction for Claude**: Mark feature as complete and update documentation.
 
-## Feature naam: ...
-## Completed door: ...
-## Tijd: ...
+## Feature name: ...
+## Completed by: ...
+## Time: ...
 
-## Wat doet deze feature:
+## What this feature does:
 ...
 
-## Hoe werkt het technisch:
+## How it works technically:
 ...
 
-## Bestanden/code toegevoegd of aangepast:
+## Files/code added or modified:
 ...
 
-## Hoe test je deze feature:
+## How to test this feature:
 ...
 
 ## Performance impact:
 ...
 
-## Known issues of limitations:
+## Known issues or limitations:
 ...
 
-## Volgende stappen of improvements:
+## Next steps or improvements:
 ...
 
-## Documentatie die moet worden bijgewerkt:
+## Documentation that needs updating:
 ...
 
 ---
-*Claude zal TODO.md updaten en feature documenteren*
+*Claude will update TODO.md and document feature*

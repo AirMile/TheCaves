@@ -1,23 +1,23 @@
-# 📝 Git Strategy voor TheCaves Project
+# 📝 Git Strategy for TheCaves Project
 
-## 🎯 Strategie
+## 🎯 Strategy
 
-**We tracken BEIDE documentatie EN Godot project files in Git**
+**We track BOTH documentation AND Godot project files in Git**
 
-### Waarom?
-1. **Complete project** - Alles in één repository
-2. **Team collaboration** - Iedereen heeft dezelfde setup
-3. **Version control** - Track changes in code en scenes
-4. **Backup** - Alles veilig in Git
-5. **Open source ready** - Makkelijk te delen
+### Why?
+1. **Complete project** - Everything in one repository
+2. **Team collaboration** - Everyone has the same setup
+3. **Version control** - Track changes in code and scenes
+4. **Backup** - Everything safe in Git
+5. **Open source ready** - Easy to share
 
-## 📁 Wat wordt getracked
+## 📁 What gets tracked
 
-### ✅ WEL in Git:
+### ✅ YES in Git:
 ```
 TheCaves/
-├── Notes/                    # ✅ Alle documentatie
-│   └── [alle docs]          # ✅ Obsidian vault
+├── Notes/                    # ✅ All documentation
+│   └── [all docs]          # ✅ Obsidian vault
 ├── scenes/                   # ✅ Godot scenes (.tscn)
 ├── scripts/                  # ✅ GDScript files (.gd)
 ├── assets/                   # ✅ Sprites, audio, fonts
@@ -26,17 +26,17 @@ TheCaves/
 │   └── shaders/             # ✅ Shader files
 ├── resources/                # ✅ Godot resources (.tres)
 ├── project.godot            # ✅ Project configuration
-├── export_presets.cfg       # ✅ Export settings (CHECK VOOR KEYS!)
+├── export_presets.cfg       # ✅ Export settings (CHECK FOR KEYS!)
 ├── icon.png                 # ✅ Project icon
 ├── default_env.tres         # ✅ Default environment
 ├── README.md                # ✅ Project readme
 └── .gitignore              # ✅ Git configuration
 ```
 
-### ❌ NIET in Git (automatisch ignored):
+### ❌ NOT in Git (automatically ignored):
 ```
 TheCaves/
-├── .godot/                  # ❌ Godot 4 cache (groot!)
+├── .godot/                  # ❌ Godot 4 cache (large!)
 ├── .import/                 # ❌ Godot 3 cache
 ├── builds/                  # ❌ Export builds
 ├── *.tmp                    # ❌ Temporary files
@@ -49,52 +49,52 @@ TheCaves/
 
 ## 🔄 Daily Workflow
 
-### Voor Miles & Jade:
+### For Miles & Jade:
 ```bash
-# Start van de dag
+# Start of the day
 git pull                     # Get latest changes
 
-# Na het maken van changes
-git add .                    # Add alles (behalve .gitignore items)
-git status                   # Check wat je gaat committen
+# After making changes
+git add .                    # Add everything (except .gitignore items)
+git status                   # Check what you're going to commit
 git commit -m "feat: added enemy spawning system"
 git push
 
-# Voor grote binary files (sprites, audio)
-# Overweeg Git LFS te gebruiken (zie onder)
+# For large binary files (sprites, audio)
+# Consider using Git LFS (see below)
 ```
 
-## ⚠️ Belangrijke Waarschuwingen
+## ⚠️ Important Warnings
 
 ### 1. Export Presets
-**LET OP**: `export_presets.cfg` kan API keys bevatten!
+**ATTENTION**: `export_presets.cfg` can contain API keys!
 - Steam API keys
 - Google Play keys  
 - iOS certificates
 - AdMob IDs
 
-**Check altijd voor je commit!**
+**Always check before committing!**
 
 ### 2. Large Files
-Godot assets kunnen groot worden:
-- **Sprites**: Gebruik PNG compression
+Godot assets can become large:
+- **Sprites**: Use PNG compression
 - **Audio**: OGG Vorbis recommended
-- **3D Models**: Overweeg Git LFS
+- **3D Models**: Consider Git LFS
 
 ### 3. Binary Merge Conflicts
-`.tscn` en `.tres` files zijn text, maar kunnen conflicts geven:
-- **Communicate** wie aan welke scenes werkt
-- **Use prefabs** waar mogelijk
-- **Pull vaak** om conflicts te voorkomen
+`.tscn` and `.tres` files are text, but can cause conflicts:
+- **Communicate** who works on which scenes
+- **Use prefabs** where possible
+- **Pull often** to prevent conflicts
 
 ## 🚀 Git Large File Storage (LFS)
 
-Voor grote assets (optional):
+For large assets (optional):
 ```bash
 # Install Git LFS
 git lfs install
 
-# Track grote file types
+# Track large file types
 git lfs track "*.png"
 git lfs track "*.wav"
 git lfs track "*.blend"
@@ -104,21 +104,21 @@ git add .gitattributes
 git commit -m "chore: setup Git LFS"
 ```
 
-## 📊 Repository Grootte Management
+## 📊 Repository Size Management
 
-### Huidige grootte estimates:
+### Current size estimates:
 - **Notes/**: ~5 MB (text only)
 - **Scripts/**: ~1-5 MB (text)
 - **Scenes/**: ~5-20 MB (text-based)
 - **Assets/**: 10-500+ MB (binary files)
-- **Total**: 20-500+ MB (afhankelijk van assets)
+- **Total**: 20-500+ MB (depending on assets)
 
-### Tips om klein te houden:
-1. **Compress images** voor je commit
-2. **Use OGG** voor audio (niet WAV)
-3. **Delete unused assets** regelmatig
-4. **Git LFS** voor files > 10MB
-5. **Ignore builds** folder altijd
+### Tips to keep it small:
+1. **Compress images** before committing
+2. **Use OGG** for audio (not WAV)
+3. **Delete unused assets** regularly
+4. **Git LFS** for files > 10MB
+5. **Ignore builds** folder always
 
 ## 🏷️ Commit Message Conventions
 
@@ -144,21 +144,21 @@ git commit -m "perf(rendering): optimize sprite batching"
 ## 🔧 Handling Godot-Specific Files
 
 ### Scene Files (.tscn)
-- **Text-based** maar groot
-- **Track changes** mogelijk
-- **Merge conflicts** kunnen complex zijn
-- **Tip**: Coordinate wie wat edit
+- **Text-based** but large
+- **Track changes** possible
+- **Merge conflicts** can be complex
+- **Tip**: Coordinate who edits what
 
 ### Resource Files (.tres)
 - **Text-based** resources
-- **Reusable** tussen scenes
-- **Track changes** makkelijk
+- **Reusable** between scenes
+- **Track changes** easy
 - **Good for**: Materials, themes, etc.
 
 ### Import Files (.import)
-- **Auto-generated** door Godot
-- **Meestal ignore** (kunnen regenerated worden)
-- **Soms track** voor consistency
+- **Auto-generated** by Godot
+- **Usually ignore** (can be regenerated)
+- **Sometimes track** for consistency
 
 ## 💡 Best Practices
 
@@ -174,18 +174,18 @@ git commit -m "perf(rendering): optimize sprite batching"
    git push
    ```
 
-3. **Use feature branches voor grote changes**
+3. **Use feature branches for large changes**
    ```bash
    git checkout -b feature/boss-fight
-   # werk aan feature
+   # work on feature
    git push origin feature/boss-fight
-   # maak pull request
+   # create pull request
    ```
 
 4. **Communicate via commit messages**
-   - Duidelijke descriptions
+   - Clear descriptions
    - Reference issues: "fixes #12"
-   - Tag teammate: "@Jade check deze art"
+   - Tag teammate: "@Jade check this art"
 
 ## 🚨 Troubleshooting
 
@@ -200,21 +200,21 @@ git commit -m "art: add large sprite with LFS"
 
 ### Merge conflict in scene:
 ```bash
-# Open beide versions in Godot
+# Open both versions in Godot
 # Manually merge changes
-# Of: accept één version en redo changes
+# Or: accept one version and redo changes
 git checkout --theirs scenes/Level.tscn
-# of
+# or
 git checkout --ours scenes/Level.tscn
 ```
 
 ### Accidental commit of builds:
 ```bash
-# Remove from Git maar houd lokaal
+# Remove from Git but keep locally
 git rm -r --cached builds/
 git commit -m "fix: remove builds from tracking"
 ```
 
 ---
 
-*Deze strategie tracked het complete project voor beste collaboration!*
+*This strategy tracks the complete project for best collaboration!*

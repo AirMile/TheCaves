@@ -1,124 +1,124 @@
 # 🌳 Git Workflow Guide - Roguelite Project
 
-## 📌 Waarom Branches Gebruiken?
+## 📌 Why Use Branches?
 
-### Het Probleem Zonder Branches
-Stel je voor: Jade werkt aan het ability system, jij aan enemy AI. Zonder branches:
-- Jullie code botst constant
-- Een bug van Jade breekt jouw enemy system
-- Je kunt niet terug naar een werkende versie
-- Merge conflicts elke keer als jullie pullen
+### The Problem Without Branches
+Imagine: Jade works on the ability system, you on enemy AI. Without branches:
+- Your code constantly clashes
+- A bug from Jade breaks your enemy system
+- You can't go back to a working version
+- Merge conflicts every time you pull
 
-### De Oplossing Met Branches
-- **Isolatie**: Ieder werkt in eigen "sandbox"
-- **Veiligheid**: Main branch blijft altijd stabiel
-- **Review**: Check elkaars code voor het mergen
-- **Rollback**: Makkelijk terug naar vorige versie
+### The Solution With Branches
+- **Isolation**: Everyone works in their own "sandbox"
+- **Safety**: Main branch always stays stable
+- **Review**: Check each other's code before merging
+- **Rollback**: Easy to go back to previous version
 
-## 🏗️ Branch Structuur
+## 🏗️ Branch Structure
 
 ```
-main                    # ← Productie versie (altijd werkend!)
+main                    # ← Production version (always working!)
 │
-└── dev                 # ← Ontwikkel versie (hier merge je features)
-    ├── feature/player-movement     # Miles werkt hieraan
-    ├── feature/ability-system      # Jade werkt hieraan
+└── dev                 # ← Development version (merge features here)
+    ├── feature/player-movement     # Miles works on this
+    ├── feature/ability-system      # Jade works on this
     ├── feature/enemy-ai           # Miles later
     └── fix/performance-glow        # Bugfixes
 ```
 
-## 📝 Stap-voor-Stap Workflow
+## 📝 Step-by-Step Workflow
 
-### 1️⃣ Project Setup (Eerste keer)
+### 1️⃣ Project Setup (First time)
 ```bash
-# Clone de repository
+# Clone the repository
 git clone https://github.com/[username]/roguelite-game.git
 cd roguelite-game
 
-# Maak dev branch aan
+# Create dev branch
 git checkout -b dev
 git push -u origin dev
 
-# Stel dev als default branch in op GitHub
+# Set dev as default branch on GitHub
 # (Via GitHub settings → Branches → Default branch)
 ```
 
-### 2️⃣ Nieuwe Feature Starten
+### 2️⃣ Starting a New Feature
 ```bash
-# Zorg dat je op dev bent
+# Make sure you're on dev
 git checkout dev
 git pull origin dev
 
-# Maak nieuwe feature branch
+# Create new feature branch
 git checkout -b feature/player-movement
 
-# Nu kun je coderen!
+# Now you can code!
 ```
 
-### 3️⃣ Tijdens Het Werken (Dagelijks)
+### 3️⃣ During Work (Daily)
 ```bash
-# Check welke files je hebt aangepast
+# Check which files you've modified
 git status
 
-# Stage je changes
+# Stage your changes
 git add .
 
-# Commit met duidelijke message
+# Commit with clear message
 git commit -m "feat: add WASD movement with acceleration"
 
-# Push naar GitHub
+# Push to GitHub
 git push origin feature/player-movement
 ```
 
-### 4️⃣ Code Klaar? Maak een Pull Request
+### 4️⃣ Code Ready? Make a Pull Request
 
 #### Via GitHub Website:
-1. Ga naar jullie repository
-2. Klik "Pull requests" → "New pull request"
+1. Go to your repository
+2. Click "Pull requests" → "New pull request"
 3. Base: `dev` ← Compare: `feature/player-movement`
-4. Voeg beschrijving toe:
+4. Add description:
 ```markdown
-## Wat doet deze PR?
-- Implementeert WASD movement
-- Voegt acceleration/deceleration toe
-- Controller support voor movement
+## What does this PR do?
+- Implements WASD movement
+- Adds acceleration/deceleration
+- Controller support for movement
 
 ## Testing
-- [x] Getest met keyboard
-- [x] Getest met controller
-- [x] Geen bugs gevonden
+- [x] Tested with keyboard
+- [x] Tested with controller
+- [x] No bugs found
 
 ## Screenshots
-[Voeg GIF toe van movement]
+[Add GIF of movement]
 ```
 
 ### 5️⃣ Review Process
 ```bash
-# Jade checkt jouw code
-# Ze kan comments toevoegen
-# Als alles OK is → Merge!
+# Jade checks your code
+# She can add comments
+# If everything is OK → Merge!
 
-# Na merge, lokaal updaten:
+# After merge, update locally:
 git checkout dev
 git pull origin dev
-git branch -d feature/player-movement  # Delete oude branch
+git branch -d feature/player-movement  # Delete old branch
 ```
 
-## 🏷️ Commit Message Conventies
+## 🏷️ Commit Message Conventions
 
 ### Format: `type: description`
 
 **Types:**
-- `feat:` Nieuwe feature
+- `feat:` New feature
 - `fix:` Bug fix
-- `docs:` Documentatie
-- `style:` Code formatting (geen functionaliteit)
+- `docs:` Documentation
+- `style:` Code formatting (no functionality)
 - `refactor:` Code restructuring
-- `perf:` Performance verbetering
-- `test:` Test toevoegen
+- `perf:` Performance improvement
+- `test:` Add test
 - `chore:` Maintenance (git ignore, etc)
 
-### Voorbeelden:
+### Examples:
 ```bash
 git commit -m "feat: add dash ability with cooldown"
 git commit -m "fix: player stuck in wall collision"
@@ -127,91 +127,91 @@ git commit -m "perf: optimize glow shader rendering"
 git commit -m "refactor: split player.gd into components"
 ```
 
-## 🔄 Daily Workflow Voorbeeld
+## 🔄 Daily Workflow Example
 
-### Ochtend
+### Morning
 ```bash
-# Start je dag met verse code
+# Start your day with fresh code
 git checkout dev
 git pull origin dev
-git checkout feature/jouw-feature
-git merge dev  # Krijg laatste updates
+git checkout feature/your-feature
+git merge dev  # Get latest updates
 ```
 
-### Avond
+### Evening
 ```bash
-# Commit je werk
+# Commit your work
 git add .
 git commit -m "feat: progress on enemy spawning"
-git push origin feature/jouw-feature
+git push origin feature/your-feature
 
-# Maak PR als feature klaar is
+# Create PR when feature is ready
 ```
 
-## ⚠️ Merge Conflicts Oplossen
+## ⚠️ Resolving Merge Conflicts
 
-Als Git zegt "CONFLICT":
+When Git says "CONFLICT":
 
 ```bash
-# 1. Open het conflict bestand
-# Je ziet dit:
+# 1. Open the conflict file
+# You'll see this:
 <<<<<<< HEAD
-jouw code
+your code
 =======
 jade's code
 >>>>>>> feature/other
 
-# 2. Beslis wat te houden:
-# - Houd jouw code
-# - Houd Jade's code  
-# - Combineer beide
+# 2. Decide what to keep:
+# - Keep your code
+# - Keep Jade's code  
+# - Combine both
 
-# 3. Verwijder de markers (<<<<, ====, >>>>)
+# 3. Remove the markers (<<<<, ====, >>>>)
 
-# 4. Commit de oplossing
+# 4. Commit the solution
 git add .
 git commit -m "fix: resolve merge conflict in player.gd"
 ```
 
-### Godot-Specifieke Conflicts
+### Godot-Specific Conflicts
 
 **Common Godot Conflicts:**
-1. **Scene files (.tscn)**: Vaak beter om scene opnieuw te maken
-2. **Project settings (project.godot)**: Voorzichtig mergen, test beide settings
-3. **Import files (.import)**: Meestal safe om te regenereren
+1. **Scene files (.tscn)**: Often better to recreate scene
+2. **Project settings (project.godot)**: Carefully merge, test both settings
+3. **Import files (.import)**: Usually safe to regenerate
 
-**Prevention voor Godot:**
-- Communiceer wie aan welke scenes werkt
-- Vermijd simultane project.godot changes
-- Gebruik prefabs/inherited scenes waar mogelijk
+**Prevention for Godot:**
+- Communicate who works on which scenes
+- Avoid simultaneous project.godot changes
+- Use prefabs/inherited scenes where possible
 
 ## 🤖 Claude Code Integration
 
-### Setup voor PR Reviews
+### Setup for PR Reviews
 ```bash
-# In repository root, maak .claude-instructions
-echo "Review deze PR voor:
+# In repository root, create .claude-instructions
+echo "Review this PR for:
 - Performance issues
 - Code quality
 - Godot best practices
-- Mogelijke bugs" > .claude-instructions
+- Possible bugs" > .claude-instructions
 
-# Voor auto-review bij PR:
+# For auto-review on PR:
 claude-code review --pr
 ```
 
-### Voor Merge Assistance
+### For Merge Assistance
 ```bash
-# Als je merge conflicts hebt
+# If you have merge conflicts
 claude-code merge --resolve
 
-# Voor smart merging suggestions
+# For smart merging suggestions
 claude-code merge --suggest
 ```
 
-## 📋 Git Aliases (Snelle Commands)
+## 📋 Git Aliases (Quick Commands)
 
-Voeg toe aan `.gitconfig`:
+Add to `.gitconfig`:
 ```bash
 [alias]
     st = status
@@ -224,38 +224,38 @@ Voeg toe aan `.gitconfig`:
     last = log -1 HEAD
 ```
 
-Nu kun je typen:
+Now you can type:
 ```bash
-git st                    # In plaats van: git status
-git cm "fix: bug"        # In plaats van: git commit -m "fix: bug"
-git feat player-dash     # In plaats van: git checkout -b feature/player-dash
+git st                    # Instead of: git status
+git cm "fix: bug"        # Instead of: git commit -m "fix: bug"
+git feat player-dash     # Instead of: git checkout -b feature/player-dash
 ```
 
-## ❌ Wat NIET Te Doen
+## ❌ What NOT To Do
 
-1. **NOOIT** direct op `main` pushen
-2. **NOOIT** force push (behalve eigen feature branch)
-3. **NOOIT** grote binary files committen (gebruik Git LFS)
-4. **NOOIT** .godot/ folder committen
-5. **NOOIT** passwords/API keys in code
+1. **NEVER** push directly to `main`
+2. **NEVER** force push (except own feature branch)
+3. **NEVER** commit large binary files (use Git LFS)
+4. **NEVER** commit .godot/ folder
+5. **NEVER** commit passwords/API keys in code
 
-## 🆘 Hulp Nodig?
+## 🆘 Need Help?
 
-### Verkeerde branch?
+### Wrong branch?
 ```bash
-git stash              # Save je werk tijdelijk
-git checkout dev       # Ga naar juiste branch
-git stash pop         # Krijg je werk terug
+git stash              # Save your work temporarily
+git checkout dev       # Go to correct branch
+git stash pop         # Get your work back
 ```
 
-### Verkeerde commit message?
+### Wrong commit message?
 ```bash
-git commit --amend -m "nieuwe message"
+git commit --amend -m "new message"
 ```
 
-### Te veel commits? Squash ze:
+### Too many commits? Squash them:
 ```bash
-git rebase -i HEAD~3   # Combineer laatste 3 commits
+git rebase -i HEAD~3   # Combine last 3 commits
 ```
 
 ---
@@ -268,4 +268,4 @@ git rebase -i HEAD~3   # Combineer laatste 3 commits
 
 ---
 
-*💡 Tip: Print deze guide uit of houd 'm open tijdens development!*
+*💡 Tip: Print this guide or keep it open during development!*

@@ -1,45 +1,45 @@
 # 🎮 TheCaves - Project Instructions (Updated)
 
 ## Core Focus
-Top-down roguelite met **100+ enemies** op 60 FPS. Performance is een feature!
+Top-down roguelite with **100+ enemies** at 60 FPS. Performance is a feature!
 
 ## 🏗️ Architecture Essentials
 
-### Object Pooling (CRUCIAAL!)
-Alle dynamic objects moeten gepooled worden:
+### Object Pooling (CRUCIAL!)
+All dynamic objects must be pooled:
 - Enemies, projectiles, particles, damage numbers
-- Zie: `Notes/Godot_Roguelite_Performance.md`
+- See: `Notes/Godot_Roguelite_Performance.md`
 
 ### Component System
 ```gdscript
-# Gebruik composition, niet inheritance
+# Use composition, not inheritance
 @onready var health: HealthComponent = $HealthComponent
 @onready var movement: MovementComponent = $MovementComponent
 ```
 
 ### LOD System
-Enemies ver weg = minder processing. Simpel maar effectief.
+Enemies far away = less processing. Simple but effective.
 
 ## 🌿 Git Workflow 
 ```bash
-# Feature branch → main (beide nieuw, dus simpel houden)
-git checkout -b feature/[naam]
+# Feature branch → main (both new, so keep it simple)
+git checkout -b feature/[name]
 git commit -m "type: description"  # feat/fix/perf/art
 git push → GitHub PR → Review → Merge
 ```
 
 ## 📊 Performance Checklist
-- [ ] Object pooling actief?
-- [ ] LOD system werkt?
-- [ ] Physics layers correct? (enemies niet onderling!)
-- [ ] FPS monitor zichtbaar? (F3 toggle)
-- [ ] 60 FPS met 100+ enemies?
+- [ ] Object pooling active?
+- [ ] LOD system working?
+- [ ] Physics layers correct? (enemies not colliding with each other!)
+- [ ] FPS monitor visible? (F3 toggle)
+- [ ] 60 FPS with 100+ enemies?
 
 ## 🎯 Milestones Week 1-2
 1. Basic pooling system
-2. Enemy met LOD
+2. Enemy with LOD
 3. Performance monitor HUD
-4. 50+ enemies stabiel
+4. 50+ enemies stable
 
 ## 📁 Project Structure
 ```
@@ -56,14 +56,14 @@ TheCaves/
 │   ├── HealthComponent.gd
 │   └── MovementComponent.gd
 └── enemies/
-    └── Enemy.gd (met LOD)
+    └── Enemy.gd (with LOD)
 ```
 
 ## 🚨 Red Flags
-- Enemies die onderling colliden
+- Enemies that collide with each other
 - `instantiate()` in loops
-- `get_node()` elke frame
-- Geen pooling
+- `get_node()` every frame
+- No pooling
 
 ## ✅ Green Flags  
 - Cached references
@@ -71,4 +71,4 @@ TheCaves/
 - Staggered updates
 - Pool everything
 
-**Voor complete implementaties: zie `Notes/Godot_Roguelite_Performance.md`**
+**For complete implementations: see `Notes/Godot_Roguelite_Performance.md`**

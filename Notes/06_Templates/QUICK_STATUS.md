@@ -1,20 +1,20 @@
 # 🚀 QUICK STATUS
 
-**Datum**: 2024-12-19  
-**Tijd**: [vul in]  
-**Naam**: Miles
+**Date**: 2024-12-19  
+**Time**: [fill in]  
+**Name**: Miles
 
-## Wat heb ik gedaan:
+## What I did:
 - 
 
-## Problemen:
+## Problems:
 - 
 
-## Volgende stappen:
+## Next steps:
 - 
 
-## Voor Claude:
+## For Claude:
 - 
 
 ---
-*Copy-paste dit naar CLAUDE_SYNC.md of gebruik direct*
+*Copy-paste this to CLAUDE_SYNC.md or use directly*

@@ -87,10 +87,16 @@ bin/
 *.sublime-workspace
 
 # ===================
-# Obsidian & Notes Management (IGNORE)
+# Obsidian & Notes Management (SELECTIVE)
 # ===================
-# Obsidian configuration and cache
-.obsidian/
+# Track specific Obsidian plugins but ignore cache/config
+.obsidian/*
+!.obsidian/plugins/
+.obsidian/plugins/*
+!.obsidian/plugins/homepage/
+!.obsidian/plugins/cmenu-plugin/
+!.obsidian/plugins/obsidian-icon-folder/
+!.obsidian/plugins/terminal/
 
 # Obsidian trash folder
 .trash/

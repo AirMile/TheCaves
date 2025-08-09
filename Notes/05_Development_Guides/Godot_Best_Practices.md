@@ -1,4 +1,4 @@
-# 🎮 Godot Best Practices voor Roguelites
+# 🎮 Godot Best Practices for Roguelites
 
 ## 📊 Performance First (100+ Enemies)
 
@@ -11,7 +11,7 @@ var enemy_pools: Dictionary = {}
 var pool_size: int = 200
 
 func _ready() -> void:
-    # Pre-spawn enemies voor elke type
+    # Pre-spawn enemies for each type
     for enemy_type in ["swarm", "tank", "ranged"]:
         enemy_pools[enemy_type] = []
         var scene = load("res://scenes/enemies/Enemy%s.tscn" % enemy_type.capitalize())
@@ -42,7 +42,7 @@ func return_enemy(enemy: Enemy) -> void:
 
 ### 2. Collision Optimization
 ```gdscript
-# Project Settings voor collision layers:
+# Project Settings for collision layers:
 # Layer 1: Walls
 # Layer 2: Player  
 # Layer 3: Enemies
@@ -54,7 +54,7 @@ func return_enemy(enemy: Enemy) -> void:
 func _ready():
     collision_layer = 3  # Enemy layer
     collision_mask = 1 | 2 | 4  # Walls, Player, Player Projectiles
-    # Enemies onderling NIET laten colliden!
+    # Enemies should NOT collide with each other!
 ```
 
 ### 3. LOD (Level of Detail) System
@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
             basic_movement(delta)
             # Skip animations
         DetailLevel.MINIMAL:
-            # Alleen position updates
+            # Only position updates
             pass
 
 func update_lod() -> void:
@@ -124,7 +124,7 @@ func take_damage(amount: int) -> void:
     if current_health <= 0:
         died.emit()
 
-# Enemy.gd - Gebruik components
+# Enemy.gd - Use components
 @onready var health: HealthComponent = $HealthComponent
 @onready var movement: MovementComponent = $MovementComponent
 @onready var ai: AIComponent = $AIComponent
@@ -442,9 +442,9 @@ func _process(_delta):
 
 ## ⚙️ Project Settings
 
-### Optimal Settings voor Roguelites
+### Optimal Settings for Roguelites
 ```ini
-# project.godot aanpassingen
+# project.godot adjustments
 
 [rendering]
 textures/canvas_textures/default_texture_filter=1  # Pixel perfect

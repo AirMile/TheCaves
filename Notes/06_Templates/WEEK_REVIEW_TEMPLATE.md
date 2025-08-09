@@ -1,45 +1,45 @@
 # 📅 WEEK REVIEW TEMPLATE
 
-**Instructie voor Claude**: Maak week summary en update planning voor volgende week.
+**Instruction for Claude**: Create week summary and update planning for next week.
 
-## Week nummer: ...
-## Review door: ...
+## Week number: ...
+## Review by: ...
 
-## Milestone status (gehaald/deels/gemist):
+## Milestone status (achieved/partial/missed):
 ...
 
-## Belangrijkste achievements deze week:
+## Main achievements this week:
 ...
 
-## Grootste problemen deze week:
+## Biggest problems this week:
 ...
 
-## Wat ging beter dan verwacht:
+## What went better than expected:
 ...
 
-## Wat ging slechter dan verwacht:
+## What went worse than expected:
 ...
 
-## Samenwerking met Jade:
+## Collaboration with Jade:
 ...
 
-## Geleerde lessen:
+## Lessons learned:
 ...
 
-## Moet de planning worden aangepast:
+## Should the planning be adjusted:
 ...
 
-## Focus voor volgende week:
+## Focus for next week:
 ...
 
-## Risico's voor volgende week:
+## Risks for next week:
 ...
 
-## Motivatie level (1-10):
+## Motivation level (1-10):
 ...
 
-## Extra opmerkingen:
+## Extra remarks:
 ...
 
 ---
-*Claude zal milestone planning updaten en nieuwe week voorbereiden*
+*Claude will update milestone planning and prepare new week*

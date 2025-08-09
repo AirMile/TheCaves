@@ -1,43 +1,43 @@
 # 📝 DAILY UPDATE TEMPLATE
 
-**Instructie voor Claude**: Update de Roguelite vault met deze daily update.
+**Instruction for Claude**: Update the Roguelite vault with this daily update.
 
-## Datum: ...
-## Naam: [Miles/Jade]
-## Gewerkt van: ... tot ... (ongeveer)
+## Date: ...
+## Name: [Miles/Jade]
+## Worked from: ... to ... (approximately)
 
-## Wat heb ik vandaag gedaan:
+## What I did today:
 ...
 
-## Wat werkte goed:
+## What worked well:
 ...
 
-## Wat werkte niet:
+## What didn't work:
 ...
 
-## Problemen waar ik tegenaan liep:
+## Problems I encountered:
 ...
 
-## Oplossingen die ik heb gevonden:
+## Solutions I found:
 ...
 
-## Dingen die ik heb geleerd:
+## Things I learned:
 ...
 
-## Wat ga ik morgen/volgende keer doen:
+## What I'll do tomorrow/next time:
 ...
 
-## Heb ik hulp nodig met iets:
+## Do I need help with something:
 ...
 
-## Code/bestanden die ik heb gemaakt of aangepast:
+## Code/files I created or modified:
 ...
 
-## Moet er documentatie worden bijgewerkt:
+## Does documentation need updating:
 ...
 
-## Extra notities:
+## Extra notes:
 ...
 
 ---
-*Speech-to-text tip: Zeg "volgende sectie" om naar de volgende ... te gaan*
+*Speech-to-text tip: Say "next section" to go to the next ...*
