@@ -33,8 +33,8 @@ func _create_basic_projectile() -> Node2D:
 	projectile.add_child(collision)
 	
 	# Set collision layers
-	projectile.collision_layer = 8  # PlayerProjectiles layer
-	projectile.collision_mask = 1 | 4  # Walls + Enemies
+	projectile.collision_layer = 4  # PlayerProjectiles layer (matches project.godot layer 4)
+	projectile.collision_mask = 1 | 3  # Walls + Enemies
 	
 	projectile.add_to_group("projectiles")
 	return projectile

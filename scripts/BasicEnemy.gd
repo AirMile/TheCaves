@@ -23,7 +23,7 @@ func _ready():
 	current_health = HEALTH
 	
 	# Setup collision layers (no inter-enemy collision for performance)
-	collision_layer = 4  # Enemy layer  
+	collision_layer = 3  # Enemy layer (matches project.godot layer 3)
 	collision_mask = 1 | 2  # Walls + Player only
 	
 	print("BasicEnemy initialized")

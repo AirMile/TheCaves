@@ -71,7 +71,7 @@ func _setup_pooled_enemy(enemy: Node2D, enemy_type: String):
 	
 	# Set collision layers for performance (no inter-enemy collision)
 	if enemy is CharacterBody2D:
-		enemy.collision_layer = 4  # Enemy layer
+		enemy.collision_layer = 3  # Enemy layer (matches project.godot layer 3)
 		enemy.collision_mask = 1 | 2  # Walls + Player only
 	
 	# Add to scene tree but keep inactive
