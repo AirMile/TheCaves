@@ -75,44 +75,5 @@ text = "Enemies: 0/5"
 
 [node name="Controls" type="Label" parent="UIManager/GameUI"]
 layout_mode = 2
-text = "WASD = Move, F3 = Debug"
+text = "WASD = Move"
 
-[node name="DebugPanel" type="Control" parent="UIManager"]
-visible = false
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -120.0
-offset_right = 300.0
-offset_bottom = -10.0
-grow_vertical = 0
-
-[node name="VBox" type="VBoxContainer" parent="UIManager/DebugPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FPS" type="Label" parent="UIManager/DebugPanel/VBox"]
-layout_mode = 2
-text = "FPS: 60"
-
-[node name="Enemies" type="Label" parent="UIManager/DebugPanel/VBox"]
-layout_mode = 2
-text = "Enemies: 0"
-
-[node name="Health" type="Label" parent="UIManager/DebugPanel/VBox"]
-layout_mode = 2
-text = "Health: 100/100"
-
-[node name="Level" type="Label" parent="UIManager/DebugPanel/VBox"]
-layout_mode = 2
-text = "Level: 1"
-
-[node name="Time" type="Label" parent="UIManager/DebugPanel/VBox"]
-layout_mode = 2
-text = "Time: 0.0s"

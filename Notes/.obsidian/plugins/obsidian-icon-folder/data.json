@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "🏠",
       "🐅",
       "🦁",
       "🐈‍⬛",
-      "🟣",
-      "🟥"
+      "🟣"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -34,7 +34,7 @@
     "debugMode": false,
     "useInternalPlugins": false
   },
-  "HOME.md": "🏠",
   "03_Team/Jade": "🐈‍⬛",
-  "03_Team/Miles": "🐅"
+  "03_Team/Miles": "🐅",
+  "HOME.md": "🏠"
 }

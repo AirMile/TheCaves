@@ -4,11 +4,8 @@ extends Node
 
 # Input state tracking
 var movement_vector: Vector2 = Vector2.ZERO
-var is_dashing: bool = false
-var dash_cooldown_timer: float = 0.0
 
 # Input settings
-const DASH_COOLDOWN: float = 1.0
 const DEADZONE_THRESHOLD: float = 0.1
 
 # Input validation
@@ -29,14 +26,12 @@ func _input(event: InputEvent):
 	var current_frame = Engine.get_process_frames()
 	_last_frame_inputs[event.get_class()] = current_frame
 
-func _process(delta: float):
+func _process(_delta: float):
 	_update_movement_input()
-	_update_dash_input(delta)
 
 func _validate_input_actions():
 	var required_actions = [
-		"move_left", "move_right", "move_up", "move_down", 
-		"dash", "debug_toggle"
+		"move_left", "move_right", "move_up", "move_down"
 	]
 	
 	for action in required_actions:
@@ -92,19 +87,6 @@ func _update_movement_input():
 	else:
 		movement_vector = Vector2.ZERO
 
-func _update_dash_input(delta: float):
-	# Update dash cooldown
-	if dash_cooldown_timer > 0.0:
-		dash_cooldown_timer -= delta
-	
-	# Check dash input with validation and cooldown
-	if _is_action_valid("dash") and Input.is_action_just_pressed("dash"):
-		if dash_cooldown_timer <= 0.0:
-			is_dashing = true
-			dash_cooldown_timer = DASH_COOLDOWN
-		else:
-			# Could emit signal for UI feedback about cooldown
-			pass
 
 func _is_action_valid(action: String) -> bool:
 	return InputMap.has_action(action)
@@ -113,17 +95,4 @@ func _is_action_valid(action: String) -> bool:
 func get_movement_vector() -> Vector2:
 	return movement_vector
 
-func get_dash_input() -> bool:
-	var result = is_dashing
-	is_dashing = false  # Reset after reading
-	return result
 
-func is_dash_on_cooldown() -> bool:
-	return dash_cooldown_timer > 0.0
-
-func get_dash_cooldown_remaining() -> float:
-	return max(0.0, dash_cooldown_timer)
-
-# Debug input handling
-func is_debug_toggle_pressed() -> bool:
-	return _is_action_valid("debug_toggle") and Input.is_action_just_pressed("debug_toggle")

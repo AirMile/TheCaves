@@ -28,7 +28,6 @@ const MAX_LEVEL: int = 100
 
 # Input validation constants
 const MAX_INPUT_MAGNITUDE_SQUARED: float = 2.0  # Prevent excessively large input (sqrt(2)^2)
-const MIN_DASH_INPUT_THRESHOLD: float = 0.01  # Minimum movement input for directional dash
 const INPUT_SPAM_LIMIT: int = 10
 
 # Input validation state
@@ -95,16 +94,17 @@ func _setup_collision_components():
 		hurtbox_component.hit_by_attack.connect(_on_hit_by_attack)
 
 func _setup_camera():
-	# Configure Camera2D for proper centering and limits
+	# Configure Camera2D for proper centering
 	if camera:
 		camera.enabled = true
 		camera.make_current()
 		
-		# Set camera limits for 800x600 arena (with some margin)
-		camera.limit_left = 0
-		camera.limit_top = 0
-		camera.limit_right = 800
-		camera.limit_bottom = 600
+		# Set very large limits to effectively disable camera boundaries
+		# This allows the camera to follow the player freely
+		camera.limit_left = -10000
+		camera.limit_top = -10000
+		camera.limit_right = 10000
+		camera.limit_bottom = 10000
 		
 		print("Player: Camera2D configured and made current")
 	else:
@@ -113,8 +113,6 @@ func _setup_camera():
 func _physics_process(delta: float):
 	_handle_movement_input(delta)
 
-func _process(_delta: float):
-	_handle_action_input()
 
 func _handle_movement_input(delta: float):
 	if not InputManager or not movement_component:
@@ -129,20 +127,6 @@ func _handle_movement_input(delta: float):
 	
 	movement_component.apply_movement_input(movement_input, delta)
 
-func _handle_action_input():
-	if not InputManager or not movement_component:
-		return
-	
-	# Handle dash input with validation
-	if InputManager.get_dash_input():
-		if not _is_action_input_valid("dash"):
-			return
-			
-		var dash_direction = InputManager.get_movement_vector()
-		if dash_direction.length_squared() < MIN_DASH_INPUT_THRESHOLD:  # No movement input, dash forward
-			dash_direction = Vector2.DOWN  # Default dash direction
-		
-		movement_component.start_dash(dash_direction)
 
 func _is_movement_input_valid(input: Vector2) -> bool:
 	# Validate input magnitude to prevent malformed/malicious input
@@ -232,9 +216,6 @@ func apply_upgrade(upgrade_data: Dictionary):
 			var attack_speed_bonus = upgrade_data.get("value", 0.0)
 			stats_component.add_percentage_bonus("attack_speed", attack_speed_bonus)
 		
-		"dash_cooldown":
-			var cooldown_reduction = upgrade_data.get("value", 0.0)
-			stats_component.add_percentage_bonus("dash_cooldown", -cooldown_reduction)
 	
 	# Apply updated stats to components
 	_apply_stats_to_components()

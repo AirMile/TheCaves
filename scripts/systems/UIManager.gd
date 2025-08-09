@@ -7,11 +7,8 @@ extends CanvasLayer
 @onready var game_ui_container: VBoxContainer = $GameUI
 @onready var enemy_counter_label: Label = $GameUI/EnemyCounter
 @onready var controls_label: Label = $GameUI/Controls
-@onready var debug_panel: Control = $DebugPanel
-@onready var debug_info_labels: Dictionary = {}
 
 ## UI state
-var is_debug_visible: bool = false
 var current_ui_mode: String = "game"
 
 ## Game data for display
@@ -26,13 +23,10 @@ func _ready() -> void:
 	add_to_group("ui_managers")
 	_setup_ui_elements()
 	_connect_to_event_bus()
-	_setup_debug_panel()
 	
 	print("UIManager initialized")
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_toggle"):
-		toggle_debug_panel()
+
 
 ## Setup initial UI elements
 func _setup_ui_elements() -> void:
@@ -45,48 +39,8 @@ func _setup_ui_elements() -> void:
 		enemy_counter_label.text = "Enemies: 0/5"
 	
 	if controls_label:
-		controls_label.text = "WASD = Move, F3 = Debug"
+		controls_label.text = "WASD = Move"
 
-## Setup debug panel elements
-func _setup_debug_panel() -> void:
-	if not debug_panel:
-		push_warning("UIManager: Debug panel not found, creating basic one")
-		_create_debug_panel()
-		return
-	
-	# Hide debug panel initially
-	debug_panel.visible = false
-	
-	# Find or create debug labels
-	var vbox = debug_panel.get_node_or_null("VBox")
-	if vbox:
-		for child in vbox.get_children():
-			if child is Label:
-				debug_info_labels[child.name] = child
-
-## Create basic debug panel if not found in scene
-func _create_debug_panel() -> void:
-	debug_panel = Control.new()
-	debug_panel.name = "DebugPanel"
-	debug_panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
-	debug_panel.position = Vector2(10, -120)
-	debug_panel.size = Vector2(300, 110)
-	debug_panel.visible = false
-	add_child(debug_panel)
-	
-	var vbox = VBoxContainer.new()
-	vbox.name = "VBox"
-	vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	debug_panel.add_child(vbox)
-	
-	# Create debug labels
-	var debug_labels = ["FPS", "Enemies", "Health", "Level", "Time"]
-	for label_name in debug_labels:
-		var label = Label.new()
-		label.name = label_name
-		label.text = "%s: 0" % label_name
-		vbox.add_child(label)
-		debug_info_labels[label_name] = label
 
 ## Connect to EventBus signals
 func _connect_to_event_bus() -> void:
@@ -103,50 +57,14 @@ func _connect_to_event_bus() -> void:
 	EventBus.game_state_changed.connect(_on_game_state_changed)
 	EventBus.fps_changed.connect(_on_fps_changed)
 
-## Toggle debug panel visibility
-func toggle_debug_panel() -> void:
-	is_debug_visible = not is_debug_visible
-	if debug_panel:
-		debug_panel.visible = is_debug_visible
-	
-	if is_debug_visible:
-		EventBus.set_debug_enabled(true)
-	else:
-		EventBus.set_debug_enabled(false)
-	
-	print("UIManager: Debug panel %s" % ("shown" if is_debug_visible else "hidden"))
 
 ## Update game UI elements
 func update_game_ui() -> void:
 	if enemy_counter_label:
 		enemy_counter_label.text = "Enemies: %d/%d" % [current_enemies, max_enemies]
 
-## Update debug panel information
-func update_debug_panel(delta: float) -> void:
-	if not is_debug_visible or debug_info_labels.is_empty():
-		return
-	
-	game_time += delta
-	
-	# Update debug labels
-	if "FPS" in debug_info_labels:
-		debug_info_labels["FPS"].text = "FPS: %d" % Engine.get_frames_per_second()
-	
-	if "Enemies" in debug_info_labels:
-		debug_info_labels["Enemies"].text = "Enemies: %d" % current_enemies
-	
-	if "Health" in debug_info_labels:
-		debug_info_labels["Health"].text = "Health: %d/%d" % [player_health, player_max_health]
-	
-	if "Level" in debug_info_labels:
-		debug_info_labels["Level"].text = "Level: %d" % player_level
-	
-	if "Time" in debug_info_labels:
-		debug_info_labels["Time"].text = "Time: %.1fs" % game_time
-
-func _process(delta: float) -> void:
-	if is_debug_visible:
-		update_debug_panel(delta)
+func _process(_delta: float) -> void:
+	pass
 
 ## Show notification message
 func show_notification(message: String, type: String = "info", _duration: float = 2.0) -> void:
@@ -219,20 +137,13 @@ func _on_game_state_changed(_old_state: GamePhase.Type, new_state: GamePhase.Typ
 		GamePhase.Type.VICTORY:
 			show_notification("Victory!", "success", 5.0)
 
-func _on_fps_changed(current_fps: int, target_fps: int) -> void:
-	if current_fps < target_fps * 0.8:  # 80% of target
-		var fps_color = Color.RED if current_fps < target_fps * 0.6 else Color.YELLOW
-		if "FPS" in debug_info_labels:
-			debug_info_labels["FPS"].modulate = fps_color
-	else:
-		if "FPS" in debug_info_labels:
-			debug_info_labels["FPS"].modulate = Color.WHITE
+func _on_fps_changed(_current_fps: int, _target_fps: int) -> void:
+	pass
 
 ## Get current UI state for debugging
 func get_debug_info() -> Dictionary:
 	return {
 		"current_mode": current_ui_mode,
-		"debug_visible": is_debug_visible,
 		"current_enemies": current_enemies,
 		"player_health": "%d/%d" % [player_health, player_max_health],
 		"player_level": player_level

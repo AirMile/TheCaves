@@ -28,7 +28,12 @@
       "mcp__godot-mcp__get_uid",
       "mcp__godot-mcp__stop_project",
       "Bash(git add:*)",
-      "mcp__godot-mcp__add_node"
+      "mcp__godot-mcp__add_node",
+      "Bash(tasklist.exe)",
+      "Bash(taskkill.exe:*)",
+      "Bash(chmod:*)",
+      "Bash(./cleanup-godot.sh:*)",
+      "Bash(./simple-cleanup.sh)"
     ],
     "deny": []
   }

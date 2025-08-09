@@ -1,24 +1,17 @@
 extends Node
 class_name MovementComponent
-## Physics-based movement component with dash mechanics
+## Physics-based movement component
 ## Optimized for performance with CharacterBody2D
 
 signal movement_state_changed(is_moving: bool)
-signal dash_started
-signal dash_ended
 
 @export var base_speed: float = 200.0
-@export var dash_speed: float = 400.0
-@export var dash_duration: float = 0.2
 @export var friction: float = 800.0
 @export var acceleration: float = 1600.0
 
 # Movement state
 var current_speed: float
 var speed_multiplier: float = 1.0
-var is_dashing: bool = false
-var dash_timer: float = 0.0
-var dash_direction: Vector2 = Vector2.ZERO
 
 # Parent references (cached for performance)
 var parent_body: CharacterBody2D
@@ -37,14 +30,11 @@ func _ready():
 		push_error("MovementComponent: base_speed must be positive")
 		base_speed = 100.0
 	
-	if dash_speed <= base_speed:
-		push_warning("MovementComponent: dash_speed should be greater than base_speed")
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if not parent_body:
 		return
 	
-	_update_dash_state(delta)
 	_update_movement_state()
 
 func move_towards(target_position: Vector2, delta: float):
@@ -65,10 +55,7 @@ func apply_movement_input(input_direction: Vector2, delta: float):
 	var target_velocity: Vector2
 	var effective_speed = current_speed * speed_multiplier
 	
-	if is_dashing:
-		# During dash, maintain dash direction and speed
-		target_velocity = dash_direction * dash_speed
-	elif input_direction.length_squared() > 0.01:  # Use squared length to avoid sqrt
+	if input_direction.length_squared() > 0.01:  # Use squared length to avoid sqrt
 		# Apply acceleration towards target velocity
 		target_velocity = input_direction * effective_speed
 		parent_body.velocity = parent_body.velocity.move_toward(target_velocity, acceleration * delta)
@@ -80,36 +67,6 @@ func apply_movement_input(input_direction: Vector2, delta: float):
 	# Apply the movement
 	parent_body.move_and_slide()
 
-func start_dash(direction: Vector2) -> bool:
-	if not parent_body or is_dashing:
-		return false
-	
-	if direction.length_squared() < 0.01:  # Use squared length
-		return false
-	
-	is_dashing = true
-	dash_timer = dash_duration
-	dash_direction = direction.normalized()
-	
-	# Set dash velocity immediately
-	parent_body.velocity = dash_direction * dash_speed
-	
-	dash_started.emit()
-	
-	# Play dash audio
-	if AudioManager:
-		AudioManager.play_dash(parent_body.global_position)
-	
-	return true
-
-func _update_dash_state(delta: float):
-	if not is_dashing:
-		return
-	
-	dash_timer -= delta
-	if dash_timer <= 0.0:
-		is_dashing = false
-		dash_ended.emit()
 
 func _update_movement_state():
 	var currently_moving = parent_body.velocity.length_squared() > 100.0  # Use squared length
@@ -152,8 +109,6 @@ func get_movement_direction() -> Vector2:
 func is_moving() -> bool:
 	return parent_body and parent_body.velocity.length_squared() > 100.0
 
-func get_dash_remaining() -> float:
-	return max(0.0, dash_timer) if is_dashing else 0.0
 
 # Physics configuration helpers
 func set_collision_layers(layer: int, mask: int):
@@ -165,11 +120,6 @@ func set_collision_layers(layer: int, mask: int):
 func force_stop():
 	if parent_body:
 		parent_body.velocity = Vector2.ZERO
-	
-	if is_dashing:
-		is_dashing = false
-		dash_timer = 0.0
-		dash_ended.emit()
 
 # Debug information
 func get_debug_info() -> Dictionary:
@@ -179,7 +129,5 @@ func get_debug_info() -> Dictionary:
 		"speed_multiplier": speed_multiplier,
 		"velocity": get_velocity(),
 		"velocity_magnitude": get_velocity().length(),
-		"is_dashing": is_dashing,
-		"dash_remaining": get_dash_remaining(),
 		"is_moving": is_moving()
 	}
