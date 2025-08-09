@@ -31,6 +31,11 @@ var range_squared: float  # Pre-calculated for performance
 var target_cleanup_timer: float = 0.0
 const TARGET_CLEANUP_INTERVAL: float = 0.5
 
+# Enemy caching for performance optimization
+var cached_enemies: Array[Node2D] = []
+var enemy_cache_timer: float = 0.0
+const ENEMY_CACHE_REFRESH_INTERVAL: float = 0.1  # Update enemy list every 100ms
+
 func _ready():
 	parent_entity = get_parent()
 	stats_component = parent_entity.get_node("StatsComponent") as StatsComponent
@@ -46,10 +51,14 @@ func _ready():
 	if damage <= 0:
 		push_warning("WeaponComponent: damage should be positive")
 		damage = 1
+	
+	# Initialize enemy cache
+	_update_enemy_cache()
 
 func _process(delta: float):
 	_update_fire_cooldown(delta)
 	_update_target_cleanup(delta)
+	_update_enemy_cache_timer(delta)
 	
 	if auto_target:
 		_update_auto_targeting()
@@ -73,6 +82,13 @@ func _update_target_cleanup(delta: float):
 	if target_cleanup_timer >= TARGET_CLEANUP_INTERVAL:
 		_cleanup_invalid_targets()
 		target_cleanup_timer = 0.0
+
+func _update_enemy_cache_timer(delta: float):
+	enemy_cache_timer += delta
+	
+	if enemy_cache_timer >= ENEMY_CACHE_REFRESH_INTERVAL:
+		_update_enemy_cache()
+		enemy_cache_timer = 0.0
 
 func _cleanup_invalid_targets():
 	# Clean up invalid targets from the array (addressing feedback issue)
@@ -128,12 +144,19 @@ func _find_new_target():
 		if current_target:
 			target_acquired.emit(current_target)
 
-func _scan_for_targets():
-	# Find enemies in range - in production would use Area2D or collision detection
+func _update_enemy_cache():
+	# Cache enemy list to reduce tree traversals (performance optimization)
+	cached_enemies.clear()
 	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			cached_enemies.append(enemy)
+
+func _scan_for_targets():
+	# Use cached enemy list instead of querying tree every time
 	targets_in_range.clear()
 	
-	for enemy in enemies:
+	for enemy in cached_enemies:
 		if not is_instance_valid(enemy):
 			continue
 			

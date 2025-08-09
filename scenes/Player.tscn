@@ -7,6 +7,14 @@
 [ext_resource type="Script" path="res://scripts/components/WeaponComponent.gd" id="5_h3n7s"]
 [ext_resource type="Script" path="res://scripts/components/HurtboxComponent.gd" id="6_m8r4d"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k3x7"]
+size = Vector2(20, 20)
+
+[sub_resource type="ImageTexture" id="ImageTexture_q4w8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n5m2"]
+size = Vector2(20, 20)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_0tg6k")
 
@@ -44,11 +52,3 @@ script = ExtResource("6_m8r4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("RectangleShape2D_8n5m2")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k3x7"]
-size = Vector2(20, 20)
-
-[sub_resource type="ImageTexture" id="ImageTexture_q4w8n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n5m2"]
-size = Vector2(20, 20)

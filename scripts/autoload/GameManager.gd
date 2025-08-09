@@ -30,6 +30,11 @@ var performance_metrics: Dictionary = {
 	"fps": 60
 }
 
+# Performance thresholds and warnings
+const COLLISION_PAIRS_WARNING: int = 5000
+const FPS_WARNING_THRESHOLD: int = 55
+var performance_warnings_count: int = 0
+
 func _ready():
 	# Connect to EventBus
 	if EventBus:
@@ -150,17 +155,19 @@ func _update_performance_metrics():
 	
 	performance_metrics["collision_pairs"] = Performance.get_monitor(Performance.PHYSICS_2D_COLLISION_PAIRS)
 	
-	# Emit warnings for performance issues
+	# Check for performance issues and emit warnings
 	if EventBus:
-		EventBus.emit_performance_warning_if(
-			performance_metrics["fps"] < 55, 
-			"GameManager", "fps", performance_metrics["fps"]
-		)
+		var collision_pairs = performance_metrics["collision_pairs"]
+		var fps = performance_metrics["fps"]
 		
-		EventBus.emit_performance_warning_if(
-			performance_metrics["collision_pairs"] > 5000,
-			"GameManager", "collision_pairs", performance_metrics["collision_pairs"]
-		)
+		# FPS warning
+		if fps < FPS_WARNING_THRESHOLD:
+			EventBus.emit_performance_warning_if(true, "GameManager", "fps", fps)
+		
+		# Collision pairs warning
+		if collision_pairs > COLLISION_PAIRS_WARNING:
+			EventBus.emit_performance_warning_if(true, "GameManager", "collision_pairs", collision_pairs)
+			performance_warnings_count += 1
 
 func complete_wave():
 	if EventBus:

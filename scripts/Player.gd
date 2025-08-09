@@ -25,10 +25,14 @@ const MAX_LEVEL: int = 100
 @onready var weapon_component: WeaponComponent = $WeaponComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 
-# Input validation
+# Input validation constants
+const MAX_INPUT_MAGNITUDE_SQUARED: float = 2.0  # Prevent excessively large input (sqrt(2)^2)
+const MIN_DASH_INPUT_THRESHOLD: float = 0.01  # Minimum movement input for directional dash
+const INPUT_SPAM_LIMIT: int = 10
+
+# Input validation state
 var last_input_frame: int = 0
 var input_spam_count: int = 0
-const INPUT_SPAM_LIMIT: int = 10
 
 func _ready():
 	# Initialize player
@@ -51,7 +55,7 @@ func _ready():
 	# Apply initial stats
 	_apply_stats_to_components()
 	
-	print("Player initialized - Level: %d, Health: %d" % [current_level, health_component.get_max_health()])
+	print(EnemyPool.PLAYER_INIT_FORMAT % [current_level, health_component.get_max_health()])
 
 func _validate_components():
 	var missing_components = []
@@ -115,14 +119,14 @@ func _handle_action_input():
 			return
 			
 		var dash_direction = InputManager.get_movement_vector()
-		if dash_direction.length_squared() < 0.01:  # No movement input, dash forward
+		if dash_direction.length_squared() < MIN_DASH_INPUT_THRESHOLD:  # No movement input, dash forward
 			dash_direction = Vector2.DOWN  # Default dash direction
 		
 		movement_component.start_dash(dash_direction)
 
 func _is_movement_input_valid(input: Vector2) -> bool:
-	# Basic input validation to prevent malformed input
-	if input.length_squared() > 2.0:  # Prevent excessively large input
+	# Validate input magnitude to prevent malformed/malicious input
+	if input.length_squared() > MAX_INPUT_MAGNITUDE_SQUARED:
 		return false
 	
 	return true
@@ -179,7 +183,7 @@ func _level_up():
 	if AudioManager:
 		AudioManager.play_level_up(global_position)
 	
-	print("Player leveled up! Level: %d, Exp to next: %d" % [current_level, experience_to_next_level])
+	print(EnemyPool.PLAYER_LEVELUP_FORMAT % [current_level, experience_to_next_level])
 
 func apply_upgrade(upgrade_data: Dictionary):
 	if not upgrade_data or not stats_component:
@@ -254,7 +258,7 @@ func _on_hit_by_attack(attacker: Node2D):
 	pass
 
 func _on_stat_changed(stat_name: String, old_value: float, new_value: float):
-	print("Player stat changed: %s %f -> %f" % [stat_name, old_value, new_value])
+	print(EnemyPool.STAT_CHANGE_FORMAT % [stat_name, old_value, new_value])
 
 # Public interface for external systems
 func get_level() -> int:

@@ -22,6 +22,14 @@ var total_spawned: int = 0
 var peak_active_count: int = 0
 var pool_exhaustion_warnings: int = 0
 
+# Cached format strings for performance
+const POOL_CREATE_FORMAT: String = "EnemyPool: Creating %d %s enemies"
+const POOL_VERIFY_FORMAT: String = "EnemyPool: Pool configuration verified. Total enemies: %d"
+const POOL_MISMATCH_FORMAT: String = "EnemyPool: Pool size mismatch. Expected: %d, Calculated: %d"
+const PLAYER_INIT_FORMAT: String = "Player initialized - Level: %d, Health: %d"
+const PLAYER_LEVELUP_FORMAT: String = "Player leveled up! Level: %d, Exp to next: %d"
+const STAT_CHANGE_FORMAT: String = "Player stat changed: %s %f -> %f"
+
 func _ready():
 	_verify_pool_configuration()
 	_initialize_pools()
@@ -36,16 +44,16 @@ func _verify_pool_configuration():
 		calculated_total += POOL_SIZES[enemy_type]
 	
 	if calculated_total != EXPECTED_TOTAL:
-		push_error("EnemyPool: Pool size mismatch. Expected: %d, Calculated: %d" % [EXPECTED_TOTAL, calculated_total])
+		push_error(POOL_MISMATCH_FORMAT % [EXPECTED_TOTAL, calculated_total])
 	else:
-		print("EnemyPool: Pool configuration verified. Total enemies: %d" % EXPECTED_TOTAL)
+		print(POOL_VERIFY_FORMAT % EXPECTED_TOTAL)
 
 func _initialize_pools():
 	for enemy_type in POOL_SIZES:
 		var pool_size = POOL_SIZES[enemy_type]
 		enemy_pools[enemy_type] = []
 		
-		print("EnemyPool: Creating %d %s enemies" % [pool_size, enemy_type])
+		print(POOL_CREATE_FORMAT % [pool_size, enemy_type])
 		
 		for i in pool_size:
 			var enemy = _create_enemy(enemy_type)

@@ -14,11 +14,16 @@ enum DetailLevel { HIGH, MEDIUM, LOW, MINIMAL }
 @export var attack_range: float = 50.0
 @export var base_move_speed: float = 100.0
 
-# LOD thresholds (using squared distances for performance)
+# LOD distance thresholds (base distances in pixels)
+const LOD_DISTANCE_HIGH: float = 300.0
+const LOD_DISTANCE_MEDIUM: float = 600.0  
+const LOD_DISTANCE_LOW: float = 900.0
+
+# LOD thresholds (pre-calculated squared distances for performance)
 const LOD_DISTANCES_SQUARED: Dictionary = {
-	DetailLevel.HIGH: 90000.0,      # 300px squared
-	DetailLevel.MEDIUM: 360000.0,   # 600px squared  
-	DetailLevel.LOW: 810000.0,      # 900px squared
+	DetailLevel.HIGH: LOD_DISTANCE_HIGH * LOD_DISTANCE_HIGH,      # 300px squared = 90000
+	DetailLevel.MEDIUM: LOD_DISTANCE_MEDIUM * LOD_DISTANCE_MEDIUM,   # 600px squared = 360000
+	DetailLevel.LOW: LOD_DISTANCE_LOW * LOD_DISTANCE_LOW,       # 900px squared = 810000
 	# MINIMAL is anything beyond LOW
 }
 
