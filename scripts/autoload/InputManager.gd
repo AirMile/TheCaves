@@ -13,6 +13,7 @@ const DEADZONE_THRESHOLD: float = 0.1
 
 # Input validation
 var _last_frame_inputs: Dictionary = {}
+@warning_ignore("unused_variable")
 var _input_spam_threshold: int = 60  # Max inputs per second
 
 func _ready():

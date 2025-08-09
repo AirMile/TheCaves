@@ -112,11 +112,11 @@ func _update_dash_state(delta: float):
 		dash_ended.emit()
 
 func _update_movement_state():
-	var is_moving = parent_body.velocity.length_squared() > 100.0  # Use squared length
+	var currently_moving = parent_body.velocity.length_squared() > 100.0  # Use squared length
 	
-	if is_moving != was_moving:
-		movement_state_changed.emit(is_moving)
-		was_moving = is_moving
+	if currently_moving != was_moving:
+		movement_state_changed.emit(currently_moving)
+		was_moving = currently_moving
 
 # Upgrade system support
 func modify_speed(multiplier: float):
@@ -130,7 +130,7 @@ func set_base_speed(new_speed: float):
 		base_speed = new_speed
 
 # Status effects support
-func apply_slow(slow_factor: float, duration: float):
+func apply_slow(slow_factor: float, _duration: float):
 	# In a full implementation, this would use a timer system
 	speed_multiplier *= (1.0 - clampf(slow_factor, 0.0, 0.9))
 

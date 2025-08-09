@@ -39,7 +39,7 @@ func _ready():
 	# Connect to EventBus
 	if EventBus:
 		EventBus.connect("player_died", _on_player_died)
-		EventBus.connect("enemy_died", _on_enemy_died)
+		EventBus.connect("entity_died", _on_enemy_died)
 		EventBus.connect("wave_completed", _on_wave_completed)
 		EventBus.connect("upgrade_selected", _on_upgrade_selected)
 	
@@ -101,13 +101,13 @@ func _spawn_wave_enemies():
 	# Distribute enemy types based on wave progression
 	var swarm_percent = 0.6  # 60% swarm
 	var ranged_percent = 0.25  # 25% ranged
-	var tank_percent = 0.15  # 15% tank
+	var _tank_percent = 0.15  # 15% tank
 	
 	# Later waves have more variety
 	if current_wave > 10:
 		swarm_percent = 0.5
 		ranged_percent = 0.3
-		tank_percent = 0.2
+		_tank_percent = 0.2
 	
 	var swarm_count = int(enemies_to_spawn * swarm_percent)
 	var ranged_count = int(enemies_to_spawn * ranged_percent)  

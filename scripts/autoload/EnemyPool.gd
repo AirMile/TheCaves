@@ -36,7 +36,7 @@ func _ready():
 	
 	# Connect to EventBus for monitoring
 	if EventBus:
-		EventBus.connect("enemy_died", _on_enemy_died)
+		EventBus.connect("entity_died", _on_enemy_died)
 
 func _verify_pool_configuration():
 	var calculated_total = 0
@@ -106,12 +106,16 @@ func _create_enemy(enemy_type: String) -> CharacterBody2D:
 	enemy.collision_layer = 3  # Enemies
 	enemy.collision_mask = 1 | 2 | 4  # Walls, Player, Player Projectiles (NO enemy-enemy collision)
 	
+	# Add simple AI script
+	enemy.set_script(load("res://scripts/BasicEnemy.gd"))
+	
 	# Add metadata
 	enemy.set_meta("enemy_type", enemy_type)
 	enemy.set_meta("is_pooled", true)
 	enemy.set_meta("active", false)
 	enemy.set_meta("max_health", _get_enemy_health(enemy_type))
 	enemy.set_meta("current_health", enemy.get_meta("max_health"))
+	enemy.set_meta("speed", _get_enemy_speed(enemy_type))
 	
 	# Initially disable
 	enemy.set_physics_process(false)
@@ -127,6 +131,14 @@ func _get_enemy_health(enemy_type: String) -> int:
 		"tank": return 100
 		"boss": return 250
 		_: return 30
+
+func _get_enemy_speed(enemy_type: String) -> float:
+	match enemy_type:
+		"swarm": return 120.0
+		"ranged": return 80.0
+		"tank": return 50.0
+		"boss": return 60.0
+		_: return 100.0
 
 func get_enemy(enemy_type: String) -> CharacterBody2D:
 	if not enemy_type in enemy_pools:
@@ -202,7 +214,7 @@ func _deactivate_enemy(enemy: CharacterBody2D):
 func return_enemy(enemy: CharacterBody2D):
 	if is_instance_valid(enemy) and enemy.get_meta("active", false):
 		if EventBus:
-			EventBus.enemy_died.emit(enemy)
+			EventBus.entity_died.emit(enemy)
 		_deactivate_enemy(enemy)
 
 func _on_enemy_died(enemy: Node2D):

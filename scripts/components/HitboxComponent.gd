@@ -85,7 +85,7 @@ func _on_successful_hit(target: Node2D):
 	# Apply knockback if target has MovementComponent
 	var movement_component = target.get_node("MovementComponent") as MovementComponent
 	if movement_component and knockback_force > 0.0:
-		var knockback_direction = (target.global_position - global_position).normalized()
+		var _knockback_direction = (target.global_position - global_position).normalized()
 		# Note: Full knockback implementation would require additional methods
 	
 	# Emit hit signal

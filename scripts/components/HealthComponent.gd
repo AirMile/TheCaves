@@ -95,7 +95,7 @@ func set_max_health(new_max: int, heal_to_max: bool = false):
 		push_error("HealthComponent: Invalid max_health: %d" % new_max)
 		return
 	
-	var old_max = max_health
+	var _old_max = max_health
 	max_health = new_max
 	
 	if heal_to_max:

@@ -12,7 +12,7 @@ enum WeaponType { MELEE, PROJECTILE, MAGIC, ORBITAL }
 @export var weapon_type: WeaponType = WeaponType.PROJECTILE
 @export var damage: int = 10
 @export var fire_rate: float = 2.0  # Attacks per second
-@export var range: float = 150.0
+@export var weapon_range: float = 150.0
 @export var auto_target: bool = true
 @export var projectile_speed: float = 300.0
 @export var projectile_type: String = "bullet"
@@ -41,7 +41,7 @@ func _ready():
 	stats_component = parent_entity.get_node("StatsComponent") as StatsComponent
 	
 	# Pre-calculate range squared for performance
-	range_squared = range * range
+	range_squared = weapon_range * weapon_range
 	
 	# Validate configuration
 	if fire_rate <= 0:
@@ -268,8 +268,8 @@ func modify_fire_rate(multiplier: float):
 	fire_rate = maxf(0.1, fire_rate * multiplier)
 
 func modify_range(multiplier: float):
-	range = maxf(10.0, range * multiplier)
-	range_squared = range * range
+	weapon_range = maxf(10.0, weapon_range * multiplier)
+	range_squared = weapon_range * weapon_range
 
 func set_weapon_type(new_type: WeaponType):
 	weapon_type = new_type
@@ -305,7 +305,7 @@ func get_debug_info() -> Dictionary:
 		"weapon_type": weapon_type,
 		"damage": get_effective_damage(),
 		"fire_rate": get_effective_fire_rate(),
-		"range": range,
+		"range": weapon_range,
 		"has_target": current_target != null,
 		"targets_in_range": targets_in_range.size(),
 		"fire_cooldown": get_fire_cooldown_remaining(),

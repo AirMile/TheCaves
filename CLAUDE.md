@@ -33,7 +33,130 @@ git push origin feature/[name]
 
 **No build commands** - Godot handles compilation automatically  
 **No test framework** - Early-stage game project without formal testing  
-**No linting tools** - Godot editor provides built-in script validation  
+**No linting tools** - Godot editor provides built-in script validation
+
+## Claude Development Requirements
+
+**MANDATORY: Always use Context7 for Godot documentation and API reference**
+
+When working with any Godot-related code, patterns, or API calls:
+
+1. **Always use Context7 first** - Before implementing any Godot functionality, use the Context7 tool to get up-to-date documentation from official Godot sources
+2. **Library ID**: Use `/godotengine/godot-docs` for comprehensive API documentation and best practices
+3. **Specific searches**: Focus Context7 searches on the specific functionality (e.g., "signals", "autoload", "performance", "object pooling")
+4. **Verify patterns**: Use Context7 to confirm syntax, methods, and implementation patterns before coding
+5. **Error resolution**: When encountering Godot errors, use Context7 to understand the correct API usage
+
+**Context7 Godot Libraries Priority Order:**
+1. `/godotengine/godot-docs` - Official documentation (13573+ snippets, Trust: 9.9)
+2. `/godotengine/godot` - Engine source for advanced patterns (134 snippets, Trust: 9.9)
+3. `/godotengine/godot-demo-projects` - Official examples (34 snippets, Trust: 9.9)
+4. `/godotengine/godot-cpp` - C++ bindings reference (27 snippets, Trust: 9.9)
+
+**Example Context7 Usage:**
+```
+# For signal implementation issues:
+mcp__context7__get-library-docs with /godotengine/godot-docs, topic: "signals emit connect"
+
+# For performance optimization:
+mcp__context7__get-library-docs with /godotengine/godot-docs, topic: "performance object pooling"
+
+# For autoload problems:
+mcp__context7__get-library-docs with /godotengine/godot-docs, topic: "autoload singleton"
+```
+
+This ensures all implementations follow official Godot patterns and avoid deprecated or incorrect API usage.
+
+## Godot MCP Integration
+
+**AVAILABLE: Godot-specific MCP server for direct engine interaction**
+
+In addition to Context7, this project now includes a dedicated Godot MCP server for direct engine integration:
+
+1. **Godot MCP Tools** - Direct access to Godot Engine operations via MCP protocol
+2. **Engine Interaction** - Can interact with running Godot instances and project files  
+3. **Project-Specific Operations** - Tools optimized for Godot game development workflow
+
+**Usage Priority:**
+1. **Godot MCP** - For direct engine operations, project manipulation, scene editing
+2. **Context7** - For API documentation, best practices, error resolution, pattern verification
+
+### Critical MCP Usage Requirements
+
+**🚨 IMPORTANT: Always use relative path "." for projectPath parameter**
+
+The Godot MCP server in WSL2 environments ONLY works with relative paths from the current working directory:
+
+```bash
+# ✅ CORRECT - Use relative path
+mcp__godot-mcp__run_project with projectPath: "."
+mcp__godot-mcp__create_scene with projectPath: "."
+mcp__godot-mcp__add_node with projectPath: "."
+
+# ❌ WRONG - Absolute paths fail in WSL2
+mcp__godot-mcp__run_project with projectPath: "/mnt/c/gameProjects/TheCaves"
+mcp__godot-mcp__create_scene with projectPath: "C:/gameProjects/TheCaves"
+```
+
+### Working MCP Features
+
+**✅ Fully Functional:**
+- `get_godot_version` - Get installed Godot version
+- `get_project_info` - Project structure analysis 
+- `launch_editor` - Open Godot editor
+- `list_projects` - Find Godot projects in directories
+- `run_project` - Execute project in debug mode
+- `get_debug_output` - Capture console output and errors
+- `add_node` - Add nodes to existing scenes with properties
+- `get_uid` - Get file UIDs (Godot 4.4+)
+- `stop_project` - Stop running project
+
+**⚠️ Partially Working:**
+- `create_scene` - Creates scenes but files may not persist
+- `save_scene` - May not always write to disk
+
+### MCP Workflow Examples
+
+**Debug Project Errors:**
+```bash
+# 1. Run project to identify issues
+mcp__godot-mcp__run_project with projectPath: "."
+
+# 2. Get debug output with full error details
+mcp__godot-mcp__get_debug_output
+
+# 3. Stop project when done
+mcp__godot-mcp__stop_project
+```
+
+**Scene Editing:**
+```bash
+# 1. Add UI element to existing scene
+mcp__godot-mcp__add_node with:
+  projectPath: "."
+  scenePath: "scenes/Player.tscn"
+  nodeType: "Label"
+  nodeName: "HealthLabel"
+  properties: {"text": "Health: 100", "position": [10, 10]}
+
+# 2. Load sprite texture
+mcp__godot-mcp__load_sprite with:
+  projectPath: "."
+  scenePath: "scenes/Enemy.tscn"
+  nodePath: "root/Sprite2D"
+  texturePath: "assets/sprites/enemy.png"
+```
+
+**Project Analysis:**
+```bash
+# Get detailed project structure
+mcp__godot-mcp__get_project_info with projectPath: "."
+
+# Find all Godot projects in directory tree
+mcp__godot-mcp__list_projects with directory: "/path/to/search" recursive: true
+```
+
+The Godot MCP provides tools that complement Context7's documentation by enabling direct interaction with the Godot Engine and project files.  
 
 ## Architecture Overview
 
