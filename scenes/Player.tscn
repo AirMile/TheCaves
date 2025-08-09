@@ -10,7 +10,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1k3x7"]
 size = Vector2(20, 20)
 
-[sub_resource type="ImageTexture" id="ImageTexture_q4w8n"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_player"]
+size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8n5m2"]
 size = Vector2(20, 20)
@@ -22,7 +23,8 @@ script = ExtResource("1_0tg6k")
 shape = SubResource("RectangleShape2D_1k3x7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("ImageTexture_q4w8n")
+modulate = Color(0, 1, 0, 1)
+texture = SubResource("PlaceholderTexture2D_player")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_mvj4l")

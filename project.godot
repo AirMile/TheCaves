@@ -12,7 +12,7 @@ config_version=5
 
 config/name="TheCaves"
 config/description="Top-down roguelite with neon cave painting aesthetic. Target: 60 FPS with 100+ enemies."
-run/main_scene="res://scenes/TestArena.tscn"
+run/main_scene="res://scenes/RefactoredArena.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.png"
 config/compatibility/minimum_version="4.3"
@@ -119,7 +119,6 @@ debug_toggle={
 
 [rendering]
 
-driver/threads/thread_model=2
 global_illumination/sdfgi/probe_ray_count=2
 global_illumination/sdfgi/frames_to_converge=10
 environment/defaults/default_clear_color=Color(0.05, 0.05, 0.1, 1)

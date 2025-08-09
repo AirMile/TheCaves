@@ -12,7 +12,23 @@
       "Bash(mkdir:*)",
       "mcp__context7__resolve-library-id",
       "mcp__context7__get-library-docs",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(find:*)",
+      "Bash(true)",
+      "Bash(node:*)",
+      "Bash(cat:*)",
+      "Bash(npm:*)",
+      "Bash(git clone:*)",
+      "Bash(rm:*)",
+      "mcp__godot-mcp__launch_editor",
+      "mcp__godot-mcp__run_project",
+      "mcp__godot-mcp__get_debug_output",
+      "mcp__godot-mcp__list_projects",
+      "mcp__godot-mcp__create_scene",
+      "mcp__godot-mcp__get_uid",
+      "mcp__godot-mcp__stop_project",
+      "Bash(git add:*)",
+      "mcp__godot-mcp__add_node"
     ],
     "deny": []
   }
