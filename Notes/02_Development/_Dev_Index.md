@@ -2,8 +2,8 @@
 
 ## 🏗️ Architecture & Technical Docs
 - [[Architecture_Overview|System Architecture]] - Component systems & structure
-- [[06_Development_Guides/Performance_Guidelines|Performance Optimization]] - 100+ enemies target
-- [[06_Development_Guides/Git_Workflow|Git Workflow & Branching]]
+- [[Performance_Guidelines|Performance Optimization]] - 100+ enemies target
+- [[Git_Workflow|Git Workflow & Branching]]
 
 ## 📋 Sprint Management
 - [[Current_Sprint|Current Sprint Board]] - Active tasks
@@ -20,10 +20,10 @@
 - [[Issues/Completed/Issue_10|#10 Git repository setup]]
 
 ## 📚 Development Guides
-- [[06_Development_Guides/Godot_Best_Practices|Godot Best Practices]]
-- [[06_Development_Guides/Performance_Guidelines|Performance Guidelines]]
-- [[06_Development_Guides/Claude_Code_Setup|Claude Code Integration]]
-- [[06_Development_Guides/Art_Pipeline|Art Asset Pipeline]]
+- [[Godot_Best_Practices|Godot Best Practices]]
+- [[Performance_Guidelines|Performance Guidelines]]
+- [[Claude_Code_Setup|Claude Code Integration]]
+- [[Art_Pipeline|Art Asset Pipeline]]
 
 ## 🔧 Tools & Setup
 - **IDE**: VS Code + Godot extensions

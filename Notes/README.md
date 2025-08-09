@@ -10,32 +10,20 @@ Notes/
 ├── 📖 README.md                  # Documentation overview
 │
 ├── 00_START/                     # Quick start & project info
-│   ├── START_HIER.md            # Quick start guide
-│   ├── Project_Samenvatting.md  # Project overview
-│   └── Milestone_Planning.md    # Development roadmap
 │
 ├── 01_Design/                    # Game design documentation
-│   ├── _Design_Index.md         # Design overview
-│   ├── Game_Design_Document.md  # Core game design
-│   └── Art_Bible.md             # Visual style guide
 │
 ├── 02_Development/               # Technical documentation
-│   ├── _Dev_Index.md            # Development overview
-│   └── Current_Sprint.md        # Active sprint board
 │
 ├── 03_Team/                     # Team workspaces
 │   ├── Miles/                   # Miles' personal workspace
 │   │   └── Miles_Dashboard.md   # Personal task board
 │   ├── Jade/                    # Jade's personal workspace
-│   │   └── Jade_Dashboard.md    # Personal task board
-│   └── Shared/                  # Shared team resources
-│       └── Decision_Log.md      # Important decisions
+│       └── Jade_Dashboard.md    # Personal task board
 │
-├── 04_Meetings/                 # Meeting notes & agendas
-├── 05_References/               # External references & inspiration
-├── 06_Development_Guides/       # Technical guides & how-tos
-├── 07_Templates/                # Document templates
-└── .obsidian/                   # Obsidian configuration
+├── 04_References/               # External references & inspiration
+├── 05_Development_Guides/       # Technical guides & how-tos
+├── 06_Templates/                # Document templates
 ```
 
 ## 🚀 Quick Start

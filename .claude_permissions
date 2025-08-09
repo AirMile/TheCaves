@@ -1,0 +1,70 @@
+# Claude Code Permissions for TheCaves Project
+# This file grants Claude automatic permissions for common development tasks
+
+# Allow all file operations in the project
+allow_file_edits: true
+allow_file_creation: true
+allow_file_deletion: false  # Keep deletions manual for safety
+
+# Allow directory operations
+allow_directory_creation: true
+
+# Allow common development commands
+allow_git_operations: true
+allow_build_commands: true
+
+# Project-specific permissions
+allow_godot_files: true
+allow_script_files: true
+allow_scene_files: true
+allow_asset_files: true
+
+# Paths where Claude can make changes automatically
+allowed_paths:
+  - "scripts/**"
+  - "scenes/**" 
+  - "components/**"
+  - "assets/**"
+  - "resources/**"
+  - "*.gd"
+  - "*.tscn"
+  - "*.tres"
+  - "*.md"
+  - "project.godot"
+  - "export_presets.cfg"
+
+# Paths that require manual approval (safety)
+protected_paths:
+  - ".git/**"
+  - "Notes/.obsidian/**"
+
+# Allow common file types
+allowed_extensions:
+  - ".gd"      # GDScript files
+  - ".tscn"    # Scene files  
+  - ".tres"    # Resource files
+  - ".cs"      # C# files (if used)
+  - ".md"      # Documentation
+  - ".txt"     # Text files
+  - ".json"    # JSON files
+  - ".cfg"     # Configuration files
+  - ".png"     # Images
+  - ".jpg"     # Images
+  - ".ogg"     # Audio
+  - ".wav"     # Audio
+  - ".glsl"    # Shaders
+  - ".gdshader" # Godot shaders
+
+# Development workflow permissions
+allow_performance_optimizations: true
+allow_architecture_changes: true
+allow_component_system_changes: true
+allow_pooling_system_changes: true
+allow_input_system_changes: true
+allow_debug_tools: true
+
+# Godot-specific permissions
+allow_autoload_modifications: true
+allow_project_settings_changes: true
+allow_input_map_changes: true
+allow_collision_layer_changes: true

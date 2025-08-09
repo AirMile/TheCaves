@@ -16,9 +16,9 @@
    - [[03_Team/Jade/Jade_Dashboard|Jade Dashboard]]
 
 ### Voor development:
-- [[06_Development_Guides/Git_Workflow|Git Workflow Guide]]
-- [[06_Development_Guides/Godot_Roguelite_Performance|Performance Guide]]
-- [[06_Development_Guides/Quick_Performance_Reference|Quick Reference]]
+- [[Git_Workflow|Git Workflow Guide]]
+- [[Godot_Roguelite_Performance|Performance Guide]]
+- [[Quick_Performance_Reference|Quick Reference]]
 
 ### Voor design:
 - [[01_Design/Game_Design_Document|Game Design Document]]
@@ -37,16 +37,21 @@
 - [ ] Open Aseprite/Krita
 - [ ] Check [[03_Team/Jade/Jade_Dashboard|Your Tasks]]
 
-## 📝 Daily Workflow
-1. **Begin dag**: Check je dashboard
-2. **Bij blockers**: Post in Discord/GitHub issue
-3. **Code klaar**: Commit naar feature branch
-4. **Einde dag**: Update je dashboard
+## 🔄 Working with Claude
+
+### Super Simpel:
+1. **Werk gewoon** aan je project
+2. **Vraag Claude**: "Check wat er veranderd is"
+3. **Claude ziet alles** via git
+
+Geen extra files, geen sync docs, gewoon werken!
+
+---
 
 ## 🆘 Hulp Nodig?
-- **Performance issues**: [[06_Development_Guides/Quick_Performance_Reference|Quick Performance Guide]]
-- **Git problemen**: [[06_Development_Guides/Git_Workflow|Git Workflow]]
-- **Art pipeline**: [[06_Development_Guides/Art_Pipeline|Art Pipeline]]
+- **Performance issues**: [[Quick_Performance_Reference|Quick Performance Guide]]
+- **Git problemen**: [[Git_Workflow|Git Workflow]]
+- **Art pipeline**: [[Art_Pipeline|Art Pipeline]]
 
 ---
 

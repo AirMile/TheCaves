@@ -16,9 +16,9 @@
 ## 🔗 Quick Links
 
 ### Development
-- [[06_Development_Guides/Git_Workflow|Git Commands & Workflow]]
-- [[06_Development_Guides/Godot_Best_Practices|Godot Best Practices]]
-- [[06_Development_Guides/Performance_Guidelines|Performance Optimization]]
+- [[Git_Workflow|Git Commands & Workflow]]
+- [[Godot_Best_Practices|Godot Best Practices]]
+- [[Performance_Guidelines|Performance Optimization]]
 - [[Architecture_Overview|System Architecture]]
 
 ### Current Focus
@@ -62,6 +62,8 @@ var health: int = 100
 - Try compute shaders for mass enemy rendering?
 - Particle pooling system for neon trails
 - Dynamic music intensity based on enemy count
+- Power-ups pulse with rainbow effects
+- Boss enemies have unique glow patterns
 
 ---
 

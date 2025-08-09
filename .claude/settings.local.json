@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude config list)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.godotengine.org)",
+      "WebFetch(domain:forum.godotengine.org)",
+      "WebFetch(domain:www.gdquest.com)",
+      "WebFetch(domain:medium.com)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": []
+  }
+}

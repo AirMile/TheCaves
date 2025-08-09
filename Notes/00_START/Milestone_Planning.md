@@ -9,7 +9,7 @@
 ## 🎯 Week 1: Foundation (7-13 Augustus)
 
 ### **Milestone 1.1: Development Setup**
-**Deadline**: Woensdag 9 Augustus  
+**Deadline**: 9 Augustus  
 **Success Criteria**:
 - [x] Godot 4.2+ installed on beide systemen
 - [x] Git repository created en configured  
@@ -22,7 +22,7 @@
 **Backup Plan**: Use Godot web editor if installation issues
 
 ### **Milestone 1.2: Basic Player Movement**  
-**Deadline**: Vrijdag 11 Augustus  
+**Deadline**: 11 Augustus  
 **Success Criteria**:
 - [ ] WASD movement working smoothly
 - [ ] Controller input detection (Xbox/PlayStation)
@@ -35,7 +35,7 @@
 **Backup Plan**: Keyboard-only eerst, controller later
 
 ### **Milestone 1.3: Art Style Foundation**
-**Deadline**: Zondag 13 Augustus  
+**Deadline**: 13 Augustus  
 **Success Criteria**:  
 - [ ] Art tools setup and tested (Krita/Photoshop)
 - [ ] 5-10 concept sketches van enemies
@@ -52,7 +52,7 @@
 ## 🎮 Week 2: Core Mechanics (14-20 Augustus)
 
 ### **Milestone 2.1: Combat System Foundation**
-**Deadline**: Dinsdag 16 Augustus  
+**Deadline**: 16 Augustus  
 **Success Criteria**:
 - [ ] Auto-attack system targets nearest enemy
 - [ ] Manual ability (G-key) met cooldown indicator
@@ -65,7 +65,7 @@
 **Backup Plan**: Simplify to movement + shooting only
 
 ### **Milestone 2.2: First Enemy Type**
-**Deadline**: Vrijdag 18 Augustus  
+**Deadline**: 18 Augustus  
 **Success Criteria**:
 - [ ] Enemy sprite met glow effect  
 - [ ] Basic AI (follow player, attack on contact)

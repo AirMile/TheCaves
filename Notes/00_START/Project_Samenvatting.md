@@ -3,15 +3,9 @@
 ## Project Concept
 - **Type**: Rogue-lite game 
 - **Inspiratie**: Grottekeningen uit kunstmuseum
-- **Visuele Stijl**: Neon/glow effecten met donkere achtergrond
+- **Visuele Stijl**: Neon/glow effecten met donkere achtergrond, lsd trip
 - **Development**: Samenwerking met vriend
 - **Doelgroep**: Fans van visueel opvallende indie games
-
-## Copyright & Legale Aspecten
-- ✅ **Grottekeningen**: Meestal publiek domein (duizenden jaren oud)
-- ✅ **Eigen interpretatie**: Inspiratie nemen is toegestaan
-- ⚠️ **Museumpresentaties**: Kunnen auteursrecht hebben op specifieke belichting
-- 💡 **Aanpak**: Eigen stijl ontwikkelen geïnspireerd op primitieve kunst
 
 ## Game Engine Beslissing: Godot vs Unity
 

@@ -24,8 +24,8 @@
 ### 💻 Development
 - [[Architecture_Overview|System Architecture]] - Technical structure
 - [[02_Development/Current_Sprint|Current Sprint]] - Active tasks
-- [[06_Development_Guides/Git_Workflow|Git Workflow]] - Branch strategy
-- [[06_Development_Guides/Performance_Guidelines|Performance Guide]] - Optimization
+- [[Git_Workflow|Git Workflow]] - Branch strategy
+- [[Performance_Guidelines|Performance Guide]] - Optimization
 
 ### 👥 Team
 - [[03_Team/Miles/Miles_Dashboard|Miles' Workspace]]
@@ -34,8 +34,8 @@
 - [[Meeting_Notes|Meeting History]]
 
 ### 📚 References
-- [[06_Development_Guides/Sprite_Performance_Guide|Sprite Guidelines]]
-- [[06_Development_Guides/Tech_Referentie|Tech Reference]]
+- [[Sprite_Performance_Guide|Sprite Guidelines]]
+- [[Tech_Referentie|Tech Reference]]
 - [[05_References/Inspiration|Inspiration Board]]
 
 ---

@@ -1,0 +1,42 @@
+[gd_scene load_steps=1 format=3]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DebugPanel" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -100.0
+offset_right = 250.0
+offset_bottom = -10.0
+grow_vertical = 0
+visible = false
+
+[node name="VBox" type="VBoxContainer" parent="UI/DebugPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FPS" type="Label" parent="UI/DebugPanel/VBox"]
+layout_mode = 2
+text = "FPS: 60"
+
+[node name="Enemies" type="Label" parent="UI/DebugPanel/VBox"]
+layout_mode = 2
+text = "Enemies: 0"
+
+[node name="Projectiles" type="Label" parent="UI/DebugPanel/VBox"]
+layout_mode = 2
+text = "Projectiles: 0"
+
+[node name="CollisionPairs" type="Label" parent="UI/DebugPanel/VBox"]
+layout_mode = 2
+text = "Collision Pairs: 0"
