@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlu7vj2m6mvbw"]
+
+[ext_resource type="PackedScene" uid="uid://baxq3x3n5p8g7" path="res://scenes/Player.tscn" id="1_w8y4n"]
+
+[node name="TestArena" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_w8y4n")]
+position = Vector2(400, 300)
+
+[node name="ArenaWalls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="TopWall" type="CollisionShape2D" parent="ArenaWalls"]
+position = Vector2(400, -10)
+shape = SubResource("RectangleShape2D_a8q5v")
+
+[node name="BottomWall" type="CollisionShape2D" parent="ArenaWalls"]
+position = Vector2(400, 610)
+shape = SubResource("RectangleShape2D_a8q5v")
+
+[node name="LeftWall" type="CollisionShape2D" parent="ArenaWalls"]
+position = Vector2(-10, 300)
+shape = SubResource("RectangleShape2D_b7m3k")
+
+[node name="RightWall" type="CollisionShape2D" parent="ArenaWalls"]
+position = Vector2(810, 300)
+shape = SubResource("RectangleShape2D_b7m3k")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8q5v"]
+size = Vector2(800, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7m3k"]
+size = Vector2(20, 600)
