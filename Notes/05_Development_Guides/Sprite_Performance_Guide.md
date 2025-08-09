@@ -1,184 +1,220 @@
-# Sprite Resolution & Performance Guide
+# 🎮 Sprite Performance Guide - TheCaves
 
-## 🔄 UPDATE: Resolution Decision
-**Status**: We gaan eerst **32x32** testen (zie Development_Guides/Resolution_Standards.md)
-**Backup**: Als te weinig detail → 64x64 zoals hieronder beschreven
-**Test**: Jade maakt test sprites in beide resoluties
+## 📏 Godot-Recommended Sprite Sizes
+
+### Official Godot Documentation Guidelines
+
+#### Voor Pixel Art Games (Godot Docs)
+```
+Base Window Size: 640x360
+  - Schaalt perfect naar: 1280x720, 1920x1080
+  - Integer scaling friendly
+  
+Stretch Settings:
+  - Mode: viewport
+  - Aspect: keep (fixed) of expand (flexible)
+  - Scale Mode: integer (pixel perfect)
+```
+
+#### Sprite Size Recommendations
+```yaml
+# Based on 640x360 base resolution
+Player: 48x48 (7.5% of screen width)
+Regular Enemy: 32x32 (5% of screen width)
+Small Enemy: 24x24 (3.75% of screen width)
+Boss: 128x128 (20% of screen width)
+Projectiles: 8-16px
+```
+
+## 🎯 TheCaves Sprite Standards
+
+### Size Hierarchy (FINAL)
+```
+Projectile < Pickup < Enemy < Player < Elite < Boss
+    8px      16px    32px    48px    64px   128px
+```
+
+### Recommended Setup
+| Entity Type | Size | Max on Screen | Priority |
+|------------|------|---------------|----------|
+| **Player** | 48x48 | 1-4 | HIGH |
+| **Swarm Enemy** | 32x32 | 150-200 | HIGH |
+| **Regular Enemy** | 48x48 | 75-100 | HIGH |
+| **Elite Enemy** | 64x64 | 20-30 | MEDIUM |
+| **Boss** | 128x128 | 1-3 | HIGH |
+| **Projectiles** | 8x8 or 16x16 | 200+ | HIGH |
+| **Pickups** | 16x16 or 24x24 | 50+ | LOW |
+
+## 🔧 Godot Texture Settings
+
+### Import Settings voor Pixel Art
+```ini
+[remap]
+importer="texture"
+type="CompressedTexture2D"
+
+[params]
+compress/mode=0  # Lossless
+mipmaps/generate=false  # No mipmaps voor 2D
+filter=0  # Nearest neighbor
+```
+
+### Texture Atlas Requirements
+```gdscript
+# Power of 2 dimensions (Godot requirement)
+const ATLAS_SIZES = {
+    "small": Vector2(512, 512),    # 32x32 sprites
+    "medium": Vector2(1024, 1024),  # 48-64px sprites
+    "large": Vector2(2048, 2048)    # 128px+ sprites
+}
+```
+
+## 📊 Memory & Performance Impact
+
+### Memory per Sprite (RGBA8, no mipmaps)
+```
+32x32: 4KB per frame
+48x48: 9KB per frame
+64x64: 16KB per frame
+128x128: 64KB per frame
+
+With 8-frame animation:
+32x32: 32KB total
+48x48: 72KB total
+64x64: 128KB total
+128x128: 512KB total
+```
+
+### Performance Targets
+```gdscript
+# Monitor in Godot
+Engine.get_frames_per_second() >= 60
+RenderingServer.get_rendering_info(
+    RenderingServer.RENDERING_INFO_TOTAL_DRAW_CALLS_IN_FRAME
+) < 100
+OS.get_static_memory_usage() < 500_000_000  # 500MB
+```
+
+## 🎨 Sprite Production Guidelines
+
+### Time Investment per Sprite
+| Size | Base Sprite | Animation (8 frames) | Total Time |
+|------|------------|---------------------|------------|
+| 32x32 | 30-45 min | 2-3 hours | 3-4 hours |
+| 48x48 | 45-60 min | 3-4 hours | 4-5 hours |
+| 64x64 | 60-90 min | 4-6 hours | 5-7 hours |
+| 128x128 | 2-3 hours | 8-12 hours | 10-15 hours |
+
+### Priority Order for Jade
+1. **Player sprite** (48x48) - Most important
+2. **Basic enemy** (32x32) - For testing spawning
+3. **Regular enemy** (48x48) - Combat variety
+4. **Boss** (128x128) - Epic moments
+5. **Projectiles** (8x8, 16x16) - Performance testing
+6. **Elite enemies** (64x64) - Mid-game content
+
+## 🌟 Neon Glow Implementation
+
+### WorldEnvironment Settings (2D Glow zonder HDR)
+```gdscript
+extends WorldEnvironment
+
+func setup_2d_glow():
+    environment.background_mode = Environment.BG_CANVAS
+    environment.glow_enabled = true
+    environment.glow_intensity = 1.0
+    environment.glow_strength = 1.2
+    environment.glow_bloom = 0.1
+    environment.glow_blend_mode = Environment.GLOW_BLEND_MODE_SCREEN
+    environment.glow_hdr_threshold = 0.5  # Lower voor non-HDR
+```
+
+### Sprite Glow Layers
+```
+Layer 1: Base sprite (dark silhouette)
+Layer 2: Inner glow (bright core color)
+Layer 3: Outer glow (softer, larger)
+Layer 4: WorldEnvironment bloom (automatic)
+```
+
+## 🎯 LOD System voor Performance
+
+```gdscript
+# Distance-based detail reduction
+extends Node2D
+
+enum LOD { FULL, MEDIUM, LOW, CULLED }
+
+@export var lod_distances = {
+    LOD.FULL: 300,     # All features
+    LOD.MEDIUM: 600,   # Reduced animation
+    LOD.LOW: 1000,     # Static sprite
+    LOD.CULLED: 1500   # Hidden
+}
+
+func update_lod(camera_pos: Vector2):
+    var distance = global_position.distance_to(camera_pos)
+    
+    if distance < lod_distances[LOD.FULL]:
+        $AnimatedSprite2D.play()
+        $GPUParticles2D.emitting = true
+    elif distance < lod_distances[LOD.MEDIUM]:
+        $AnimatedSprite2D.stop()
+        $GPUParticles2D.emitting = false
+    elif distance < lod_distances[LOD.LOW]:
+        $AnimatedSprite2D.visible = false
+    else:
+        visible = false
+```
+
+## ✅ Sprite Checklist voor Production
+
+### Technical Requirements
+- [ ] Power of 2 atlas dimensions
+- [ ] Nearest neighbor filtering
+- [ ] No mipmaps for 2D
+- [ ] Lossless compression
+- [ ] Transparent background
+
+### Visual Requirements
+- [ ] Clear silhouette
+- [ ] Readable at target size
+- [ ] Neon glow compatible
+- [ ] Distinct from other sprites
+- [ ] Matches art style
+
+### Performance Requirements
+- [ ] Works in texture atlas
+- [ ] Shares material with similar sprites
+- [ ] LOD system compatible
+- [ ] Under memory budget
+- [ ] 60 FPS with 100+ instances
+
+## 🚀 Quick Reference Card
+
+```yaml
+# TheCaves Sprite Standards
+Project Settings:
+  Base Resolution: 640x360
+  Stretch Mode: viewport
+  Scale Mode: integer
+
+Sprite Sizes:
+  Player: 48x48
+  Enemy_Small: 32x32
+  Enemy_Regular: 48x48
+  Enemy_Elite: 64x64
+  Boss: 128x128
+  Projectile: 8x8 or 16x16
+
+Performance Limits:
+  Max Enemies: 100-150
+  Draw Calls: < 100
+  Memory: < 500MB
+  FPS Target: 60
+```
 
 ---
 
-## 🎨 Resolution Recommendations
-
-### **Voor Neon Glow Effects**
-
-**Problemen met kleine sprites**:
-- Glow effect kan sprite "overpower" bij 32x32
-- Details gaan verloren in primitive art style
-- Animaties moeten readable blijven
-
-**Problemen met grote sprites**:  
-- Meer fillrate = slechtere performance  
-- Glow post-processing kost meer GPU
-- Meer memory usage per sprite
-
-### **Aanbevolen Approach**
-
-**Start met 64x64 als baseline**:
-- Genoeg detail voor cave painting style
-- Glow effects blijven proportional  
-- Goede performance op low-end hardware
-- Makkelijk om later te downscalen naar 32x32
-
-**Test Resolutions**:
-1. **64x64**: Base recommendation  
-2. **48x48**: Als performance issues
-3. **96x96**: Voor belangrijke characters (player, bosses)
-4. **32x32**: Emergency fallback
-
-### **Performance Testing Strategy**
-
-**Week 1 Test**:
-```
-Test Scene Setup:
-- 1 Player (64x64) met glow
-- 20 Enemies (64x64) met glow
-- Dark background
-- WorldEnvironment glow enabled
-Target: 60fps op jouw zwakste test hardware
-```
-
-**Als FPS < 60**:
-1. Reduce enemy count eerst
-2. Dan sprite resolution verlagen  
-3. Dan glow intensity verminderen
-4. Last resort: selective glow (niet alle enemies)
-
-## 🎬 Animation Frame Guidelines
-
-### **Frame Counts per Animation Type**
-
-**Idle Animation**: 2-4 frames
-- Cave painting style = minimal movement
-- Subtle breathing/glow pulsing
-- Low priority voor frame count
-
-**Walk Cycle**: 4 frames  
-- Primitive art = simplified movement
-- Focus op silhouette changes
-- Smooth enough voor 60fps playback
-
-**Attack Animations**: 3-6 frames
-- Attack windup (1-2 frames)
-- Impact frame (1 frame)  
-- Recovery (1-3 frames)
-- Snappy, responsive feeling
-
-**Special Abilities**: 6-12 frames
-- Meer dramatic voor manual abilities
-- Glow intensity changes tijdens animatie
-- Worth extra detail voor "juice"
-
-### **Timing Guidelines**
-```
-Idle: 0.5-1.0 seconds per loop
-Walk: 0.4-0.6 seconds per loop (afhankelijk movement speed)
-Attack: 0.2-0.4 seconds total (must feel responsive)
-Special: 0.5-1.0 seconds (can be slower, meer impact)
-```
-
-## 🔧 Art Asset Pipeline
-
-### **File Organization**
-```
-art_assets/
-├── concepts/
-│   ├── character_sketches/
-│   ├── enemy_designs/  
-│   └── style_reference/
-├── sprites/
-│   ├── characters/
-│   │   ├── shaman_idle_64x64.png
-│   │   ├── shaman_walk_64x64.png
-│   │   └── shaman_attack_64x64.png
-│   └── enemies/
-├── animations/
-│   ├── character_anims/
-│   └── enemy_anims/
-└── ui/
-    ├── hud_elements/
-    └── menu_assets/
-```
-
-### **Naming Convention**
-```
-Format: [type]_[name]_[action]_[resolution].png
-
-Examples:
-char_shaman_idle_64x64.png
-enemy_crawler_walk_64x64.png  
-ui_health_bar_full.png
-effect_glow_ring_96x96.png
-```
-
-### **Godot Import Settings**
-```
-Voor Sprites:
-- Filter: OFF (pixel perfect)
-- Mipmaps: OFF (2D game)
-- Fix Alpha Border: ON (prevents glow bleeding)
-
-Voor Animations:  
-- Import als SpriteFrames resource
-- FPS: Match je design (meist 12-24 fps)
-```
-
-## 🎯 Style Consistency Guide
-
-### **Cave Painting Elements**
-- **Thick outlines**: 2-3 pixel borders
-- **Simple shapes**: Avoid complex details
-- **Symbolic representation**: Stick figures, basic animal forms
-- **Primitive proportions**: Niet realistic anatomy
-
-### **Neon Integration**  
-- **Glow color coding**: Red = dangerous, Blue = magic, etc.
-- **Intensity levels**: Background glow vs active ability glow
-- **Contrast maintenance**: Always readable against dark BG
-
-### **Color Palette Suggestion**
-```
-Background: #0a0a0a (very dark gray)
-Base sprites: #1a1a1a (dark gray - for contrast)
-Neon colors:
-- Electric Blue: #00ffff  
-- Hot Pink: #ff0080
-- Acid Green: #80ff00
-- Solar Orange: #ff8000
-- Deep Purple: #8000ff
-```
-
-## 📊 Performance Budget Template
-
-**Target Hardware**: GTX 1050 / Integrated Graphics  
-**FPS Target**: 60fps stable
-
-**GPU Budget**:
-- Sprite Rendering: 40% 
-- Glow Post-processing: 35%
-- Particle Effects: 15%
-- UI Rendering: 10%
-
-**Memory Budget**:  
-- Sprite Textures: 100MB max
-- Audio: 50MB max  
-- Code/Scenes: 20MB max
-
-**Als je deze limits bereikt**: Sprite resolution verlagen, glow quality verminderen, of enemy count limiteren.
-
----
-
-**Next Actions**:
-1. Test 64x64 sprites met glow in Godot
-2. Performance benchmark met 20+ enemies
-3. Adjust based op results
-4. Document final specs in team style guide
+*Last Updated: December 2024*
+*Based on: Godot 4.3 Documentation + Industry Standards*
