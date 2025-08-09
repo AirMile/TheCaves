@@ -149,7 +149,7 @@ func _process(delta: float) -> void:
 		update_debug_panel(delta)
 
 ## Show notification message
-func show_notification(message: String, type: String = "info", duration: float = 2.0) -> void:
+func show_notification(message: String, type: String = "info", _duration: float = 2.0) -> void:
 	print("Notification [%s]: %s" % [type, message])
 	# Could create a proper notification system here
 
@@ -194,19 +194,19 @@ func _on_player_leveled_up(new_level: int) -> void:
 	player_level = new_level
 	show_notification("Level Up! Reached level %d" % new_level, "success", 3.0)
 
-func _on_enemy_spawned(enemy: Node2D, enemy_data: EnemyData) -> void:
+func _on_enemy_spawned(_enemy: Node2D, _enemy_data: EnemyData) -> void:
 	current_enemies += 1
 	update_game_ui()
 
-func _on_enemy_despawned(enemy: Node2D) -> void:
+func _on_enemy_despawned(_enemy: Node2D) -> void:
 	current_enemies = max(0, current_enemies - 1)
 	update_game_ui()
 
-func _on_wave_progress_updated(enemies_remaining: int, total_enemies: int) -> void:
+func _on_wave_progress_updated(enemies_remaining: int, _total_enemies: int) -> void:
 	current_enemies = enemies_remaining
 	update_game_ui()
 
-func _on_game_state_changed(old_state: GamePhase.Type, new_state: GamePhase.Type) -> void:
+func _on_game_state_changed(_old_state: GamePhase.Type, new_state: GamePhase.Type) -> void:
 	match new_state:
 		GamePhase.Type.PLAYING:
 			set_ui_mode("game")

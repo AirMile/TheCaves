@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://refactored_arena"]
+[gd_scene load_steps=7 format=3 uid="uid://refactored_arena"]
 
 [ext_resource type="PackedScene" uid="uid://baxq3x3n5p8g7" path="res://scenes/Player.tscn" id="1_player"]
 [ext_resource type="Script" path="res://scripts/RefactoredArena.gd" id="2_main"]
 [ext_resource type="Script" path="res://scripts/systems/GameManager.gd" id="3_gamemanager"]
 [ext_resource type="Script" path="res://scripts/systems/UIManager.gd" id="4_uimanager"]
 [ext_resource type="Script" path="res://scripts/systems/EnemySpawner.gd" id="5_spawner"]
-[ext_resource type="Resource" path="res://resources/DefaultGameConfig.tres" id="6_game_config"]
-[ext_resource type="Resource" path="res://resources/waves/FirstWave.tres" id="7_first_wave"]
 
 [sub_resource type="PlaceholderTexture2D" id="ArenaBackground"]
 size = Vector2(800, 600)
@@ -19,8 +17,6 @@ size = Vector2(20, 600)
 
 [node name="RefactoredArena" type="Node2D"]
 script = ExtResource("2_main")
-game_config = ExtResource("6_game_config")
-starting_wave = ExtResource("7_first_wave")
 
 [node name="Arena" type="Node2D" parent="."]
 

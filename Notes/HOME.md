@@ -23,6 +23,7 @@
 
 ### 💻 Development
 - [[Architecture_Overview|System Architecture]] - Technical structure
+- [[06_Development_Guides/Game_Directory_Structure|Directory Structure]] - File organization guide
 - [[02_Development/Current_Sprint|Current Sprint]] - Active tasks
 - [[Git_Workflow|Git Workflow]] - Branch strategy
 - [[Performance_Guidelines|Performance Guide]] - Optimization

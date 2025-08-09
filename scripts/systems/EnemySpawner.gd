@@ -212,7 +212,7 @@ func _spawn_enemy(enemy: CharacterBody2D, enemy_data: EnemyData, position: Vecto
 	print("EnemySpawner: Spawned %s at %s" % [enemy_data.display_name, position])
 
 ## Get valid spawn position
-func _get_spawn_position(enemy_data: EnemyData) -> Vector2:
+func _get_spawn_position(_enemy_data: EnemyData) -> Vector2:
 	if not player_ref:
 		# Random edge position if no player reference
 		return _get_random_edge_position()
@@ -313,7 +313,7 @@ func _on_enemy_died_direct(enemy: Node2D) -> void:
 	
 	EventBus.enemy_despawned.emit(enemy)
 
-func _on_game_state_changed(old_state: GamePhase.Type, new_state: GamePhase.Type) -> void:
+func _on_game_state_changed(_old_state: GamePhase.Type, new_state: GamePhase.Type) -> void:
 	match new_state:
 		GamePhase.Type.GAME_OVER, GamePhase.Type.MENU:
 			stop_spawning()

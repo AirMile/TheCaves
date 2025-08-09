@@ -13,7 +13,7 @@ func _ready():
 	current_health = max_health
 	base_speed = get_meta("speed", 100.0)
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if not get_meta("active", false) or not is_instance_valid(player_ref):
 		return
 	

@@ -83,7 +83,7 @@ func get_experience_for_level(level: int) -> int:
 	return total_experience
 
 ## Get wave for current game time or loop count
-func get_wave_for_time(game_time: float, loop_count: int = 0) -> WaveConfiguration:
+func get_wave_for_time(game_time: float, _loop_count: int = 0) -> WaveConfiguration:
 	if waves.is_empty():
 		return null
 	

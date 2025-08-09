@@ -49,6 +49,9 @@ range = 150.0
 projectile_speed = 300.0
 projectile_type = "bullet"
 
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = true
+
 [node name="HurtboxComponent" type="Area2D" parent="."]
 script = ExtResource("6_m8r4d")
 

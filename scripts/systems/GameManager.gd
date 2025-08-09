@@ -4,7 +4,11 @@ extends Node
 ## Implements IGameState interface and follows single responsibility principle
 
 ## Game configuration
-@export var game_config: GameConfiguration
+@export var game_config: GameConfiguration:
+	set(value):
+		game_config = value
+		if value:
+			_validate_configuration()
 @export var starting_wave_config: WaveConfiguration
 
 ## Current game state
@@ -25,7 +29,7 @@ var ui_manager_ref: Node
 func _ready() -> void:
 	add_to_group("managers")
 	_connect_to_event_bus()
-	_validate_configuration()
+	# Configuration validation will happen when config is assigned
 	
 	print("ArenaGameManager initialized")
 
@@ -49,14 +53,16 @@ func _connect_to_event_bus() -> void:
 ## Validate game configuration
 func _validate_configuration() -> void:
 	if not game_config:
-		push_error("ArenaGameManager: No game configuration assigned")
+		push_warning("ArenaGameManager: No game configuration assigned, creating default")
 		game_config = GameConfiguration.new()  # Create default
 	
 	if not game_config.is_valid():
 		push_error("ArenaGameManager: Invalid game configuration")
+	else:
+		print("ArenaGameManager: Configuration validated successfully")
 
 ## Update game logic during play
-func _update_game_logic(delta: float) -> void:
+func _update_game_logic(_delta: float) -> void:
 	# Check if we need to start a new wave
 	if enemy_spawner_ref and enemy_spawner_ref.has_method("get_active_enemy_count"):
 		var active_enemies = enemy_spawner_ref.get_active_enemy_count()
@@ -116,7 +122,7 @@ func is_playing() -> bool:
 	return current_state == GamePhase.Type.PLAYING and not is_game_paused
 
 ## Handle state transitions
-func _handle_state_transition(old_state: GamePhase.Type, new_state: GamePhase.Type) -> void:
+func _handle_state_transition(_old_state: GamePhase.Type, new_state: GamePhase.Type) -> void:
 	match new_state:
 		GamePhase.Type.PLAYING:
 			_start_gameplay()
@@ -179,7 +185,7 @@ func set_ui_manager_reference(ui_manager: Node) -> void:
 func _on_player_died() -> void:
 	end_game(false)
 
-func _on_enemy_died(enemy: Node2D) -> void:
+func _on_enemy_died(_enemy: Node2D) -> void:
 	enemies_killed += 1
 
 func _on_wave_completed(wave_number: int, victory: bool) -> void:

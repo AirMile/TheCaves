@@ -24,6 +24,7 @@ const MAX_LEVEL: int = 100
 @onready var stats_component: StatsComponent = $StatsComponent
 @onready var weapon_component: WeaponComponent = $WeaponComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var camera: Camera2D = $Camera2D
 
 # Input validation constants
 const MAX_INPUT_MAGNITUDE_SQUARED: float = 2.0  # Prevent excessively large input (sqrt(2)^2)
@@ -54,6 +55,9 @@ func _ready():
 	
 	# Apply initial stats
 	_apply_stats_to_components()
+	
+	# Setup camera
+	_setup_camera()
 	
 	print(EnemyPool.PLAYER_INIT_FORMAT % [current_level, health_component.get_max_health()])
 
@@ -90,10 +94,26 @@ func _setup_collision_components():
 		hurtbox_component.damage_received.connect(_on_damage_received)
 		hurtbox_component.hit_by_attack.connect(_on_hit_by_attack)
 
+func _setup_camera():
+	# Configure Camera2D for proper centering and limits
+	if camera:
+		camera.enabled = true
+		camera.make_current()
+		
+		# Set camera limits for 800x600 arena (with some margin)
+		camera.limit_left = 0
+		camera.limit_top = 0
+		camera.limit_right = 800
+		camera.limit_bottom = 600
+		
+		print("Player: Camera2D configured and made current")
+	else:
+		push_warning("Player: Camera2D not found")
+
 func _physics_process(delta: float):
 	_handle_movement_input(delta)
 
-func _process(delta: float):
+func _process(_delta: float):
 	_handle_action_input()
 
 func _handle_movement_input(delta: float):
@@ -131,7 +151,7 @@ func _is_movement_input_valid(input: Vector2) -> bool:
 	
 	return true
 
-func _is_action_input_valid(action: String) -> bool:
+func _is_action_input_valid(_action: String) -> bool:
 	# Prevent input spam
 	var current_frame = Engine.get_process_frames()
 	
@@ -249,11 +269,11 @@ func _on_player_died():
 	
 	print("Player died!")
 
-func _on_damage_received(damage: int, source: Node2D):
+func _on_damage_received(_damage: int, _source: Node2D):
 	# Handle damage response (screen shake, effects, etc.)
 	pass
 
-func _on_hit_by_attack(attacker: Node2D):
+func _on_hit_by_attack(_attacker: Node2D):
 	# Handle being hit by attack (knockback, effects, etc.)  
 	pass
 
