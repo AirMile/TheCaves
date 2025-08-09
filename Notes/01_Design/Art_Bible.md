@@ -39,7 +39,6 @@
 ### Style References
 - **Cave Paintings**: Lascaux, Aboriginal art
 - **Neon Games**: Geometry Wars, Tron, Nex Machina
-- **Mood**: Enter the Gungeon meets Hotline Miami
 
 ---
 

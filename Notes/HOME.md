@@ -30,8 +30,7 @@
 ### 👥 Team
 - [[03_Team/Miles/Miles_Dashboard|Miles' Workspace]]
 - [[03_Team/Jade/Jade_Dashboard|Jade's Workspace]]
-- [[03_Team/Shared/Decision_Log|Decision Log]] - Important choices
-- [[Meeting_Notes|Meeting History]]
+
 
 ### 📚 References
 - [[Sprite_Performance_Guide|Sprite Guidelines]]
