@@ -33,7 +33,8 @@
       "Bash(taskkill.exe:*)",
       "Bash(chmod:*)",
       "Bash(./cleanup-godot.sh:*)",
-      "Bash(./simple-cleanup.sh)"
+      "Bash(./simple-cleanup.sh)",
+      "Bash(docker:*)"
     ],
     "deny": []
   }
