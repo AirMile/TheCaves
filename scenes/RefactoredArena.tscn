@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://refactored_arena"]
+
+[ext_resource type="PackedScene" uid="uid://baxq3x3n5p8g7" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/RefactoredArena.gd" id="2_main"]
+[ext_resource type="Script" path="res://scripts/systems/GameManager.gd" id="3_gamemanager"]
+[ext_resource type="Script" path="res://scripts/systems/UIManager.gd" id="4_uimanager"]
+[ext_resource type="Script" path="res://scripts/systems/EnemySpawner.gd" id="5_spawner"]
+[ext_resource type="Resource" path="res://resources/DefaultGameConfig.tres" id="6_game_config"]
+[ext_resource type="Resource" path="res://resources/waves/FirstWave.tres" id="7_first_wave"]
+
+[sub_resource type="PlaceholderTexture2D" id="ArenaBackground"]
+size = Vector2(800, 600)
+
+[sub_resource type="RectangleShape2D" id="WallShapeHorizontal"]
+size = Vector2(800, 20)
+
+[sub_resource type="RectangleShape2D" id="WallShapeVertical"]
+size = Vector2(20, 600)
+
+[node name="RefactoredArena" type="Node2D"]
+script = ExtResource("2_main")
+game_config = ExtResource("6_game_config")
+starting_wave = ExtResource("7_first_wave")
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Arena"]
+position = Vector2(400, 300)
+modulate = Color(0.2, 0.2, 0.3, 1)
+texture = SubResource("ArenaBackground")
+
+[node name="Walls" type="StaticBody2D" parent="Arena"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="TopWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(400, -10)
+shape = SubResource("WallShapeHorizontal")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(400, 610)
+shape = SubResource("WallShapeHorizontal")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(-10, 300)
+shape = SubResource("WallShapeVertical")
+
+[node name="RightWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(810, 300)
+shape = SubResource("WallShapeVertical")
+
+[node name="Player" parent="Arena" instance=ExtResource("1_player")]
+position = Vector2(400, 300)
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="Systems"]
+script = ExtResource("3_gamemanager")
+
+[node name="EnemySpawner" type="Node" parent="Systems"]
+script = ExtResource("5_spawner")
+
+[node name="UIManager" type="CanvasLayer" parent="."]
+script = ExtResource("4_uimanager")
+
+[node name="GameUI" type="VBoxContainer" parent="UIManager"]
+anchors_preset = 2
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_vertical = 0
+
+[node name="EnemyCounter" type="Label" parent="UIManager/GameUI"]
+layout_mode = 2
+text = "Enemies: 0/5"
+
+[node name="Controls" type="Label" parent="UIManager/GameUI"]
+layout_mode = 2
+text = "WASD = Move, F3 = Debug"
+
+[node name="DebugPanel" type="Control" parent="UIManager"]
+visible = false
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -120.0
+offset_right = 300.0
+offset_bottom = -10.0
+grow_vertical = 0
+
+[node name="VBox" type="VBoxContainer" parent="UIManager/DebugPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FPS" type="Label" parent="UIManager/DebugPanel/VBox"]
+layout_mode = 2
+text = "FPS: 60"
+
+[node name="Enemies" type="Label" parent="UIManager/DebugPanel/VBox"]
+layout_mode = 2
+text = "Enemies: 0"
+
+[node name="Health" type="Label" parent="UIManager/DebugPanel/VBox"]
+layout_mode = 2
+text = "Health: 100/100"
+
+[node name="Level" type="Label" parent="UIManager/DebugPanel/VBox"]
+layout_mode = 2
+text = "Level: 1"
+
+[node name="Time" type="Label" parent="UIManager/DebugPanel/VBox"]
+layout_mode = 2
+text = "Time: 0.0s"
