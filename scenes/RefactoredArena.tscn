@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://refactored_arena"]
+
+[ext_resource type="PackedScene" uid="uid://baxq3x3n5p8g7" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/RefactoredArena.gd" id="2_main"]
+[ext_resource type="Script" path="res://scripts/systems/GameManager.gd" id="3_gamemanager"]
+[ext_resource type="Script" path="res://scripts/systems/UIManager.gd" id="4_uimanager"]
+[ext_resource type="Script" path="res://scripts/systems/EnemySpawner.gd" id="5_spawner"]
+
+[sub_resource type="PlaceholderTexture2D" id="ArenaBackground"]
+size = Vector2(800, 600)
+
+[sub_resource type="RectangleShape2D" id="WallShapeHorizontal"]
+size = Vector2(800, 20)
+
+[sub_resource type="RectangleShape2D" id="WallShapeVertical"]
+size = Vector2(20, 600)
+
+[node name="RefactoredArena" type="Node2D"]
+script = ExtResource("2_main")
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Arena"]
+position = Vector2(400, 300)
+modulate = Color(0.2, 0.2, 0.3, 1)
+texture = SubResource("ArenaBackground")
+
+[node name="Walls" type="StaticBody2D" parent="Arena"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="TopWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(400, -10)
+shape = SubResource("WallShapeHorizontal")
+
+[node name="BottomWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(400, 610)
+shape = SubResource("WallShapeHorizontal")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(-10, 300)
+shape = SubResource("WallShapeVertical")
+
+[node name="RightWall" type="CollisionShape2D" parent="Arena/Walls"]
+position = Vector2(810, 300)
+shape = SubResource("WallShapeVertical")
+
+[node name="Player" parent="Arena" instance=ExtResource("1_player")]
+position = Vector2(400, 300)
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="Systems"]
+script = ExtResource("3_gamemanager")
+
+[node name="EnemySpawner" type="Node" parent="Systems"]
+script = ExtResource("5_spawner")
+
+[node name="UIManager" type="CanvasLayer" parent="."]
+script = ExtResource("4_uimanager")
+
+[node name="GameUI" type="VBoxContainer" parent="UIManager"]
+anchors_preset = 2
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_vertical = 0
+
+[node name="EnemyCounter" type="Label" parent="UIManager/GameUI"]
+layout_mode = 2
+text = "Enemies: 0/5"
+
+[node name="Controls" type="Label" parent="UIManager/GameUI"]
+layout_mode = 2
+text = "WASD = Move"
+

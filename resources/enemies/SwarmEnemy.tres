@@ -1,0 +1,31 @@
+[gd_resource type="EnemyData" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/EnemyData.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+
+enemy_id = "swarm"
+display_name = "Swarm Bug"
+description = "Fast, weak enemy that attacks in groups"
+sprite_color = Color(1, 0, 0, 1)
+sprite_scale = Vector2(1, 1)
+collision_size = Vector2(16, 16)
+max_health = 25
+health_regeneration = 0.0
+base_speed = 120.0
+acceleration = 500.0
+friction = 500.0
+ai_type = "chase_player"
+detection_range = 150.0
+attack_range = 20.0
+reaction_time = 0.05
+damage = 5
+attack_cooldown = 0.8
+knockback_strength = 50.0
+spawn_weight = 3.0
+min_spawn_level = 1
+max_spawn_level = 999
+experience_value = 5
+drop_chance = 0.05
+status_immunities = []

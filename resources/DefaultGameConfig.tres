@@ -1,0 +1,44 @@
+[gd_resource type="GameConfiguration" script_class="GameConfiguration" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/GameConfiguration.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://first_wave" path="res://resources/waves/FirstWave.tres" id="2_first_wave"]
+
+[resource]
+script = ExtResource("1_script")
+
+config_name = "Default Game Configuration"
+version = "1.0.0"
+description = "Standard configuration for TheCaves roguelite"
+player_starting_health = 100
+player_starting_speed = 200.0
+player_starting_damage = 15
+player_dash_speed = 400.0
+player_dash_duration = 0.2
+player_dash_cooldown = 1.0
+base_experience_to_level = 100
+experience_scaling_factor = 1.2
+max_player_level = 50
+arena_size = Vector2(800, 600)
+arena_background_color = Color(0.2, 0.2, 0.3, 1)
+wall_thickness = 20.0
+max_enemies = 150
+max_projectiles = 500
+target_fps = 60
+physics_tick_rate = 60
+enemy_spawn_margin = 50.0
+min_spawn_distance_from_player = 100.0
+max_spawn_distance_from_player = 250.0
+difficulty_curve_steepness = 1.1
+enemy_health_scaling = 1.05
+enemy_damage_scaling = 1.03
+enemy_speed_scaling = 1.02
+master_volume = 1.0
+music_volume = 0.7
+sfx_volume = 0.8
+ui_volume = 0.6
+show_debug_info = false
+show_fps = false
+debug_toggle_key = "F3"
+waves = Array[WaveConfiguration]([ExtResource("1_first_wave")])
+loop_final_wave = true
+wave_difficulty_increase = 0.1

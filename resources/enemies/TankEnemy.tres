@@ -1,0 +1,28 @@
+[gd_resource type="EnemyData" format=3]
+
+[resource]
+
+enemy_id = "tank"
+display_name = "Heavy Brute"
+description = "Slow but powerful enemy with high health"
+sprite_color = Color(0, 1, 0, 1)
+sprite_scale = Vector2(1.2, 1.2)
+collision_size = Vector2(32, 32)
+max_health = 150
+health_regeneration = 1.0
+base_speed = 50.0
+acceleration = 300.0
+friction = 300.0
+ai_type = "chase_player"
+detection_range = 180.0
+attack_range = 35.0
+reaction_time = 0.25
+damage = 25
+attack_cooldown = 2.0
+knockback_strength = 150.0
+spawn_weight = 1.0
+min_spawn_level = 3
+max_spawn_level = 999
+experience_value = 35
+drop_chance = 0.2
+status_immunities = ["knockback"]
