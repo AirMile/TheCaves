@@ -1,12 +1,13 @@
 extends CharacterBody2D
 class_name Player
 ## Main player controller with component-based architecture
-## Handles movement, health, experience, and upgrade application
+## Handles movement, health, experience, dash ability, and upgrade application
 
 signal level_up
 signal experience_gained(amount: int)
 signal health_changed(current: int, maximum: int)
 signal died
+signal dash_performed(direction: Vector2)
 
 # Level and experience system with overflow protection
 @export var starting_level: int = 1
@@ -86,6 +87,11 @@ func _connect_component_signals():
 	# Stats component signals for upgrade application
 	if stats_component:
 		stats_component.stat_changed.connect(_on_stat_changed)
+	
+	# Movement component dash signals
+	if movement_component:
+		movement_component.dash_started.connect(_on_dash_started)
+		movement_component.dash_ended.connect(_on_dash_ended)
 
 func _setup_collision_components():
 	# Complete hitbox/hurtbox integration (addressing feedback issue)
@@ -112,7 +118,7 @@ func _setup_camera():
 
 func _physics_process(delta: float):
 	_handle_movement_input(delta)
-
+	_handle_dash_input()
 
 func _handle_movement_input(delta: float):
 	if not InputManager or not movement_component:
@@ -127,6 +133,31 @@ func _handle_movement_input(delta: float):
 	
 	movement_component.apply_movement_input(movement_input, delta)
 
+func _handle_dash_input():
+	if not movement_component:
+		return
+	
+	# Check for dash input - using Input.is_action_just_pressed for single activation
+	if Input.is_action_just_pressed("dash"):
+		if not _is_action_input_valid("dash"):
+			return
+		
+		# Get current movement direction for dash
+		var dash_direction = Vector2.ZERO
+		
+		# Use current input direction if available
+		if InputManager:
+			dash_direction = InputManager.get_movement_vector()
+		
+		# Fallback to current velocity direction
+		if dash_direction.length_squared() < 0.01:
+			dash_direction = movement_component.get_movement_direction()
+		
+		# Attempt dash
+		var dash_success = movement_component.start_dash(dash_direction)
+		if dash_success:
+			dash_performed.emit(dash_direction)
+			print("Player: Dash performed in direction %s" % dash_direction)
 
 func _is_movement_input_valid(input: Vector2) -> bool:
 	# Validate input magnitude to prevent malformed/malicious input
@@ -216,6 +247,15 @@ func apply_upgrade(upgrade_data: Dictionary):
 			var attack_speed_bonus = upgrade_data.get("value", 0.0)
 			stats_component.add_percentage_bonus("attack_speed", attack_speed_bonus)
 		
+		"dash_speed":
+			var dash_speed_bonus = upgrade_data.get("value", 0.0)
+			if movement_component:
+				movement_component.modify_dash_speed(1.0 + dash_speed_bonus)
+		
+		"dash_cooldown":
+			var cooldown_reduction = upgrade_data.get("value", 0.0)
+			if movement_component:
+				movement_component.modify_dash_cooldown(1.0 - cooldown_reduction)
 	
 	# Apply updated stats to components
 	_apply_stats_to_components()
@@ -261,6 +301,14 @@ func _on_hit_by_attack(_attacker: Node2D):
 func _on_stat_changed(stat_name: String, old_value: float, new_value: float):
 	print(EnemyPool.STAT_CHANGE_FORMAT % [stat_name, old_value, new_value])
 
+func _on_dash_started():
+	print("Player: Dash started")
+	# Could add visual effects, screen shake, etc.
+
+func _on_dash_ended():
+	print("Player: Dash ended")
+	# Could add visual effects, particle trails, etc.
+
 # Public interface for external systems
 func get_level() -> int:
 	return current_level
@@ -294,6 +342,18 @@ func get_max_health() -> int:
 func is_alive() -> bool:
 	return health_component and not health_component.is_dead()
 
+# Dash-related getters
+func can_dash() -> bool:
+	return movement_component and movement_component.can_dash()
+
+func is_dashing() -> bool:
+	return movement_component and movement_component.is_dashing
+
+func get_dash_cooldown_remaining() -> float:
+	if movement_component:
+		return movement_component.get_dash_cooldown_remaining()
+	return 0.0
+
 # Debug information
 func get_debug_info() -> Dictionary:
 	var info = {
@@ -302,7 +362,10 @@ func get_debug_info() -> Dictionary:
 		"experience_to_next": experience_to_next_level,
 		"experience_percentage": get_experience_percentage(),
 		"position": global_position,
-		"is_alive": is_alive()
+		"is_alive": is_alive(),
+		"can_dash": can_dash(),
+		"is_dashing": is_dashing(),
+		"dash_cooldown_remaining": get_dash_cooldown_remaining()
 	}
 	
 	if health_component:
