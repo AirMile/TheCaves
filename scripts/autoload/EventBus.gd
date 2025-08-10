@@ -165,13 +165,18 @@ func monitor_fps(current_fps: int) -> void:
 ## Monitor memory usage
 func monitor_memory(used_memory: int) -> void:
 	if used_memory > MEMORY_WARNING_THRESHOLD:
-		# Check if OS.get_memory_info() is available on this platform
+		# Platform-based check for memory info availability
 		var available_memory = -1
-		if OS.has_method("get_memory_info"):
+		var platform_name = OS.get_name()
+		
+		# Memory info is available on desktop platforms, not on Web
+		if platform_name in ["Windows", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD", "macOS"]:
 			var memory_info = OS.get_memory_info()
 			available_memory = memory_info.get("available", -1)
-		else:
-			push_warning("OS.get_memory_info() is not available on this platform or Godot version.")
+		elif platform_name == "Web":
+			# Web platform doesn't support memory info
+			available_memory = -1
+		
 		memory_warning.emit(used_memory, available_memory)
 
 ## Get signal emission statistics for debugging
