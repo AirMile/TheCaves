@@ -63,6 +63,15 @@ mcp__godot-mcp__stop_project              # Stop when done
 - Never `instantiate()` during gameplay - use pools only
 - No inter-enemy collision (performance killer)
 
+## Quick Maintenance Commands
+
+### Screenshot Cleanup
+Remove all screenshots from the screenshots folder:
+```bash
+rm -f screenshots/*.png screenshots/*.png.import
+```
+This removes both the PNG files and their Godot import files to keep the repository clean.
+
 ## Documentation References
 Detailed implementations available in:
 - `Notes/06_Development_Guides/Godot_Best_Practices.md`

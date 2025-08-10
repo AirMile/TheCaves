@@ -165,9 +165,16 @@ func monitor_fps(current_fps: int) -> void:
 ## Monitor memory usage
 func monitor_memory(used_memory: int) -> void:
 	if used_memory > MEMORY_WARNING_THRESHOLD:
-		# OS.get_static_memory_usage() takes no arguments - using memory info API instead
+		# Capability-based detection: check if memory info is actually available
+		var available_memory = -1
 		var memory_info = OS.get_memory_info()
-		var available_memory = memory_info.get("available", -1)
+		
+		# Check if the dictionary has the "available" key and it's valid
+		if memory_info.has("available"):
+			var mem_value = memory_info.get("available", -1)
+			if mem_value >= 0:
+				available_memory = mem_value
+		
 		memory_warning.emit(used_memory, available_memory)
 
 ## Get signal emission statistics for debugging

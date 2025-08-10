@@ -21,9 +21,9 @@ const LOD_DISTANCE_LOW: float = 900.0
 
 # LOD thresholds (pre-calculated squared distances for performance)
 const LOD_DISTANCES_SQUARED: Dictionary = {
-	DetailLevel.HIGH: LOD_DISTANCE_HIGH * LOD_DISTANCE_HIGH,      # 300px squared = 90000
-	DetailLevel.MEDIUM: LOD_DISTANCE_MEDIUM * LOD_DISTANCE_MEDIUM,   # 600px squared = 360000
-	DetailLevel.LOW: LOD_DISTANCE_LOW * LOD_DISTANCE_LOW,       # 900px squared = 810000
+	DetailLevel.HIGH: LOD_DISTANCE_HIGH * LOD_DISTANCE_HIGH,      # High detail: squared threshold
+	DetailLevel.MEDIUM: LOD_DISTANCE_MEDIUM * LOD_DISTANCE_MEDIUM,   # Medium detail: squared threshold
+	DetailLevel.LOW: LOD_DISTANCE_LOW * LOD_DISTANCE_LOW,       # Low detail: squared threshold
 	# MINIMAL is anything beyond LOW
 }
 

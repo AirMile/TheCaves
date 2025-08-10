@@ -106,8 +106,12 @@ func _create_enemy(enemy_type: String) -> CharacterBody2D:
 	enemy.collision_layer = 3  # Enemies
 	enemy.collision_mask = 1 | 2 | 4  # Walls, Player, Player Projectiles (NO enemy-enemy collision)
 	
-	# Add simple AI script
-	enemy.set_script(load("res://scripts/BasicEnemy.gd"))
+	# Add simple AI script with error handling
+	var enemy_script = load("res://scripts/BasicEnemy.gd")
+	if enemy_script:
+		enemy.set_script(enemy_script)
+	else:
+		push_error("Failed to load res://scripts/BasicEnemy.gd for enemy type '%s'" % enemy_type)
 	
 	# Add metadata
 	enemy.set_meta("enemy_type", enemy_type)
