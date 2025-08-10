@@ -101,8 +101,10 @@ func _update_enemy_cache_timer(delta: float):
 		enemy_cache_timer = 0.0
 
 func _cleanup_invalid_targets():
-	# Mark invalid targets as null for later compaction (more efficient)
-	for i in range(targets_in_range.size()):
+	# Use backward iteration to only check non-null entries (more efficient)
+	# This avoids checking every element when most are valid
+	var i = targets_in_range.size() - 1
+	while i >= 0:
 		var target = targets_in_range[i]
 		if target != null and (not is_instance_valid(target) or _is_target_dead(target)):
 			targets_in_range[i] = null
@@ -110,6 +112,7 @@ func _cleanup_invalid_targets():
 			if target == current_target:
 				current_target = null
 				target_lost.emit()
+		i -= 1
 	
 	# Force compaction if too many null entries accumulate
 	if null_entry_count >= MAX_NULL_ENTRIES:
@@ -117,12 +120,17 @@ func _cleanup_invalid_targets():
 		target_compaction_timer = 0.0  # Reset timer since we just compacted
 
 func _compact_targets_array():
-	# Remove all null entries from targets_in_range (batch removal)
-	var new_targets: Array[Node2D] = []
-	for target in targets_in_range:
-		if target != null:
-			new_targets.append(target)
-	targets_in_range = new_targets
+	# In-place compaction to avoid memory allocation during gameplay
+	# Move all non-null entries to the front of the array
+	var write_index = 0
+	for read_index in range(targets_in_range.size()):
+		if targets_in_range[read_index] != null:
+			if write_index != read_index:
+				targets_in_range[write_index] = targets_in_range[read_index]
+			write_index += 1
+	
+	# Resize array to remove trailing null entries
+	targets_in_range.resize(write_index)
 	null_entry_count = 0  # Reset null count after compaction
 
 func _is_target_dead(target: Node2D) -> bool:

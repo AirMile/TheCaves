@@ -165,17 +165,15 @@ func monitor_fps(current_fps: int) -> void:
 ## Monitor memory usage
 func monitor_memory(used_memory: int) -> void:
 	if used_memory > MEMORY_WARNING_THRESHOLD:
-		# Platform-based check for memory info availability
+		# Capability-based detection: check if memory info is actually available
 		var available_memory = -1
-		var platform_name = OS.get_name()
+		var memory_info = OS.get_memory_info()
 		
-		# Memory info is available on desktop platforms, not on Web
-		if platform_name in ["Windows", "Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD", "macOS"]:
-			var memory_info = OS.get_memory_info()
-			available_memory = memory_info.get("available", -1)
-		elif platform_name == "Web":
-			# Web platform doesn't support memory info
-			available_memory = -1
+		# Check if the dictionary has the "available" key and it's valid
+		if memory_info.has("available"):
+			var mem_value = memory_info.get("available", -1)
+			if mem_value > 0:
+				available_memory = mem_value
 		
 		memory_warning.emit(used_memory, available_memory)
 
