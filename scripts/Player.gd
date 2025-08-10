@@ -15,7 +15,8 @@ var current_experience: int = 0
 var experience_to_next_level: int = 100
 
 # Experience calculation limits to prevent overflow (as mentioned in feedback)
-const MAX_EXPERIENCE: int = 2000000000  # Safe limit below int max
+# Using 90% of int32 max (2147483647) for safety margin
+const MAX_EXPERIENCE: int = int(2147483647 * 0.9)  # ~1932735282, safe buffer below int32 max
 const MAX_LEVEL: int = 100
 
 # Component references (cached for performance)

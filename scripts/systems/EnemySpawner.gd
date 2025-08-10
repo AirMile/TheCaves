@@ -170,8 +170,12 @@ func _create_enemy(enemy_data: EnemyData) -> CharacterBody2D:
 	enemy.collision_layer = 3  # Enemies
 	enemy.collision_mask = 1 | 2 | 4  # Walls, Player, Player Projectiles
 	
-	# Add basic AI script (simplified)
-	enemy.set_script(preload("res://scripts/BasicEnemy.gd"))
+	# Add basic AI script with error handling
+	var enemy_script = load("res://scripts/BasicEnemy.gd")
+	if enemy_script:
+		enemy.set_script(enemy_script)
+	else:
+		push_warning("EnemySpawner: Could not load script 'res://scripts/BasicEnemy.gd'. Enemy will not have AI.")
 	
 	# Store enemy data
 	enemy.set_meta("enemy_data", enemy_data)

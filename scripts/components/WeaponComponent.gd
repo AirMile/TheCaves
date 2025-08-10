@@ -29,7 +29,9 @@ var range_squared: float  # Pre-calculated for performance
 
 # Target validation
 var target_cleanup_timer: float = 0.0
+var target_compaction_timer: float = 0.0
 const TARGET_CLEANUP_INTERVAL: float = 0.5
+const TARGET_COMPACTION_INTERVAL: float = 2.0  # Compact targets array every 2 seconds
 
 # Enemy caching for performance optimization
 var cached_enemies: Array[Node2D] = []
@@ -82,6 +84,12 @@ func _update_target_cleanup(delta: float):
 	if target_cleanup_timer >= TARGET_CLEANUP_INTERVAL:
 		_cleanup_invalid_targets()
 		target_cleanup_timer = 0.0
+	
+	# Compact targets array less frequently
+	target_compaction_timer += delta
+	if target_compaction_timer >= TARGET_COMPACTION_INTERVAL:
+		_compact_targets_array()
+		target_compaction_timer = 0.0
 
 func _update_enemy_cache_timer(delta: float):
 	enemy_cache_timer += delta
@@ -91,14 +99,22 @@ func _update_enemy_cache_timer(delta: float):
 		enemy_cache_timer = 0.0
 
 func _cleanup_invalid_targets():
-	# Clean up invalid targets from the array (addressing feedback issue)
-	for i in range(targets_in_range.size() - 1, -1, -1):
+	# Mark invalid targets as null for later compaction (more efficient)
+	for i in range(targets_in_range.size()):
 		var target = targets_in_range[i]
-		if not is_instance_valid(target) or _is_target_dead(target):
-			targets_in_range.remove_at(i)
+		if target != null and (not is_instance_valid(target) or _is_target_dead(target)):
+			targets_in_range[i] = null
 			if target == current_target:
 				current_target = null
 				target_lost.emit()
+
+func _compact_targets_array():
+	# Remove all null entries from targets_in_range (batch removal)
+	var new_targets: Array[Node2D] = []
+	for target in targets_in_range:
+		if target != null:
+			new_targets.append(target)
+	targets_in_range = new_targets
 
 func _is_target_dead(target: Node2D) -> bool:
 	if not is_instance_valid(target):

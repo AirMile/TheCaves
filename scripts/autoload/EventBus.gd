@@ -165,9 +165,13 @@ func monitor_fps(current_fps: int) -> void:
 ## Monitor memory usage
 func monitor_memory(used_memory: int) -> void:
 	if used_memory > MEMORY_WARNING_THRESHOLD:
-		# OS.get_static_memory_usage() takes no arguments - using memory info API instead
-		var memory_info = OS.get_memory_info()
-		var available_memory = memory_info.get("available", -1)
+		# Check if OS.get_memory_info() is available on this platform
+		var available_memory = -1
+		if OS.has_method("get_memory_info"):
+			var memory_info = OS.get_memory_info()
+			available_memory = memory_info.get("available", -1)
+		else:
+			push_warning("OS.get_memory_info() is not available on this platform or Godot version.")
 		memory_warning.emit(used_memory, available_memory)
 
 ## Get signal emission statistics for debugging

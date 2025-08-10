@@ -35,6 +35,10 @@ const COLLISION_PAIRS_WARNING: int = 5000
 const FPS_WARNING_THRESHOLD: int = 55
 var performance_warnings_count: int = 0
 
+# Score limits to prevent integer overflow
+const SCORE_BUFFER: int = 100000  # Safety buffer for score calculations
+const MAX_SCORE: int = 2147483647 - SCORE_BUFFER  # int32 max minus buffer
+
 func _ready():
 	# Connect to EventBus
 	if EventBus:
@@ -262,9 +266,8 @@ func _on_upgrade_selected(upgrade_data: Dictionary):
 
 func add_score(points: int):
 	# Clamp to prevent integer overflow as mentioned in feedback
-	var max_safe_score = 2147483647 - 100000  # Leave buffer
-	if score < max_safe_score:
-		score = mini(score + points, max_safe_score)
+	if score < MAX_SCORE:
+		score = mini(score + points, MAX_SCORE)
 	
 	# Update high score
 	if score > high_score:
