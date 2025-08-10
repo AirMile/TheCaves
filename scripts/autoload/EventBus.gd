@@ -172,7 +172,7 @@ func monitor_memory(used_memory: int) -> void:
 		# Check if the dictionary has the "available" key and it's valid
 		if memory_info.has("available"):
 			var mem_value = memory_info.get("available", -1)
-			if mem_value > 0:
+			if mem_value >= 0:
 				available_memory = mem_value
 		
 		memory_warning.emit(used_memory, available_memory)

@@ -106,7 +106,7 @@ func _cleanup_invalid_targets():
 	var i = targets_in_range.size() - 1
 	while i >= 0:
 		var target = targets_in_range[i]
-		if target != null and (not is_instance_valid(target) or _is_target_dead(target)):
+		if not is_instance_valid(target) or _is_target_dead(target):
 			targets_in_range[i] = null
 			null_entry_count += 1
 			if target == current_target:
